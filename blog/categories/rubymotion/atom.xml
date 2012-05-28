@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rubymotion | Andy Waite]]></title>
   <link href="http://andyw8.github.com/blog/categories/rubymotion/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-05-28T22:23:39+01:00</updated>
+  <updated>2012-05-28T22:25:24+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>I've been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, so I've created an app template with some sensible defaults:</p>
 
 <ul>
-<li>Folders for models, views, controllers an vendored frameworks to encourage a Rails-esque layout convention</li>
+<li>Folders for models, views, controllers and vendored frameworks to encourage a Rails-esque layout convention</li>
 <li>Spec folder layout to mirror the app folder</li>
 <li>Support for <a href="http://www.rubymotion.com/developer-center/articles/testflight/">TestFlight</a></li>
 <li>Support for <a href="http://www.rubymotion.com/developer-center/articles/cocoapods/">CocoaPods</a></li>
