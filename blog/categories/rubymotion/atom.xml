@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rubymotion | Andy Waite]]></title>
   <link href="http://andyw8.github.com/blog/categories/rubymotion/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-05-28T22:30:22+01:00</updated>
+  <updated>2012-05-28T22:35:44+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -18,7 +18,7 @@
     <link href="http://andyw8.github.com/blog/2012/05/28/rubymotion-app-template/"/>
     <updated>2012-05-28T22:17:00+01:00</updated>
     <id>http://andyw8.github.com/blog/2012/05/28/rubymotion-app-template</id>
-    <content type="html"><![CDATA[<p>I've been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, and I've created an template with some sensible defaults to make it quick and easy to start a new app:</p>
+    <content type="html"><![CDATA[<p>I've been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, and I've created a simple template project with some sensible defaults to make it quick and easy to start a new app:</p>
 
 <ul>
 <li>Folders for models, views, controllers and vendored frameworks to encourage a Rails-esque layout convention</li>
