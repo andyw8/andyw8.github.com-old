@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Andy Waite]]></title>
-  <link href="http://andyw8.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: rubymotion | Andy Waite]]></title>
+  <link href="http://andyw8.github.com/blog/categories/rubymotion/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
   <updated>2012-05-28T22:22:38+01:00</updated>
   <id>http://andyw8.github.com/</id>
@@ -18,7 +18,7 @@
     <link href="http://andyw8.github.com/blog/2012/05/28/rubymotion-app-template/"/>
     <updated>2012-05-28T22:17:00+01:00</updated>
     <id>http://andyw8.github.com/blog/2012/05/28/rubymotion-app-template</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, so I&#8217;ve created an app template with some sensible defaults:</p>
+    <content type="html"><![CDATA[<p>I've been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, so I've created an app template with some sensible defaults:</p>
 
 <ul>
 <li>Folders for models, views, controllers an vendored frameworks to encourage a Rails-esque layout convention</li>
@@ -31,15 +31,6 @@
 
 
 <p>You can find it at https://github.com/andyw8/rubymotion_app_template</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First Post With Octopress]]></title>
-    <link href="http://andyw8.github.com/blog/2012/04/18/first-post-with-octopress/"/>
-    <updated>2012-04-18T23:37:00+01:00</updated>
-    <id>http://andyw8.github.com/blog/2012/04/18/first-post-with-octopress</id>
-    <content type="html"><![CDATA[<p>Hello world!</p>
 ]]></content>
   </entry>
   
