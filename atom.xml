@@ -4,7 +4,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-05-28T22:22:38+01:00</updated>
+  <updated>2012-05-28T22:23:39+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -30,7 +30,7 @@
 </ul>
 
 
-<p>You can find it at https://github.com/andyw8/rubymotion_app_template</p>
+<p>You can find it at <a href="https://github.com/andyw8/rubymotion_app_template">github.com/andyw8/rubymotion_app_template</a></p>
 ]]></content>
   </entry>
   
