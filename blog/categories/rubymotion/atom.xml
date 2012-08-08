@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rubymotion | Andy Waite]]></title>
   <link href="http://andyw8.github.com/blog/categories/rubymotion/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-08T15:02:04+01:00</updated>
+  <updated>2012-08-08T15:06:23+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -12,116 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[A Few Weeks With RubyMotion]]></title>
-    <link href="http://andyw8.github.com/blog/2012/05/29/first-experiences-with-rubymotion/"/>
-    <updated>2012-05-29T19:13:00+01:00</updated>
-    <id>http://andyw8.github.com/blog/2012/05/29/first-experiences-with-rubymotion</id>
-    <content type="html"><![CDATA[<h2>Background</h2>
-
-<p>I was fairly early the iOS party. I started learning Cocoa and Objective-C in 2008, and published my first app in February 2009.</p>
-
-<p>After a few reasonably successful apps, I began to feel the platform was dragging me down. It seemed hours could be wasted fighting with provisioning, memory leaks and making sense of the masses of documentation. It wasn't fun any more.</p>
-
-<p>At the same time, I was gaining a better undestanding off TDD and wanted to apply that to my iOS code, but testing in the iOS world was virtually unheard of. Apple's own sample code never had tests. In fact, one of the first decent iOS testing frameworks came from Google rather not Apple.</p>
-
-<p>I imagine it felt like the early days of the Web - very small companies and individuals exploring new ideas, with lots of frustrating because of the immature tools, but also lots of satisfaction when an app done well.</p>
-
-<h2>Progress</h2>
-
-<p>I always felt that using Objective-C was a temporary move for Apple. Bear in mind that the original intention was that iOS would run web apps, not native apps. Objective-C was used to build the apps that came the iPhone, but wasn't intended for a wider audience. It's just too low level.</p>
-
-<p>Apple's hands were tied - they knew developers wanted to build native apps, but there's wasn't a good solution.</p>
-
-<p>A while later, Apple signalled a strong interest in supporting Ruby by getting behind the MacRuby platform and hiring Laurent Sansonetti. The Mac OS store launched and apps written in MacRuby were permitted. LLVM came along and seemed to simplify memory management. It seemed support for Ruby was just around the corner.</p>
-
-<h2>Enter RubyMotion</h2>
-
-<p>RubyMotion was a big surprise because it didn't come from Apple.</p>
-
-<h2>How It Works</h2>
-
-<p>RubyMotion doesn't do any 'tricks'. It doesn't translate Ruby into Objective-C. It doesn't compile to some native-looking web app. It compiles to genuine LLVM bytecode, so in theory is distinquishable from an app created in Objective-C.</p>
-
-<p>You have full access to all the Cocoa frameworks</p>
-
-<h2>Code Examples</h2>
-
-<p>Objective-C is known for it's ununsual syntax and lengthy method names. While neither of these is unsormountable, they are offputting for Ruby developers accustomed to a clean syntax.</p>
-
-<p>If you want to create a mutable array in Objective C, it would look something like this (note the nil required to terminate the list).</p>
-
-<pre><code>NSMutableArray *items = [[NSMutableArray alloc] initWithObjects:@"a", @"b", @"c", nil];
-</code></pre>
-
-<p>The same code in Ruby would be as short as:</p>
-
-<pre><code>items = %w{a b c}
-</code></pre>
-
-<p>To add an item to an existing array:</p>
-
-<pre><code>[items addObject:@"d"];
-</code></pre>
-
-<p>The same in Ruby:</p>
-
-<pre><code>items &lt;&lt; 'd'
-</code></pre>
-
-<h2>Documentation</h2>
-
-<p>RubyMotion developers will need to be able to understand Apple's framework documentation and how to adapt it to RubyMotion.</p>
-
-<h2>Updates</h2>
-
-<p>Each time the RubyMotion rake command is used, it checks for a new version of RubyMotion. It's a bit of an illegent approach but I expect it will be improved. At the moment there are new updates about twice a week. There have been a few releases which broke previously working apps, but these have been resolved quickly.</p>
-
-<h2>Development Environment</h2>
-
-<p>It's interesting that RubyMotion completely bypasses the XCode IDE and promote a more traditional, command-line approach to building apps.</p>
-
-<p>TextMate/Sublime Text</p>
-
-<h2>Not Quite Ruby</h2>
-
-<p>RubyMotion has to add some additional syntax to Ruby to support the Obj-C naming conventions. Unfortunately this can make it's code unparsable by standard versions of Ruby, meaning many Ruby tools such as ruby_best_practices, flog, and RSpec aren't directly usable.</p>
-
-<h2>Community</h2>
-
-<p>The core community is a fairly active Google Groups mailing list. Oddly it's only viewable to members but there doesn't seem to be any restrictions on who can join.</p>
-
-<p>Already, the community is creating projects which embrace RubyMotion. There are example applications on using RubyMotion with many common frameworks such as Parse and RestKit. There are some attempts at abstracting away the ugly parts of Cocoa and using more Ruby idioms. And there is tool support, such as a TextMate package.</p>
-
-<p>There is a <a href="http://rubymotionweekly.com/">weekly email newsletter</a> which summarises the activity in the Google Group and elsewhere.</p>
-
-<p>StackOverflow</p>
-
-<h2>Testing</h2>
-
-<p>It's encouraging to see that creating a new project creates a spec folder with a starting point for tests. However, none of the sample applications have actual tests.</p>
-
-<p>RubyMotion apparently uses <a href="https://github.com/alloy/MacBacon">MacBacon</a>, which is a clone of RSpec for MacRuby. I'd much rather RSpec though so have been experimenting with an way to do that.</p>
-
-<h2>Conclusion</h2>
-
-<p>RubyMotion has far exceeded my expectations so far. It's giving me the kick I needed to get back into iOS development. I'm reading through (The Big Nerd Ranch iOS)[http://www.bignerdranch.com/book/ios_programming_the_big_nerd_ranch_guide_rd_edition_] to refamiliarise myself with the frameworks and platform.</p>
-
-<p>If you're an experienced Obj-C and Ruby developer, you'll be up-to-speed in about a day.</p>
-
-<p>If you're new to iOS development the you can't really avoid learning the Objective-C fundamentals, but once you get past that, you can happily code away in Ruby.</p>
-
-<p>Footnotes</p>
-
-<ul>
-<li>parse</li>
-<li>cocoapods</li>
-<li>restkit</li>
-</ul>
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[RubyMotion App Template]]></title>
