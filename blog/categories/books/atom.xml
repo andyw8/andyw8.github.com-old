@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: books | Andy Waite]]></title>
+  <link href="http://andyw8.github.com/blog/categories/books/atom.xml" rel="self"/>
+  <link href="http://andyw8.github.com/"/>
+  <updated>2012-08-08T14:52:09+01:00</updated>
+  <id>http://andyw8.github.com/</id>
+  <author>
+    <name><![CDATA[Andy Waite]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Top 10 Development Books]]></title>
+    <link href="http://andyw8.github.com/blog/2012/06/28/top-10-development-books/"/>
+    <updated>2012-06-28T10:48:00+01:00</updated>
+    <id>http://andyw8.github.com/blog/2012/06/28/top-10-development-books</id>
+    <content type="html"><![CDATA[<p>Round education. Not language specific.</p>
+
+<h2>1 Refactoring</h2>
+
+<p>The original Refactoring book was in Java. This is almost just a re-write in Ruby, with a few changes. It's authorised by the original author, Martin Fowler, and the layout is virtually identical.</p>
+
+<p>Alternatives:</p>
+
+<h2>Design patterns</h2>
+
+<p>The original Design Patterns book is a heavy read.</p>
+
+<p>Alternatives: Head First Design Patterns</p>
+
+<h2>2 Clean Code, Robert Martin</h2>
+
+<p>skp some parts:</p>
+
+<h2>3 The Art of Agile, James Shore</h2>
+
+<h2>Practical Object Oriented Design in Ruby</h2>
+
+<p>Alternatives: Goose</p>
+
+<h2>4 Clean coder / pass prog / prag prog</h2>
+
+<p>It's actually been a long time since I read The Pragmatic Programmer but it had a massive effect on me.</p>
+
+<h2>5 Working Effectively with Legacy Code</h2>
+
+<h2>Testing?</h2>
+
+<h2>6 Continuous Delivery</h2>
+
+<p>This book is like an encyclopedia of modern software process best practices.
+7
+Design Of Everyday Things</p>
+
+<p>What's missing?</p>
+
+<p>Practical Object Oriented Programming in Ruby</p>
+]]></content>
+  </entry>
+  
+</feed>
