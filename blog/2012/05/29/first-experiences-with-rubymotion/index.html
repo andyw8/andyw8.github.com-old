@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A Few Weeks With RubyMotion - Andy Waite</title>
+  <meta name="author" content="Andy Waite">
+
+  
+  <meta name="description" content="Background I was fairly early the iOS party. I started learning Cocoa and Objective-C in 2008, and published my first app in February 2009. After a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andyw8.github.com/blog/2012/05/29/first-experiences-with-rubymotion">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Andy Waite</a></h1>
+  
+    <h2>Ruby Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andyw8.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Few Weeks With RubyMotion</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-29T19:13:00+01:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Background</h2>
+
+<p>I was fairly early the iOS party. I started learning Cocoa and Objective-C in 2008, and published my first app in February 2009.</p>
+
+<p>After a few reasonably successful apps, I began to feel the platform was dragging me down. It seemed hours could be wasted fighting with provisioning, memory leaks and making sense of the masses of documentation. It wasn&#8217;t fun any more.</p>
+
+<p>At the same time, I was gaining a better undestanding off TDD and wanted to apply that to my iOS code, but testing in the iOS world was virtually unheard of. Apple&#8217;s own sample code never had tests. In fact, one of the first decent iOS testing frameworks came from Google rather not Apple.</p>
+
+<p>I imagine it felt like the early days of the Web - very small companies and individuals exploring new ideas, with lots of frustrating because of the immature tools, but also lots of satisfaction when an app done well.</p>
+
+<h2>Progress</h2>
+
+<p>I always felt that using Objective-C was a temporary move for Apple. Bear in mind that the original intention was that iOS would run web apps, not native apps. Objective-C was used to build the apps that came the iPhone, but wasn&#8217;t intended for a wider audience. It&#8217;s just too low level.</p>
+
+<p>Apple&#8217;s hands were tied - they knew developers wanted to build native apps, but there&#8217;s wasn&#8217;t a good solution.</p>
+
+<p>A while later, Apple signalled a strong interest in supporting Ruby by getting behind the MacRuby platform and hiring Laurent Sansonetti. The Mac OS store launched and apps written in MacRuby were permitted. LLVM came along and seemed to simplify memory management. It seemed support for Ruby was just around the corner.</p>
+
+<h2>Enter RubyMotion</h2>
+
+<p>RubyMotion was a big surprise because it didn&#8217;t come from Apple.</p>
+
+<h2>How It Works</h2>
+
+<p>RubyMotion doesn&#8217;t do any &#8216;tricks&#8217;. It doesn&#8217;t translate Ruby into Objective-C. It doesn&#8217;t compile to some native-looking web app. It compiles to genuine LLVM bytecode, so in theory is distinquishable from an app created in Objective-C.</p>
+
+<p>You have full access to all the Cocoa frameworks</p>
+
+<h2>Code Examples</h2>
+
+<p>Objective-C is known for it&#8217;s ununsual syntax and lengthy method names. While neither of these is unsormountable, they are offputting for Ruby developers accustomed to a clean syntax.</p>
+
+<p>If you want to create a mutable array in Objective C, it would look something like this (note the nil required to terminate the list).</p>
+
+<pre><code>NSMutableArray *items = [[NSMutableArray alloc] initWithObjects:@"a", @"b", @"c", nil];
+</code></pre>
+
+<p>The same code in Ruby would be as short as:</p>
+
+<pre><code>items = %w{a b c}
+</code></pre>
+
+<p>To add an item to an existing array:</p>
+
+<pre><code>[items addObject:@"d"];
+</code></pre>
+
+<p>The same in Ruby:</p>
+
+<pre><code>items &lt;&lt; 'd'
+</code></pre>
+
+<h2>Documentation</h2>
+
+<p>RubyMotion developers will need to be able to understand Apple&#8217;s framework documentation and how to adapt it to RubyMotion.</p>
+
+<h2>Updates</h2>
+
+<p>Each time the RubyMotion rake command is used, it checks for a new version of RubyMotion. It&#8217;s a bit of an illegent approach but I expect it will be improved. At the moment there are new updates about twice a week. There have been a few releases which broke previously working apps, but these have been resolved quickly.</p>
+
+<h2>Development Environment</h2>
+
+<p>It&#8217;s interesting that RubyMotion completely bypasses the XCode IDE and promote a more traditional, command-line approach to building apps.</p>
+
+<p>TextMate/Sublime Text</p>
+
+<h2>Not Quite Ruby</h2>
+
+<p>RubyMotion has to add some additional syntax to Ruby to support the Obj-C naming conventions. Unfortunately this can make it&#8217;s code unparsable by standard versions of Ruby, meaning many Ruby tools such as ruby_best_practices, flog, and RSpec aren&#8217;t directly usable.</p>
+
+<h2>Community</h2>
+
+<p>The core community is a fairly active Google Groups mailing list. Oddly it&#8217;s only viewable to members but there doesn&#8217;t seem to be any restrictions on who can join.</p>
+
+<p>Already, the community is creating projects which embrace RubyMotion. There are example applications on using RubyMotion with many common frameworks such as Parse and RestKit. There are some attempts at abstracting away the ugly parts of Cocoa and using more Ruby idioms. And there is tool support, such as a TextMate package.</p>
+
+<p>There is a <a href="http://rubymotionweekly.com/">weekly email newsletter</a> which summarises the activity in the Google Group and elsewhere.</p>
+
+<p>StackOverflow</p>
+
+<h2>Testing</h2>
+
+<p>It&#8217;s encouraging to see that creating a new project creates a spec folder with a starting point for tests. However, none of the sample applications have actual tests.</p>
+
+<p>RubyMotion apparently uses <a href="https://github.com/alloy/MacBacon">MacBacon</a>, which is a clone of RSpec for MacRuby. I&#8217;d much rather RSpec though so have been experimenting with an way to do that.</p>
+
+<h2>Conclusion</h2>
+
+<p>RubyMotion has far exceeded my expectations so far. It&#8217;s giving me the kick I needed to get back into iOS development. I&#8217;m reading through (The Big Nerd Ranch iOS)[http://www.bignerdranch.com/book/ios_programming_the_big_nerd_ranch_guide_rd_edition_] to refamiliarise myself with the frameworks and platform.</p>
+
+<p>If you&#8217;re an experienced Obj-C and Ruby developer, you&#8217;ll be up-to-speed in about a day.</p>
+
+<p>If you&#8217;re new to iOS development the you can&#8217;t really avoid learning the Objective-C fundamentals, but once you get past that, you can happily code away in Ruby.</p>
+
+<p>Footnotes</p>
+
+<ul>
+<li>parse</li>
+<li>cocoapods</li>
+<li>restkit</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andy Waite</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-29T19:13:00+01:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rubymotion/'>rubymotion</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andyw8.github.com/blog/2012/05/29/first-experiences-with-rubymotion/" data-via="andyw8" data-counturl="http://andyw8.github.com/blog/2012/05/29/first-experiences-with-rubymotion/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/28/rubymotion-app-template/" title="Previous Post: RubyMotion App Template">&laquo; RubyMotion App Template</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/02/smoke-tests-are-a-quick-win/" title="Next Post: Smoke Tests Are A Quick Win">Smoke Tests Are A Quick Win &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to easily delete a large Amazon S3 Bucket</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/12/general-knowledge-domains-for-every-developer/">General Knowledge Domains for Every Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/28/top-10-development-books/">Top 10 Development Books</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/09/single-responsibility-principle-violations-in-ios/">Single Responsibility Principle Violations in iOS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/02/smoke-tests-are-a-quick-win/">Smoke Tests Are A Quick Win</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/andyw8">@andyw8</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andyw8',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("andyw8", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/andyw8" class="twitter-follow-button" data-show-count="false">Follow @andyw8</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andy Waite -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
