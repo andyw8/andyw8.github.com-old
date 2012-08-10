@@ -4,7 +4,7 @@
   <title><![CDATA[Category: aws | Andy Waite]]></title>
   <link href="http://andyw8.github.com/blog/categories/aws/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-08T15:16:59+01:00</updated>
+  <updated>2012-08-10T10:05:51+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[How to easily delete a large Amazon S3 Bucket]]></title>
-    <link href="http://andyw8.github.com/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/"/>
+    <link href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/"/>
     <updated>2012-08-08T14:32:00+01:00</updated>
-    <id>http://andyw8.github.com/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket</id>
-    <content type="html"><![CDATA[<p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI, and I had difficulty finding an reasonable API approach (support for [multi-object delete])(http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/) still seems limited).</p>
+    <id>http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket</id>
+    <content type="html"><![CDATA[<p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI, and I had difficulty finding an reasonable API approach (support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited).</p>
 
 <p>If you don't mind waiting 24 hours for your bucket to be cleared, there's a very simple solution:</p>
 

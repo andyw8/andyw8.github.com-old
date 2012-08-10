@@ -30,6 +30,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12241830-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -37,7 +49,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">Andy Waite</a></h1>
   
-    <h2>Ruby Developer</h2>
+    <h2>Ruby and iOS Developer in London</h2>
   
 </hgroup>
 
@@ -70,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to Easily Delete a Large Amazon S3 Bucket</a></h1>
+      <h1 class="entry-title"><a href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to Easily Delete a Large Amazon S3 Bucket</a></h1>
     
     
       <p class="meta">
@@ -88,12 +100,14 @@
 
 <time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
         
+         | <a href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI, and I had difficulty finding an reasonable API approach (support for [multi-object delete])(http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/) still seems limited).</p>
+  <div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI, and I had difficulty finding an reasonable API approach (support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited).</p>
 
 <p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution:</p>
 
@@ -120,7 +134,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a></h1>
     
     
       <p class="meta">
@@ -137,6 +151,8 @@
 
 
 <time datetime="2012-05-28T22:17:00+01:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time>
+        
+         | <a href="/2012/05/28/rubymotion-app-template/#disqus_thread">Comments</a>
         
       </p>
     
@@ -168,7 +184,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/18/first-post-with-octopress/">First Post With Octopress</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a></h1>
     
     
       <p class="meta">
@@ -185,6 +201,8 @@
 
 
 <time datetime="2012-04-18T23:37:00+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
+        
+         | <a href="/2012/04/18/first-post-with-octopress/#disqus_thread">Comments</a>
         
       </p>
     
@@ -212,15 +230,15 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to easily delete a large Amazon S3 Bucket</a>
+        <a href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to easily delete a large Amazon S3 Bucket</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
+        <a href="/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
+        <a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
       </li>
     
   </ul>
@@ -272,9 +290,12 @@
   
 </section>
 
-
-
-
+<section>
+  <h1>Stackoverflow</h1>
+  <a href="http://stackoverflow.com/users/119822/andy-waite">
+    <img src="http://stackoverflow.com/users/flair/119822.png" width="208" height="58" alt="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers">
+  </a>
+</section>
 
   
 </aside>
@@ -288,6 +309,19 @@
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'andywaite';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

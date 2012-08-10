@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to easily delete a large Amazon S3 Bucket - Andy Waite</title>
+  <title>First Post With Octopress - Andy Waite</title>
   <meta name="author" content="Andy Waite">
 
   
-  <meta name="description" content="I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is &hellip;">
+  <meta name="description" content="Hello world!
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andyw8.github.com/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket">
+  <link rel="canonical" href="http://andyw8.github.com/2012/04/18/first-post-with-octopress">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -30,6 +31,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12241830-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -37,7 +50,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">Andy Waite</a></h1>
   
-    <h2>Ruby Developer</h2>
+    <h2>Ruby and iOS Developer in London</h2>
   
 </hgroup>
 
@@ -67,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">How to Easily Delete a Large Amazon S3 Bucket</h1>
+      <h1 class="entry-title">First Post With Octopress</h1>
     
     
       <p class="meta">
@@ -83,28 +96,16 @@
   
 
 
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+<time datetime="2012-04-18T23:37:00+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI, and I had difficulty finding an reasonable API approach (support for [multi-object delete])(http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/) still seems limited).</p>
-
-<p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution:</p>
-
-<ul>
-<li>Log into the <a href="https://console.aws.amazon.com/s3/home">S3 Management Console</a></li>
-<li>Select the bucket you want to clear</li>
-<li>Select Properties from the toolbar</li>
-<li>Click the Lifecycle tab in the Properties panel</li>
-<li>Add a rule with no prefix and expiration of 1 day</li>
-<li>Save the rule</li>
-</ul>
-
-
-<p>If you check back 24 hours later you should find all your objects have been deleted and you can delete the empty bucket.</p>
+<div class="entry-content"><p>Hello world!</p>
 </div>
 
 
@@ -127,21 +128,15 @@
   
 
 
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+<time datetime="2012-04-18T23:37:00+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/aws/'>aws</a>, <a class='category' href='/blog/categories/s3-/'>s3,</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andyw8.github.com/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/" data-via="andyw8" data-counturl="http://andyw8.github.com/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andyw8.github.com/2012/04/18/first-post-with-octopress/" data-via="andyw8" data-counturl="http://andyw8.github.com/2012/04/18/first-post-with-octopress/" >Tweet</a>
   
   
   
@@ -150,12 +145,18 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/28/rubymotion-app-template/" title="Previous Post: RubyMotion App Template">&laquo; RubyMotion App Template</a>
       
+        <a class="basic-alignment right" href="/2012/05/28/rubymotion-app-template/" title="Next Post: RubyMotion App Template">RubyMotion App Template &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -166,15 +167,15 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to easily delete a large Amazon S3 Bucket</a>
+        <a href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to easily delete a large Amazon S3 Bucket</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
+        <a href="/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
+        <a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
       </li>
     
   </ul>
@@ -226,9 +227,12 @@
   
 </section>
 
-
-
-
+<section>
+  <h1>Stackoverflow</h1>
+  <a href="http://stackoverflow.com/users/119822/andy-waite">
+    <img src="http://stackoverflow.com/users/flair/119822.png" width="208" height="58" alt="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers">
+  </a>
+</section>
 
   
 </aside>
@@ -243,6 +247,22 @@
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'andywaite';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andyw8.github.com/2012/04/18/first-post-with-octopress/';
+        var disqus_url = 'http://andyw8.github.com/2012/04/18/first-post-with-octopress/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
