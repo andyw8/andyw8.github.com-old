@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-10T10:23:45+01:00</updated>
+  <updated>2012-08-10T15:32:28+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -13,12 +12,18 @@
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
-  <entry>
-    <title type="html"><![CDATA[How to easily delete a large Amazon S3 Bucket]]></title>
-    <link href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/"/>
-    <updated>2012-08-08T14:32:00+01:00</updated>
-    <id>http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket</id>
-    <content type="html"><![CDATA[<p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[How to easily delete a large Amazon S3 Bucket]]></title>
+<link href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/"/>
+<updated>2012-08-08T14:32:00+01:00</updated>
+<id>http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket</id>
+
+      <content type="html"><![CDATA[<p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
 
 <p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution using S3&#8217;s lifecycle feature:</p>
 
@@ -33,15 +38,21 @@
 
 
 <p>Check back 24 hours later you&#8217;ll find all your objects have been deleted.</p>
-]]></content>
-  </entry>
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
-  <entry>
-    <title type="html"><![CDATA[RubyMotion App Template]]></title>
-    <link href="http://andyw8.github.com/2012/05/28/rubymotion-app-template/"/>
-    <updated>2012-05-28T22:17:00+01:00</updated>
-    <id>http://andyw8.github.com/2012/05/28/rubymotion-app-template</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, and I&#8217;ve created a simple template project with some sensible defaults to make it quick and easy to start a new app:</p>
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[RubyMotion App Template]]></title>
+<link href="http://andyw8.github.com/2012/05/28/rubymotion-app-template/"/>
+<updated>2012-05-28T22:17:00+01:00</updated>
+<id>http://andyw8.github.com/2012/05/28/rubymotion-app-template</id>
+
+      <content type="html"><![CDATA[<p>I&#8217;ve been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, and I&#8217;ve created a simple template project with some sensible defaults to make it quick and easy to start a new app:</p>
 
 <ul>
 <li>Folders for models, views, controllers and vendored frameworks to encourage a Rails-esque layout convention</li>
@@ -54,16 +65,22 @@
 
 
 <p>You can find it at <a href="https://github.com/andyw8/rubymotion_app_template">github.com/andyw8/rubymotion_app_template</a></p>
-]]></content>
-  </entry>
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/05/28/rubymotion-app-template/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
-  <entry>
-    <title type="html"><![CDATA[First Post With Octopress]]></title>
-    <link href="http://andyw8.github.com/2012/04/18/first-post-with-octopress/"/>
-    <updated>2012-04-18T23:37:00+01:00</updated>
-    <id>http://andyw8.github.com/2012/04/18/first-post-with-octopress</id>
-    <content type="html"><![CDATA[<p>Hello world!</p>
-]]></content>
-  </entry>
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[First Post With Octopress]]></title>
+<link href="http://andyw8.github.com/2012/04/18/first-post-with-octopress/"/>
+<updated>2012-04-18T23:37:00+01:00</updated>
+<id>http://andyw8.github.com/2012/04/18/first-post-with-octopress</id>
+
+      <content type="html"><![CDATA[<p>Hello world!</p>
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/04/18/first-post-with-octopress/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
 </feed>
