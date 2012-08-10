@@ -104,9 +104,9 @@
   </header>
 
 
-<div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI, and I had difficulty finding an reasonable API approach (support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited).</p>
+<div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
 
-<p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution:</p>
+<p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution using S3&#8217;s lifecycle feature:</p>
 
 <ul>
 <li>Log into the <a href="https://console.aws.amazon.com/s3/home">S3 Management Console</a></li>
@@ -118,7 +118,7 @@
 </ul>
 
 
-<p>If you check back 24 hours later you should find all your objects have been deleted and you can delete the empty bucket.</p>
+<p>Check back 24 hours later you&#8217;ll find all your objects have been deleted.</p>
 </div>
 
 
@@ -247,10 +247,8 @@
 </section>
 
 <section>
-  <h1>Stackoverflow</h1>
-  <a href="http://stackoverflow.com/users/119822/andy-waite">
-    <img src="http://stackoverflow.com/users/flair/119822.png" width="208" height="58" alt="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers">
-  </a>
+  <h1>StackOverflow</h1>
+  <a href="http://stackoverflow.com/users/119822/andy-waite"><img src="http://stackoverflow.com/users/flair/119822.png" width="208" height="58" alt="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers"></a>
 </section>
 
   
