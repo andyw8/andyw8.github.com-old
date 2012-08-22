@@ -118,9 +118,9 @@
 
 <div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sports Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
 
-<p>My role was as a Developer-in-Test, using my coding background to help built quality into the product using techniques such as Specification by Example, Continuous Integration and Behaviour Driven Development.</p>
+<p>My role was as a Developer-in-Test, using my coding background to help build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
 
-<p>Ths post describes how we made use of Ruby, Cucumber and some other tools to implement our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
+<p>Ths post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
 
 <h2>Architecture Overview</h2>
 
@@ -188,7 +188,7 @@
 
 <p>(The <a href="http://en.wikipedia.org/wiki/List_of_IOC_country_codes">IOC code</a> is a three-letter acronym such as USA or GBR)</p>
 
-<p>Our data provided supplied examples of the XML format which looked something like this:</p>
+<p>Our data provider supplied examples of the XML format which looked something like this:</p>
 
 <pre><code>&lt;countries&gt;
   &lt;country name="United States" code="USA" gold="1" silver="2" bronze="3" /&gt;
@@ -209,7 +209,9 @@
 &lt;/countries&gt;
 </code></pre>
 
-<p>So the required fixtures could be generated using code such as:</p>
+<p>(excuse the additional backslashes, I had trouble getting Octopress to display this correctly)</p>
+
+<p>So then, the required fixtures could be generated using code such as:</p>
 
 <pre><code>Liquid::Template.parse(template).render 'countries' =&gt; [
   { name: 'United States',
@@ -224,9 +226,9 @@
     bronze: 3 } ]
 </code></pre>
 
-<p>The next challenge was how to run tests against this data. As the site isn&#8217;t built in Ruby, stubbing against the production classes wasn&#8217;t an option. Instead, I used a useful tool called <a href="http://artemave.github.com/2012/05/27/stub-like-a-surgeon-spy-like-james-bond-with-rest-assured/">REST-Assured</a>, written by another BBC contractor, <a href="http://artemave.github.com/">Artem Avetisyan</a>.</p>
+<p>The next challenge was how to run tests against these fixtures. As the site isn&#8217;t built in Ruby, stubbing the HTTP classes wasn&#8217;t an option. Instead, I used <a href="http://artemave.github.com/2012/05/27/stub-like-a-surgeon-spy-like-james-bond-with-rest-assured/">REST-Assured</a>, a highly-useful testing tool built by another BBC contractor <a href="http://artemave.github.com/">Artem Avetisyan</a>.</p>
 
-<p>REST-Assured has a simple API which defines that a particular query string should give a specified response.</p>
+<p>REST-Assured has a simple API which defines that a particular query string should give a specified response:</p>
 
 <pre><code>Given /^there no medals have been awarded "([^"])*"$/ do |query|
   xml = Liquid::Template.parse(template).render 'countries' =&gt; []
@@ -236,9 +238,9 @@
 end
 </code></pre>
 
-<p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that an alernative API endpoint could be provided as a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
+<p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that a the API endpoint configuration could be overridden using a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
 
-<p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage a great success.</p>
+<p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/08/digital_olympics_reach_stream_stats.html">a great success</a>.</p>
 </div>
 
   <footer>
