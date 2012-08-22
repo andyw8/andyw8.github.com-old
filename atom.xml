@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-22T20:10:33+01:00</updated>
+  <updated>2012-08-22T20:18:29+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -107,7 +107,7 @@
 
 <p>So to automate this, I decided to build a template with placeholders, which could be populated with the appropriate data for each scenario.</p>
 
-<p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand-out from the surrounding XML, but there are numerous other possible choices. Converted into a Liquid template, the XML example above would look something:</p>
+<p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand out from the surrounding XML, but there are numerous other viable choices. Converted into a Liquid template, the XML example above would look something like:</p>
 
 <pre><code>&lt;countries&gt;
   \{% for country in countries %\}
