@@ -118,15 +118,15 @@
 
 <div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sports Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
 
-<p>My role was as a Developer-in-Test, using my coding background to help build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
+<p>My role was as a Developer-in-Test, in which I used my coding background to  build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
 
-<p>Ths post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
+<p>This post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
 
 <h2>Architecture Overview</h2>
 
 <p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data was provided by a third-party as a REST API serving XML responses.</p>
 
-<p>A major challenge was that the third-party APIs had not yet being built. We had been given examples of what to expect in the responses but our development would have to happen in parallel with the third-party API development.</p>
+<p>A major challenge was that the third-party APIs had not yet been built. We were given examples of what to expect in the responses but our development would have to be done in parallel with the third-party&#8217;s own development.</p>
 
 <h2>Requirements Analysis</h2>
 
@@ -198,7 +198,7 @@
 
 <p>So in order to test all five scenarios above, a different XML fixture would be needed for each one. Creating these by hand would be time-consuming, and most of the feeds were more complex than this example. Additionally, the XML structure was subject to change, which would also add to the maintenance burden.</p>
 
-<p>So to automate this, I decided to build a template with placeholders, which could be populated with the appropriate data for each scenario.</p>
+<p>So to automate this, I built a template with placeholders which could be populated with the appropriate data for each scenario.</p>
 
 <p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand out from the surrounding XML, but there are numerous other viable choices. Converted into a Liquid template, the XML example above would look something like:</p>
 
