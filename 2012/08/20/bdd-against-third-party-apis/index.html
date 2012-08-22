@@ -202,7 +202,9 @@ BDD Against Third-party APIs
 <p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand-out from the surrounding XML, but there are numerous other possible choices. Converted into a Liquid template, the XML example above would look something:</p>
 
 <pre><code>&lt;countries&gt;
-
+  \{% for country in countries %\}
+  &lt;country name="{{ country.name }}" code="{{ country.code }}" gold="{{ country.gold }}" silver="{{ country.silver }}" bronze="{{ country.bronze }}" /&gt;
+  \{% endfor %\}
 &lt;/countries&gt;
 </code></pre>
 
@@ -263,7 +265,7 @@ end
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/bdd-/'>bdd,</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>
+    <a class='category' href='/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>
   
 </span>
 
