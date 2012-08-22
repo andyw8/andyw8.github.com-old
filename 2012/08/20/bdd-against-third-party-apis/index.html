@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Andy Waite</title>
+  <title>BDD against third-party APIs - Andy Waite</title>
   <meta name="author" content="Andy Waite">
   <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
 
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andyw8.github.com/">
+  <link rel="canonical" href="http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
@@ -74,25 +74,24 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+
+
+
+
+
+
+
+
+
+
+
+<article class="hentry " role="article">
   
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
-      
   <header>
     <h1 class="entry-title">
 
-<a href="/2012/08/20/bdd-against-third-party-apis/">BDD Against Third-party APIs</a>
+BDD Against Third-party APIs
 
 </h1>
 
@@ -239,39 +238,15 @@ end
 <p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage a great success.</p>
 </div>
 
+
   <footer>
-    
-    <p><a class="comments-link" href="/2012/08/20/bdd-against-third-party-apis/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
+    <p class="meta">
       
-  <header>
-    <h1 class="entry-title">
+  
 
-<a href="/2012/08/17/we-need-a-better-google-groups/">We Need a Better Google Groups</a>
+<span class="byline author vcard">Posted by <span class="fn">Andy Waite</span></span>
 
-</h1>
 
-    
-      <p class="meta">
-        
 
 
 
@@ -283,242 +258,53 @@ end
   
 
 
-<time datetime="2012-08-17T16:40:00+01:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-         &bull; <a rel="bookmark" href="/2012/08/17/we-need-a-better-google-groups/">Permalink</a>
-      </p>
+<time datetime="2012-08-20T19:54:00+01:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
+
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bdd-/'>bdd,</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>
+  
+</span>
+
+
+
+      
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+    
+      <a href="http://twitter.com/share" title="Tweet this" class="twitter-share" target="_blank">Tweet</a>
+    
+  
+  
+  
+  
 
-<div class="entry-content"><p>It seems that the most popular choice for a mailing list for open source projects is Google Groups.</p>
-
-<p>Google Groups is barely an improvement on EGroups, which became Yahoo Groups.</p>
-
-<p>I think there is a gap in the market for mailing lists aimed at technical audiences. GitHub and StackOverflow cover some of this space but these are aimed at issues and problems. There is nothing just for general discussions.</p>
-
-<p>Here&#8217;s how I think things could be improved:</p>
-
-<ul>
-<li>Better support for posting code</li>
-</ul>
-
-
-<h1>Better search</h1>
-
-<p>Despite Google being a search company, the search function on Google Groups seems completely broken and will often miss posts containing the term being searched for.</p>
-
-<h1>API</h1>
-
-<h1>GitHub Integration</h1>
-
-<h1>Better Quoting</h1>
-
-<p>Top-posting or bottom-posting, line breaks, diverging discussions&#8230; all these lead to a mess of &#8216;in reply to&#8217; noise.</p>
-
-<p>http://en.wikipedia.org/wiki/EGroups</p>
-
-<p>http://ejohn.org/blog/google-groups-is-dead/</p>
 </div>
 
-  <footer>
     
-    <p><a class="comments-link" href="/2012/08/17/we-need-a-better-google-groups/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
+    <p class="meta">
       
-  <header>
-    <h1 class="entry-title">
-
-<a href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to Easily Delete a Large Amazon S3 Bucket</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
-         &bull; <a rel="bookmark" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
-
-<p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution using S3&#8217;s lifecycle feature:</p>
-
-<ul>
-<li>Log into the <a href="https://console.aws.amazon.com/s3/home">S3 Management Console</a></li>
-<li>Select the bucket you want to clear</li>
-<li>Select Properties from the toolbar</li>
-<li>Click the Lifecycle tab in the Properties panel</li>
-<li>Add a rule with no prefix and expiration of 1 day</li>
-<li>Save the rule</li>
-</ul>
-
-
-<p>Check back 24 hours later you&#8217;ll find all your objects have been deleted.</p>
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
+        <a class="basic-alignment left" href="/2012/08/17/we-need-a-better-google-groups/" title="Previous Post: We need a better Google Groups">&laquo; We need a better Google Groups</a>
       
-  <header>
-    <h1 class="entry-title">
-
-<a href="/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-28T22:17:00+01:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time>
-         &bull; <a rel="bookmark" href="/2012/05/28/rubymotion-app-template/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p>I&#8217;ve been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, and I&#8217;ve created a simple template project with some sensible defaults to make it quick and easy to start a new app:</p>
-
-<ul>
-<li>Folders for models, views, controllers and vendored frameworks to encourage a Rails-esque layout convention</li>
-<li>Spec folder layout to mirror the app folder</li>
-<li>Support for <a href="http://www.rubymotion.com/developer-center/articles/testflight/">TestFlight</a></li>
-<li>Support for <a href="http://www.rubymotion.com/developer-center/articles/cocoapods/">CocoaPods</a></li>
-<li>Default values for app version and identifier</li>
-<li>Placeholders for configuring icons and device families</li>
-</ul>
-
-
-<p>You can find it at <a href="https://github.com/andyw8/rubymotion_app_template">github.com/andyw8/rubymotion_app_template</a></p>
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2012/05/28/rubymotion-app-template/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
       
-  <header>
-    <h1 class="entry-title">
-
-<a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-18T23:37:00+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
-         &bull; <a rel="bookmark" href="/2012/04/18/first-post-with-octopress/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p>Hello world!</p>
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2012/04/18/first-post-with-octopress/#disqus_thread">View comments &raquo;</a></p>
-    
-    
+    </p>
   </footer>
+</article>
 
-
-    </article>
+<section>
+  <h1>Comments</h1>
   
-  <div class="pagination">
-    
-    <a href="/archives">Blog Archives</a>
-    
-  </div>
+
+  
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  
+</section>
+
 </div>
 
 <aside class="sidebar">
@@ -552,21 +338,9 @@ end
 
 
 <section>
-  <h1>On GitHub</h1>
-  <ul id="gh_repos" data-user="andyw8" data-count="5" data-skip="true">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a class="github-follow" href="https://github.com/andyw8">Follow @andyw8</a>
-  
-</section>
-
-
-
-<section>
   <h1>Latest Tweets</h1>
   <ul id="tweets" data-user="andyw8" data-count="4" data-replies="false">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
     <a href="//twitter.com/andyw8" class="twitter-follow-button" data-show-count="false">Follow @andyw8</a>
@@ -574,10 +348,12 @@ end
 </section>
 
 
-<section>
-  <h1>StackOverflow</h1>
-  <a href="http://stackoverflow.com/users/119822/andy-waite"><img src="http://stackoverflow.com/users/flair/119822.png" width="208" height="58" alt="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Andy Waite at Stack Overflow, Q&A for professional and enthusiast programmers"></a>
-</section>
+
+
+
+
+
+
 
 
   
@@ -599,7 +375,10 @@ end
 			var disqus_developer = '0';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/';
+        var disqus_url = 'http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

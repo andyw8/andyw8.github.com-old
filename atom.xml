@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-11T16:18:55+01:00</updated>
+  <updated>2012-08-22T13:42:50+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -11,6 +11,183 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[BDD against third-party APIs]]></title>
+<link href="http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/"/>
+<updated>2012-08-20T19:54:00+01:00</updated>
+<id>http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis</id>
+
+      <content type="html"><![CDATA[<p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sports Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
+
+<p>My role was as a Developer-in-Test, using my coding background to help built quality into the product using techniques such as Specification by Example, Continuous Integration and Behaviour Driven Development.</p>
+
+<p>Ths post describes how we made use of Ruby, Cucumber and some other tools to implement our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
+
+<h2>Architecture Overview</h2>
+
+<p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data was provided by a third-party as a REST API serving XML responses.</p>
+
+<p>A major challenge was that the third-party APIs had not yet being built. We had been given examples of what to expect in the responses but our development would have to happen in parallel with the third-party API development.</p>
+
+<h2>Requirements Analysis</h2>
+
+<p>We wrote specifications using the Gherkin format, keeping in mind <a href="http://www.amazon.co.uk/gp/product/0321205685">Mike Cohn&#8217;s INVEST guidelines</a> which say stories should be:</p>
+
+<ul>
+<li>Independent</li>
+<li>Negotiable</li>
+<li>Valuable</li>
+<li>Estimable</li>
+<li>Small</li>
+<li>Testable</li>
+</ul>
+
+
+<p>As an example, consider the story for the medals table. There are <a href="http://en.wikipedia.org/wiki/Olympic_medal_table">very particular rules</a> for the correct order to list the countries in the medals table. Working with developers and business analysts, we came up with the following acceptance criteria:</p>
+
+<pre><code>Feature: Medals Table
+  Countries are ranked by the number of golds, silvers,
+  then bronzes, followed by their official IOC code.
+
+  Scenario: No medals
+    Given no medals have been awarded
+    When I view the medals table
+    Then a placeholder message should be present
+
+  Scenario: Same number of gold
+    Given the medals:
+      | country       | gold |
+      | United States | 3    |
+      | China         | 1    |     
+      | Great Britain | 2    |
+    When I view the medals table
+    Then the ranking should be United States, Great Britain, China
+
+  Scenario: Same number of gold but different number of silver
+    Given the medals:
+      | country       | gold | silver |
+      | United States | 2    | 3      |
+      | China         | 2    | 1      |
+      | Great Britain | 2    | 2      |
+    When I view the medals table
+    Then the ranking should be United States, Great Britain, China
+
+  Scenario: Same number of gold and silver but different number of bronze
+    Given the medals:
+      | country       | gold | silver | bronze |
+      | United States | 2    | 2      | 3      |
+      | China         | 2    | 2      | 1      |
+      | Great Britain | 2    | 2      | 2      |
+    When I view the medals table
+    Then the ranking should be United States, Great Britain, China
+
+  Scenario: Same number of gold, silver and bronze
+    Given the United States, China and Great Britain have equal gold, silver and bronze 
+    When I view the medals table
+    Then the ranking should be China, Great Britain, United States
+</code></pre>
+
+<p>(The <a href="http://en.wikipedia.org/wiki/List_of_IOC_country_codes">IOC code</a> is a three-letter acronym such as USA or GBR)</p>
+
+<p>Our data provided supplied examples of the XML format which looked something like this:</p>
+
+<pre><code>&lt;countries&gt;
+  &lt;country name="United States" code="USA" gold="1" silver="2" bronze="3" /&gt;
+  &lt;country name="Great Britain" code="GBR" gold="1" silver="2" bronze="3" /&gt;
+&lt;/countries&gt;
+</code></pre>
+
+<p>So in order to test all five scenarios above, a different XML fixture would be needed for each one. Creating these by hand would be time-consuming, and most of the feeds were more complex than this example. Additionally, the XML structure was subject to change, which would also add to the maintenance burden.</p>
+
+<p>So to automate this, I decided to build a template with placeholders, which could be populated with the appropriate data for each scenario.</p>
+
+<p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand-out from the surrounding XML, but there are numerous other possible choices. Converted into a Liquid template, the XML example above would look something:</p>
+
+<pre><code>&lt;countries&gt;
+
+&lt;/countries&gt;
+</code></pre>
+
+<p>So the required fixtures could be generated using code such as:</p>
+
+<pre><code>Liquid::Template.parse(template).render 'countries' =&gt; [
+  { name: 'United States',
+    code: 'USA',
+    gold: 1
+    silver: 2,
+    bronze: 3 },
+  { name: 'Great Britain',
+    code: 'GBR',
+    gold: 1
+    silver: 2,
+    bronze: 3 } ]
+</code></pre>
+
+<p>The next challenge was how to run tests against this data. As the site isn&#8217;t built in Ruby, stubbing against the production classes wasn&#8217;t an option. Instead, I used a useful tool called <a href="http://artemave.github.com/2012/05/27/stub-like-a-surgeon-spy-like-james-bond-with-rest-assured/">REST-Assured</a>, written by another BBC contractor, <a href="http://artemave.github.com/">Artem Avetisyan</a>.</p>
+
+<p>REST-Assured has a simple API which defines that a particular query string should give a specified response.</p>
+
+<pre><code>Given /^there no medals have been awarded "([^"])*"$/ do |query|
+  xml = Liquid::Template.parse(template).render 'countries' =&gt; []
+  RestAssured::Double.create
+    fullpath: "/medals",
+    content: xml
+end
+</code></pre>
+
+<p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that an alernative API endpoint could be provided as a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
+
+<p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage a great success.</p>
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/">&#9875; Permalink</a></p>]]></content>
+    </entry>
+  
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[We need a better Google Groups]]></title>
+<link href="http://andyw8.github.com/2012/08/17/we-need-a-better-google-groups/"/>
+<updated>2012-08-17T16:40:00+01:00</updated>
+<id>http://andyw8.github.com/2012/08/17/we-need-a-better-google-groups</id>
+
+      <content type="html"><![CDATA[<p>It seems that the most popular choice for a mailing list for open source projects is Google Groups.</p>
+
+<p>Google Groups is barely an improvement on EGroups, which became Yahoo Groups.</p>
+
+<p>I think there is a gap in the market for mailing lists aimed at technical audiences. GitHub and StackOverflow cover some of this space but these are aimed at issues and problems. There is nothing just for general discussions.</p>
+
+<p>Here&#8217;s how I think things could be improved:</p>
+
+<ul>
+<li>Better support for posting code</li>
+</ul>
+
+
+<h1>Better search</h1>
+
+<p>Despite Google being a search company, the search function on Google Groups seems completely broken and will often miss posts containing the term being searched for.</p>
+
+<h1>API</h1>
+
+<h1>GitHub Integration</h1>
+
+<h1>Better Quoting</h1>
+
+<p>Top-posting or bottom-posting, line breaks, diverging discussions&#8230; all these lead to a mess of &#8216;in reply to&#8217; noise.</p>
+
+<p>http://en.wikipedia.org/wiki/EGroups</p>
+
+<p>http://ejohn.org/blog/google-groups-is-dead/</p>
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/08/17/we-need-a-better-google-groups/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
     <entry>
       
