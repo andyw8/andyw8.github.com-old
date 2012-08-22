@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-22T20:27:27+01:00</updated>
+  <updated>2012-08-22T20:29:09+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -18,10 +18,10 @@
 
 
 
-<title type="html"><![CDATA[BDD against third-party APIs]]></title>
-<link href="http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/"/>
+<title type="html"><![CDATA[Cucumber, BDD and London 2012]]></title>
+<link href="http://andyw8.github.com/2012/08/20/cucumber-bdd-london-2012/"/>
 <updated>2012-08-20T19:54:00+01:00</updated>
-<id>http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis</id>
+<id>http://andyw8.github.com/2012/08/20/cucumber-bdd-london-2012</id>
 
       <content type="html"><![CDATA[<p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sports Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
 
@@ -148,7 +148,7 @@ end
 <p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that a the API endpoint configuration could be overridden using a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
 
 <p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/08/digital_olympics_reach_stream_stats.html">a great success</a>.</p>
-<p><a rel="bookmark" href="http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/">&#9875; Permalink</a></p>]]></content>
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/08/20/cucumber-bdd-london-2012/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
     <entry>
