@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-22T13:44:54+01:00</updated>
+  <updated>2012-08-22T13:45:55+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -147,48 +147,6 @@ end
 
 <p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage a great success.</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2012/08/20/bdd-against-third-party-apis/">&#9875; Permalink</a></p>]]></content>
-    </entry>
-  
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[We need a better Google Groups]]></title>
-<link href="http://andyw8.github.com/2012/08/17/we-need-a-better-google-groups/"/>
-<updated>2012-08-17T16:40:00+01:00</updated>
-<id>http://andyw8.github.com/2012/08/17/we-need-a-better-google-groups</id>
-
-      <content type="html"><![CDATA[<p>It seems that the most popular choice for a mailing list for open source projects is Google Groups.</p>
-
-<p>Google Groups is barely an improvement on EGroups, which became Yahoo Groups.</p>
-
-<p>I think there is a gap in the market for mailing lists aimed at technical audiences. GitHub and StackOverflow cover some of this space but these are aimed at issues and problems. There is nothing just for general discussions.</p>
-
-<p>Here&#8217;s how I think things could be improved:</p>
-
-<ul>
-<li>Better support for posting code</li>
-</ul>
-
-
-<h1>Better search</h1>
-
-<p>Despite Google being a search company, the search function on Google Groups seems completely broken and will often miss posts containing the term being searched for.</p>
-
-<h1>API</h1>
-
-<h1>GitHub Integration</h1>
-
-<h1>Better Quoting</h1>
-
-<p>Top-posting or bottom-posting, line breaks, diverging discussions&#8230; all these lead to a mess of &#8216;in reply to&#8217; noise.</p>
-
-<p>http://en.wikipedia.org/wiki/EGroups</p>
-
-<p>http://ejohn.org/blog/google-groups-is-dead/</p>
-<p><a rel="bookmark" href="http://andyw8.github.com/2012/08/17/we-need-a-better-google-groups/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
     <entry>
