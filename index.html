@@ -144,47 +144,88 @@
 
 <p>As an example, consider the story for the medals table. There are <a href="http://en.wikipedia.org/wiki/Olympic_medal_table">very particular rules</a> for the correct order to list the countries in the medals table. Working with developers and business analysts, we came up with the following acceptance criteria:</p>
 
-<pre><code>Feature: Medals Table
-  Countries are ranked by the number of golds, silvers,
-  then bronzes, followed by their official IOC code.
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='Gherkin'><span class='line'><span class="k">Feature:</span><span class="nf"> Medals Table</span>
+</span><span class='line'><span class="nf">Countries are ranked by the number of golds, silvers,</span>
+</span><span class='line'><span class="nf">then bronzes, followed by their official IOC code.</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Scenario:</span><span class="nf"> No medals</span>
+</span><span class='line'><span class="k">  Given </span><span class="nf">no medals have been awarded</span>
+</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">a placeholder message should be present</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Different number of gold</span>
+</span><span class='line'><span class="k">  Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">    |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 3</span><span class="k">    |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 1</span><span class="k">    |     </span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Same number of gold but different number of silver</span>
+</span><span class='line'><span class="k">  Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">    |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Same number of gold and silver but different number of bronze</span>
+</span><span class='line'><span class="k">  Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">    |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="s"> bronze</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">    |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Same number of gold, silver and bronze</span>
+</span><span class='line'><span class="k">  Given </span><span class="nf">the United States, China and Great Britain have equal gold, silver and bronze </span>
+</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be China, Great Britain, United States</span>
+</span></code></pre></td></tr></table></div></figure>
 
-  Scenario: No medals
-    Given no medals have been awarded
-    When I view the medals table
-    Then a placeholder message should be present
-
-  Scenario: Same number of gold
-    Given the medals:
-      | country       | gold |
-      | United States | 3    |
-      | China         | 1    |     
-      | Great Britain | 2    |
-    When I view the medals table
-    Then the ranking should be United States, Great Britain, China
-
-  Scenario: Same number of gold but different number of silver
-    Given the medals:
-      | country       | gold | silver |
-      | United States | 2    | 3      |
-      | China         | 2    | 1      |
-      | Great Britain | 2    | 2      |
-    When I view the medals table
-    Then the ranking should be United States, Great Britain, China
-
-  Scenario: Same number of gold and silver but different number of bronze
-    Given the medals:
-      | country       | gold | silver | bronze |
-      | United States | 2    | 2      | 3      |
-      | China         | 2    | 2      | 1      |
-      | Great Britain | 2    | 2      | 2      |
-    When I view the medals table
-    Then the ranking should be United States, Great Britain, China
-
-  Scenario: Same number of gold, silver and bronze
-    Given the United States, China and Great Britain have equal gold, silver and bronze 
-    When I view the medals table
-    Then the ranking should be China, Great Britain, United States
-</code></pre>
 
 <p>(The <a href="http://en.wikipedia.org/wiki/List_of_IOC_country_codes">IOC code</a> is a three-letter acronym such as USA or GBR)</p>
 
