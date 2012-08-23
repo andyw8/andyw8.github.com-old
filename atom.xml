@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-23T06:27:28+01:00</updated>
+  <updated>2012-08-23T06:30:00+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -49,7 +49,7 @@
 </ul>
 
 
-<p>As an example, consider the story for the medals table. There are <a href="http://en.wikipedia.org/wiki/Olympic_medal_table">very particular rules</a> for the correct order to list the countries in the medals table. Working with developers and business analysts, we came up with the following acceptance criteria:</p>
+<p>As an example, consider the story for the <a href="http://www.bbc.co.uk/sport/olympics/2012/medals/countries">medals table</a>. There are <a href="http://en.wikipedia.org/wiki/Olympic_medal_table">very particular rules</a> for the correct order to list the countries in the medals table. Working with developers and business analysts, we came up with the following acceptance criteria:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -91,46 +91,48 @@
 <span class='line-number'>38</span>
 <span class='line-number'>39</span>
 <span class='line-number'>40</span>
+<span class='line-number'>41</span>
 </pre></td><td class='code'><pre><code class='Gherkin'><span class='line'><span class="k">Feature:</span><span class="nf"> Medals Table</span>
-</span><span class='line'><span class="nf">Countries are ranked by the number of golds, silvers,</span>
-</span><span class='line'><span class="nf">then bronzes, followed by their official IOC code.</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">Scenario:</span><span class="nf"> No medals</span>
-</span><span class='line'><span class="k">  Given </span><span class="nf">no medals have been awarded</span>
-</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
-</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">a placeholder message should be present</span>
+</span><span class='line'><span class="nf">  Countries are ranked by the number of golds, silvers,</span>
+</span><span class='line'><span class="nf">  then bronzes, followed by their official IOC code.</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Different number of gold</span>
-</span><span class='line'><span class="k">  Given </span><span class="nf">the medals:</span>
-</span><span class='line'><span class="k">    |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 3</span><span class="k">    |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 1</span><span class="k">    |     </span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="nf"></span>
-</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
-</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> No medals</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">no medals have been awarded</span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">a placeholder message should be present</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Same number of gold but different number of silver</span>
-</span><span class='line'><span class="k">  Given </span><span class="nf">the medals:</span>
-</span><span class='line'><span class="k">    |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
-</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
-</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Different number of gold</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">      |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 3</span><span class="k">    |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 1</span><span class="k">    |     </span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Same number of gold and silver but different number of bronze</span>
-</span><span class='line'><span class="k">  Given </span><span class="nf">the medals:</span>
-</span><span class='line'><span class="k">    |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="s"> bronze</span><span class="k"> |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
-</span><span class='line'><span class="k">    |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
-</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
-</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Same number of gold but different number of silver</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">      |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">Scenario:</span><span class="nf"> Same number of gold, silver and bronze</span>
-</span><span class='line'><span class="k">  Given </span><span class="nf">the United States, China and Great Britain have equal gold, silver and bronze </span>
-</span><span class='line'><span class="nf">  </span><span class="k">When </span><span class="nf">I view the medals table</span>
-</span><span class='line'><span class="nf">  </span><span class="k">Then </span><span class="nf">the ranking should be China, Great Britain, United States</span>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Same number of gold and silver but different number of bronze</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">      |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="s"> bronze</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Same number of gold, silver and bronze</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the United States, China and Great Britain have equal gold, silver and bronze </span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be China, Great Britain, United States</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -150,41 +152,63 @@
 
 <p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand out from the surrounding XML, but there are numerous other viable choices. Converted into a Liquid template, the XML example above would look something like:</p>
 
-<pre><code>&lt;countries&gt;
-  \{% for country in countries %\}
-  &lt;country name="{{ country.name }}" code="{{ country.code }}" gold="{{ country.gold }}" silver="{{ country.silver }}" bronze="{{ country.bronze }}" /&gt;
-  \{% endfor %\}
-&lt;/countries&gt;
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;countries&gt;</span>
+</span><span class='line'>  <span class="ni">&amp;#x7b;&amp;#x25;</span> for country in countries %}
+</span><span class='line'>  <span class="nt">&lt;country</span> <span class="na">name=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.name }}&quot;</span> <span class="na">code=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.code }}&quot;</span> <span class="na">gold=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.gold }}&quot;</span> <span class="na">silver=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.silver }}&quot;</span> <span class="na">bronze=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.bronze }}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="ni">&amp;#x7b;&amp;#x25;</span> endfor %}
+</span><span class='line'><span class="nt">&lt;/countries&gt;</span>
+</span><span class='line'>
+</span><span class='line'>So then, the required fixtures could be generated using code such as:
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> ruby
+Liquid::Template.parse(template).render &#8216;countries&#8217; => [
+  { name: &#8216;United States&#8217;,</p>
+
+<pre><code>code: 'USA',
+gold: 1
+silver: 2,
+bronze: 3 },
 </code></pre>
 
-<p>(excuse the additional backslashes, I had trouble getting Octopress to display this correctly)</p>
+<p>  { name: &#8216;Great Britain&#8217;,</p>
 
-<p>So then, the required fixtures could be generated using code such as:</p>
-
-<pre><code>Liquid::Template.parse(template).render 'countries' =&gt; [
-  { name: 'United States',
-    code: 'USA',
-    gold: 1
-    silver: 2,
-    bronze: 3 },
-  { name: 'Great Britain',
-    code: 'GBR',
-    gold: 1
-    silver: 2,
-    bronze: 3 } ]
+<pre><code>code: 'GBR',
+gold: 1
+silver: 2,
+bronze: 3 } ]
 </code></pre>
 
-<p>The next challenge was how to run tests against these fixtures. As the site isn&#8217;t built in Ruby, stubbing the HTTP classes wasn&#8217;t an option. Instead, I used <a href="http://artemave.github.com/2012/05/27/stub-like-a-surgeon-spy-like-james-bond-with-rest-assured/">REST-Assured</a>, a highly-useful testing tool built by another BBC contractor <a href="http://artemave.github.com/">Artem Avetisyan</a>.</p>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='plain'><span class='line'>
+</span><span class='line'>The next challenge was how to run tests against these fixtures. As the site isn't built in Ruby, stubbing the HTTP classes wasn't an option. Instead, I used [REST-Assured][4], a highly-useful testing tool built by another BBC contractor [Artem Avetisyan][7].
+</span><span class='line'>
+</span><span class='line'>REST-Assured has a simple API which defines that a particular query string should give a specified response:
+</span></code></pre></td></tr></table></div></figure>
 
-<p>REST-Assured has a simple API which defines that a particular query string should give a specified response:</p>
 
-<pre><code>Given /^there no medals have been awarded "([^"])*"$/ do |query|
-  xml = Liquid::Template.parse(template).render 'countries' =&gt; []
-  RestAssured::Double.create
-    fullpath: "/medals",
-    content: xml
-end
+<p> ruby
+Given /<sup>there</sup> no medals have been awarded &#8220;([<sup>&#8221;])*&#8221;$/</sup> do |query|
+  xml = Liquid::Template.parse(template).render &#8216;countries&#8217; => []
+  RestAssured::Double.create</p>
+
+<pre><code>fullpath: "/medals",
+content: xml
 </code></pre>
+
+<p>end
+&#8220;`</p>
 
 <p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that a the API endpoint configuration could be overridden using a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
 
