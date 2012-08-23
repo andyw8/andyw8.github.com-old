@@ -232,11 +232,16 @@ Cucumber, BDD and London 2012
 
 <p>Our data provider supplied examples of the XML format which looked something like this:</p>
 
-<pre><code>&lt;countries&gt;
-  &lt;country name="United States" code="USA" gold="1" silver="2" bronze="3" /&gt;
-  &lt;country name="Great Britain" code="GBR" gold="1" silver="2" bronze="3" /&gt;
-&lt;/countries&gt;
-</code></pre>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;countries&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;country</span> <span class="na">name=</span><span class="s">&quot;United States&quot;</span> <span class="na">code=</span><span class="s">&quot;USA&quot;</span> <span class="na">gold=</span><span class="s">&quot;1&quot;</span> <span class="na">silver=</span><span class="s">&quot;2&quot;</span> <span class="na">bronze=</span><span class="s">&quot;3&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;country</span> <span class="na">name=</span><span class="s">&quot;Great Britain&quot;</span> <span class="na">code=</span><span class="s">&quot;GBR&quot;</span> <span class="na">gold=</span><span class="s">&quot;1&quot;</span> <span class="na">silver=</span><span class="s">&quot;2&quot;</span> <span class="na">bronze=</span><span class="s">&quot;3&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/countries&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>So in order to test all five scenarios above, a different XML fixture would be needed for each one. Creating these by hand would be time-consuming, and most of the feeds were more complex than this example. Additionally, the XML structure was subject to change, which would also add to the maintenance burden.</p>
 
@@ -249,58 +254,59 @@ Cucumber, BDD and London 2012
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;countries&gt;</span>
 </span><span class='line'>  <span class="ni">&amp;#x7b;&amp;#x25;</span> for country in countries %}
 </span><span class='line'>  <span class="nt">&lt;country</span> <span class="na">name=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.name }}&quot;</span> <span class="na">code=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.code }}&quot;</span> <span class="na">gold=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.gold }}&quot;</span> <span class="na">silver=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.silver }}&quot;</span> <span class="na">bronze=</span><span class="s">&quot;&amp;#x7b;&amp;#x7b; country.bronze }}&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="ni">&amp;#x7b;&amp;#x25;</span> endfor %}
 </span><span class='line'><span class="nt">&lt;/countries&gt;</span>
-</span><span class='line'>
-</span><span class='line'>So then, the required fixtures could be generated using code such as:
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> ruby
-Liquid::Template.parse(template).render &#8216;countries&#8217; => [
-  { name: &#8216;United States&#8217;,</p>
-
-<pre><code>code: 'USA',
-gold: 1
-silver: 2,
-bronze: 3 },
-</code></pre>
-
-<p>  { name: &#8216;Great Britain&#8217;,</p>
-
-<pre><code>code: 'GBR',
-gold: 1
-silver: 2,
-bronze: 3 } ]
-</code></pre>
+<p>So then, the required fixtures could be generated using code such as:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='plain'><span class='line'>
-</span><span class='line'>The next challenge was how to run tests against these fixtures. As the site isn't built in Ruby, stubbing the HTTP classes wasn't an option. Instead, I used [REST-Assured][4], a highly-useful testing tool built by another BBC contractor [Artem Avetisyan][7].
-</span><span class='line'>
-</span><span class='line'>REST-Assured has a simple API which defines that a particular query string should give a specified response:
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span> <span class="s1">&#39;countries&#39;</span> <span class="o">=&gt;</span> <span class="o">[</span>
+</span><span class='line'>  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">code</span><span class="p">:</span> <span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">gold</span><span class="p">:</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="n">silver</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">bronze</span><span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
+</span><span class='line'>  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Great Britain&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">code</span><span class="p">:</span> <span class="s1">&#39;GBR&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">gold</span><span class="p">:</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="n">silver</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">bronze</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span> <span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> ruby
-Given /<sup>there</sup> no medals have been awarded &#8220;([<sup>&#8221;])*&#8221;$/</sup> do |query|
-  xml = Liquid::Template.parse(template).render &#8216;countries&#8217; => []
-  RestAssured::Double.create</p>
+<p>The next challenge was how to run tests against these fixtures. As the site isn&#8217;t built in Ruby, stubbing the HTTP classes wasn&#8217;t an option. Instead, I used <a href="http://artemave.github.com/2012/05/27/stub-like-a-surgeon-spy-like-james-bond-with-rest-assured/">REST-Assured</a>, a highly-useful testing tool built by another BBC contractor <a href="http://artemave.github.com/">Artem Avetisyan</a>.</p>
 
-<pre><code>fullpath: "/medals",
-content: xml
-</code></pre>
+<p>REST-Assured has a simple API which defines that a particular query string should give a specified response:</p>
 
-<p>end
-&#8220;`</p>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Given</span> <span class="sr">/^there no medals have been awarded &quot;([^&quot;])*&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">query</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">xml</span> <span class="o">=</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span> <span class="s1">&#39;countries&#39;</span> <span class="o">=&gt;</span> <span class="o">[]</span>
+</span><span class='line'>  <span class="no">RestAssured</span><span class="o">::</span><span class="no">Double</span><span class="o">.</span><span class="n">create</span>
+</span><span class='line'>    <span class="n">fullpath</span><span class="p">:</span> <span class="s2">&quot;/medals&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">content</span><span class="p">:</span> <span class="n">xml</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that a the API endpoint configuration could be overridden using a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
 
