@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-28T14:51:18+01:00</updated>
+  <updated>2012-08-28T14:56:19+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -552,7 +552,7 @@
 
 <h2>What I Learned</h2>
 
-<p>Triangulation is a useful technique but doesn&#8217;t remove the need for the analysis and thinking required to solve tricky problems. If you try it on &#8216;autopilot&#8217; you probably won&#8217;t succeed. The order you choose to write the tests, and the code you write early on can have a significant impact in how much effort is required discover the algorithm.</p>
+<p>Triangulation is a useful technique but doesn&#8217;t remove the need for the analysis and thinking required to solve tricky problems. If you try to do it on &#8216;autopilot&#8217; you probably won&#8217;t succeed. The order you choose to write the tests, and the code you write early on can have a significant impact in how much effort is required discover to the algorithm. You</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2012/08/22/tdd-triangulation-practice/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
