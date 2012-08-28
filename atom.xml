@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-28T14:46:27+01:00</updated>
+  <updated>2012-08-28T14:49:57+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -46,7 +46,7 @@
 </ol>
 
 
-<p>I started with what seemed like the simplest failing test possible:</p>
+<p>I started with what seemed like the simplest test possible:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
