@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-28T15:00:14+01:00</updated>
+  <updated>2012-08-28T15:02:35+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -27,7 +27,7 @@
 
 <ul>
 <li><strong>Red</strong>: Write a failing test</li>
-<li><strong>Green</strong>: Make it test with the simplest implementation possible</li>
+<li><strong>Green</strong>: Make the test pass with the simplest implementation possible</li>
 <li><strong>Refactor</strong>: Remove duplication or improve the design</li>
 <li><strong>Repeat</strong></li>
 </ul>
