@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-08-28T14:56:19+01:00</updated>
+  <updated>2012-08-28T14:59:16+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -457,7 +457,6 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class='line'>  <span class="n">dice</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
@@ -465,7 +464,6 @@
 </span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">1000</span> <span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">total</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -492,7 +490,6 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class='line'>  <span class="n">dice</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
@@ -501,7 +498,6 @@
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">total</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -532,7 +528,6 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class='line'>  <span class="n">dice</span><span class="o">.</span><span class="n">sort!</span>
@@ -543,7 +538,6 @@
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">total</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
