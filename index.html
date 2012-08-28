@@ -92,6 +92,586 @@
   <header>
     <h1 class="entry-title">
 
+<a href="/2012/08/22/tdd-triangulation-practice/">TDD Triangulation Practice</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-22T13:50:00+01:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/08/22/tdd-triangulation-practice/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>After attending <a href="http://www.codemanship.co.uk/tddworkshop.html">Jason Goreman&#8217;s Intensive TDD workshop</a>, I decided to have some practice at the triangulation aspect of Test-Driven Development. I strictly kept to the TDD mantra of:</p>
+
+<ul>
+<li><strong>Red</strong>: Write a failing test</li>
+<li><strong>Green</strong>: Make it test with the simplest implementation possible</li>
+<li><strong>Refactor</strong>: Remove duplication or improve the design</li>
+<li><strong>Repeat</strong></li>
+</ul>
+
+
+<p>I based my effort on the <a href="http://koans.heroku.com/about_scoring_project">Scoring Project</a> from RubyKoans. This already includes some tests but I wrote mine from scratch.</p>
+
+<p>To recap the rules:</p>
+
+<ol>
+<li>A set of three ones is 1000 points</li>
+<li>A set of three numbers (other than ones) is worth 100 times the number. (e.g. three fives is 500 points).</li>
+<li>A one (that is not part of a set of three) is worth 100 points.</li>
+<li>A five (that is not part of a set of three) is worth 50 points.</li>
+<li>Everything else is worth 0 points.</li>
+</ol>
+
+
+<p>I started with what seemed like the simplest failing test possible:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="s2">&quot;#score&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;is 0 for an empty list&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">score</span><span class="p">(</span><span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&#8217;s make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="mi">0</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, how do you decide what test to write next? It seems that rules 3 and 4 are dependent on rules 1 and 2, so let&#8217;s postpone those for later and write a failing test for rule 1:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 1000 for a set of three ones&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1000</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sticking the rule of only writing the minimum code needed to pass the test:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>    <span class="mi">1000</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="mi">0</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A confession here: This is how I initially approached the problem, but I found I got stuck at a &#8216;deadlock&#8217; position where it wasn&#8217;t possible to make progress with small, simple refactorings. Looking at the set of rules from a distance, we can see this the end result is an accumulation of the scores from each rule. Therefore, having a series of branches for alternative conditions probably isn&#8217;t going to work.</p>
+
+<p>Let&#8217;s refactor the code to this to give a better base to build upon:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write another failing test for rule 1:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">it</span> <span class="s2">&quot;is 1000 for a set including three ones&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1000</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span> <span class="o">||</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this point we can see duplication starting to appear, so it&#8217;s time to refactor and generalise the solution:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&#8217;s write a failing test for rule 2:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 600 for a set of three sixes&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">600</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">600</span> <span class="k">if</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write another failing test for rule 2:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 600 for a set including three sixes&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">600</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">600</span> <span class="k">if</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="o">]</span> <span class="o">||</span> <span class="n">dice</span> <span class="o">==</span> <span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Refactor to remove duplication:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">600</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write another failing test for rule 2:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 200 for a set including three twos&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">600</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">200</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We can see some duplication creeping in - we would need five lines to cover three twos up to three sixes, so let&#8217;s refactor to generalise:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="mi">2</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We also need to consider the case of more than three of the same value:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 200 for a set including three twos&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A simple change makes this green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="mi">2</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&#8217;s add a failing test for Rule 3:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 100 for a one (that is not part of a set of three)&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="mi">2</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And another failing test for Rule 3:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 200 for two ones (that are not part of a set of three)&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="mi">2</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">200</span> <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Another failing test:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 200 for a set including two ones (that are not part of a set of three)&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="mi">2</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">200</span> <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">200</span> <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Refactor and generalise:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="mi">2</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which can be further improved:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">dice</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="k">next</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">1000</span> <span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write a failing test for rule 4:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 100 for a set including two fives (that are not part of a set of three)&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it green:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">dice</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="k">next</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">1000</span> <span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&#8217;s consider the slightly tricker case of interdependent rules:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;is 550 for a set including three fives along with a single five&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">score</span><span class="p">(</span><span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">550</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The current implementation will give an incorrect answer of 700 because it&#8217;s counting the fives as a triple and then counting them again as single fives. We need to make sure they aren&#8217;t counted twice.</p>
+
+<p>A simple way of doing that is to sort the array and then drop the first 3 values of the array:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">dice</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="k">next</span> <span class="k">if</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">1000</span> <span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span>
+</span><span class='line'>    <span class="n">dice</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span> <span class="o">+=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">dice</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">total</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&#8217;m happy with that final solution, and it also passes RubyKoans tests.</p>
+
+<h2>What I Learned</h2>
+
+<p>Triangulation is a useful technique but doesn&#8217;t remove the need for the analysis and thinking required to solve this kind of problem. If you try it on &#8216;autopilot&#8217; you probably won&#8217;t succeed. The order you choose to write the tests, and the code you write early on can have a significant impact in how much effort is required discover the algorithm.</p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2012/08/22/tdd-triangulation-practice/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
 <a href="/2012/08/20/cucumber-bdd-london-2012/">Cucumber, BDD and London 2012</a>
 
 </h1>
@@ -116,15 +696,15 @@
     
   </header>
 
-<div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sports Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
+<div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sport Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
 
-<p>My role was as a Developer-in-Test, in which I used my coding background to  build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
+<p>My role was as a Developer-in-Test, in which I used my coding background to help build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
 
-<p>This post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
+<p>This post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplified some aspects for the sake of readability and conciseness).</p>
 
 <h2>Architecture Overview</h2>
 
-<p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data was provided by a third-party as a REST API serving XML responses.</p>
+<p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data would provided by a third-party as a REST API serving XML responses.</p>
 
 <p>A major challenge was that the third-party APIs had not yet been built. We were given examples of what to expect in the responses but our development would have to be done in parallel with the third-party&#8217;s own development.</p>
 
@@ -293,13 +873,9 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Given</span> <span class="sr">/^there no medals have been awarded &quot;([^&quot;])*&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">query</span><span class="o">|</span>
 </span><span class='line'>  <span class="n">xml</span> <span class="o">=</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span> <span class="s1">&#39;countries&#39;</span> <span class="o">=&gt;</span> <span class="o">[]</span>
-</span><span class='line'>  <span class="no">RestAssured</span><span class="o">::</span><span class="no">Double</span><span class="o">.</span><span class="n">create</span>
-</span><span class='line'>    <span class="n">fullpath</span><span class="p">:</span> <span class="s2">&quot;/medals&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">content</span><span class="p">:</span> <span class="n">xml</span>
+</span><span class='line'>  <span class="no">RestAssured</span><span class="o">::</span><span class="no">Double</span><span class="o">.</span><span class="n">create</span> <span class="n">fullpath</span><span class="p">:</span> <span class="s2">&quot;/medals&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="n">xml</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -312,6 +888,86 @@
   <footer>
     
     <p><a class="comments-link" href="/2012/08/20/cucumber-bdd-london-2012/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
+<a href="/2012/08/17/we-need-a-better-google-groups/">We Need a Better Google Groups</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-17T16:40:00+01:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/08/17/we-need-a-better-google-groups/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>It seems that the most popular choice for a mailing list for open source projects is Google Groups.</p>
+
+<p>Google Groups is barely an improvement on EGroups, which became Yahoo Groups.</p>
+
+<p>I think there is a gap in the market for mailing lists aimed at technical audiences. GitHub and StackOverflow cover some of this space but these are aimed at issues and problems. There is nothing just for general discussions.</p>
+
+<p>Here&#8217;s how I think things could be improved:</p>
+
+<ul>
+<li>Better support for posting code</li>
+</ul>
+
+
+<h1>Better search</h1>
+
+<p>Despite Google being a search company, the search function on Google Groups seems completely broken and will often miss posts containing the term being searched for.</p>
+
+<h1>API</h1>
+
+<h1>GitHub Integration</h1>
+
+<h1>Better Quoting</h1>
+
+<p>Top-posting or bottom-posting, line breaks, diverging discussions&#8230; all these lead to a mess of &#8216;in reply to&#8217; noise.</p>
+
+<p>http://en.wikipedia.org/wiki/EGroups</p>
+
+<p>http://ejohn.org/blog/google-groups-is-dead/</p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2012/08/17/we-need-a-better-google-groups/#disqus_thread">View comments &raquo;</a></p>
     
     
   </footer>
@@ -518,7 +1174,15 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/08/22/tdd-triangulation-practice/">TDD Triangulation Practice</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/08/20/cucumber-bdd-london-2012/">Cucumber, BDD and London 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/08/17/we-need-a-better-google-groups/">We need a better Google Groups</a>
       </li>
     
       <li class="post">
@@ -527,10 +1191,6 @@
     
       <li class="post">
         <a href="/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
       </li>
     
   </ul>

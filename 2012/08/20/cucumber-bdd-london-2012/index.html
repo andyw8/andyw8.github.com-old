@@ -115,15 +115,15 @@ Cucumber, BDD and London 2012
     
   </header>
 
-<div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sports Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
+<div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sport Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
 
-<p>My role was as a Developer-in-Test, in which I used my coding background to  build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
+<p>My role was as a Developer-in-Test, in which I used my coding background to help build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
 
-<p>This post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplfied some aspects for the sake of readability and conciseness).</p>
+<p>This post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplified some aspects for the sake of readability and conciseness).</p>
 
 <h2>Architecture Overview</h2>
 
-<p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data was provided by a third-party as a REST API serving XML responses.</p>
+<p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data would provided by a third-party as a REST API serving XML responses.</p>
 
 <p>A major challenge was that the third-party APIs had not yet been built. We were given examples of what to expect in the responses but our development would have to be done in parallel with the third-party&#8217;s own development.</p>
 
@@ -292,13 +292,9 @@ Cucumber, BDD and London 2012
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Given</span> <span class="sr">/^there no medals have been awarded &quot;([^&quot;])*&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">query</span><span class="o">|</span>
 </span><span class='line'>  <span class="n">xml</span> <span class="o">=</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span> <span class="s1">&#39;countries&#39;</span> <span class="o">=&gt;</span> <span class="o">[]</span>
-</span><span class='line'>  <span class="no">RestAssured</span><span class="o">::</span><span class="no">Double</span><span class="o">.</span><span class="n">create</span>
-</span><span class='line'>    <span class="n">fullpath</span><span class="p">:</span> <span class="s2">&quot;/medals&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">content</span><span class="p">:</span> <span class="n">xml</span>
+</span><span class='line'>  <span class="no">RestAssured</span><span class="o">::</span><span class="no">Double</span><span class="o">.</span><span class="n">create</span> <span class="n">fullpath</span><span class="p">:</span> <span class="s2">&quot;/medals&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="n">xml</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -358,8 +354,10 @@ Cucumber, BDD and London 2012
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/" title="Previous Post: How to easily delete a large Amazon S3 Bucket">&laquo; How to easily delete a large Amazon S3 Bucket</a>
+        <a class="basic-alignment left" href="/2012/08/17/we-need-a-better-google-groups/" title="Previous Post: We need a better Google Groups">&laquo; We need a better Google Groups</a>
       
+      
+        <a class="basic-alignment right" href="/2012/08/22/tdd-triangulation-practice/" title="Next Post: TDD Triangulation Practice">TDD Triangulation Practice &raquo;</a>
       
     </p>
   </footer>
@@ -384,7 +382,15 @@ Cucumber, BDD and London 2012
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/08/22/tdd-triangulation-practice/">TDD Triangulation Practice</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/08/20/cucumber-bdd-london-2012/">Cucumber, BDD and London 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/08/17/we-need-a-better-google-groups/">We need a better Google Groups</a>
       </li>
     
       <li class="post">
@@ -393,10 +399,6 @@ Cucumber, BDD and London 2012
     
       <li class="post">
         <a href="/2012/05/28/rubymotion-app-template/">RubyMotion App Template</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
       </li>
     
   </ul>
