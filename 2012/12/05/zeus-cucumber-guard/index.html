@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Page Not Found - Andy Waite</title>
+  <title>Using Zeus with Cucumber and Guard - Andy Waite</title>
   <meta name="author" content="Andy Waite">
   <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
 
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andyw8.github.com/404.html">
+  <link rel="canonical" href="http://andyw8.github.com/2012/12/05/zeus-cucumber-guard/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
@@ -75,20 +75,112 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+
+
+
+
+
+
+
+
+
+
+
+<article class="hentry " role="article">
   
   <header>
-    <h1 class="entry-title">Page Not Found</h1>
+    <h1 class="entry-title">
+
+Using Zeus With Cucumber and Guard
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-05T14:13:00+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/12/05/zeus-cucumber-guard/">Permalink</a>
+      </p>
     
   </header>
-  
-  <p>Oops, I couldn&#8217;t find that page! Sorry about that.</p>
 
-<p>Maybe try the search box (top right), or look through the <a href="/archives">archives</a>?</p>
+<div class="entry-content"><p><a href="https://github.com/burke/zeus">Zeus</a> is rapidly overtaking <a href="https://github.com/sporkrb/spork">Spork</a> as the tool of choice for running Cucumber integration tests against Rails apps.</p>
 
-  
-    <footer>
-      <p class="meta">
+<p>I wanted to use Zeus alongside <a href="https://github.com/guard/guard">Guard</a> to provide a rapid feedback cycle when doing BDD. This ended up being quite fiddly to get working, and it seems not many people are doing this yet, so here I will describe my configuration.</p>
+
+<p>These instructions are for Mac OS X 10.8. On other platforms you&#8217;ll probably need to pick different gems for notifications and filesystems events.</p>
+
+<h2>Gemfile</h2>
+
+<p>Zeus seems be quirky about which groups it loads gems from, depending on what command you&#8217;re running. The configuration above works for me, but may not be optimal:</p>
+
+<p>group :development do
+  gem &#8216;guard&#8217;, &#8216;~> 1.5.4&#8217;
+  gem &#8216;guard-cucumber&#8217;, &#8216;~> 1.2.2&#8217;
+  gem &#8216;guard-rspec&#8217;, &#8216;~> 2.3.0&#8217;
+  gem &#8216;rb-fsevent&#8217;, &#8216;~> 0.9.2&#8217;
+end</p>
+
+<p>group :development, :test do
+  gem &#8216;rspec&#8217;, &#8216;~> 2.12.0&#8217;
+  gem &#8216;rspec-rails&#8217;, &#8216;~> 2.12.0&#8217;
+end</p>
+
+<p>group :test do
+  gem &#8216;capybara-webkit&#8217;, &#8216;~> 0.7.1&#8217;
+  gem &#8216;cucumber-rails&#8217;, &#8216;1.1.0&#8217;, :require => false
+  gem &#8216;terminal-notifier-guard&#8217; # Mac OS X 10.8 only
+  gem &#8216;zeus&#8217;, &#8216;~> 0.12.0&#8217;
+end</p>
+
+<p>I&#8217;ve specified versions to show which combination worked for me. As some of these gems need to interact closely with each other, you need to be careful when upgrading in order to keep them &#8216;in sync&#8217;.</p>
+
+<p>Note that the Zeus gem is listed in the <code>:test</code> group, even though I&#8217;m not running Zeus through Bundler. I&#8217;m not entirely sure why it has to be here, but I get an error <code>zeus is not part of the bundle</code> when it&#8217;s not present.</p>
+
+<h2>Guardfile</h2>
+
+<p>My Guardfile is fairly standard. <a href="https://github.com/guard/guard-rspec">guard-rspec</a> already has support for Zeus, so all I had to do was enable <code>zeus</code> and disable <code>bundler</code>:</p>
+
+<pre><code>guard 'rspec', zeus: true, bundler: false do
+  ...
+end
+</code></pre>
+
+<p><a href="https://github.com/guard/guard-cucumber">guard-cucumber</a> doesn&#8217;t have built-in support for Zeus, but the <code>command_prefix</code> setting can be used instead:</p>
+
+<pre><code>guard 'cucumber', command_prefix: 'zeus', bundler: false do
+  ...
+end
+</code></pre>
+
+<h2>Booting Up</h2>
+
+<p>Start zeus without using Bunder:</p>
+
+<pre><code>$ zeus start
+</code></pre>
+
+<p>Then start Guard via Bundler:</p>
+
+<pre><code>$ bundle exec guard
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
 
 <span class="byline author vcard">Posted by <span class="fn">Andy Waite</span></span>
@@ -102,13 +194,19 @@
 
 
 
+  
+
+
+<time datetime="2012-12-05T14:13:00+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
 
 
 
 
-</p>
       
-        <div class="sharing">
+
+    </p>
+    
+      <div class="sharing">
   
     
       <a href="http://twitter.com/share" title="Tweet this" class="twitter-share" target="_blank">Tweet</a>
@@ -120,12 +218,25 @@
 
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/2012/08/22/tdd-triangulation-practice/" title="Previous Post: TDD Triangulation Practice">&laquo; TDD Triangulation Practice</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
+<section>
+  <h1>Comments</h1>
+  
 
+  
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  
+</section>
 
 </div>
 
@@ -197,7 +308,10 @@
 			var disqus_developer = '0';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andyw8.github.com/2012/12/05/zeus-cucumber-guard/';
+        var disqus_url = 'http://andyw8.github.com/2012/12/05/zeus-cucumber-guard/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
