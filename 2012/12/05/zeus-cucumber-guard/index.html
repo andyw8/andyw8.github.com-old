@@ -125,27 +125,48 @@ Using Zeus With Cucumber and Guard
 
 <p>Zeus seems be quirky about which groups it loads gems from, depending on what command you&#8217;re running. The configuration above works for me, but may not be optimal:</p>
 
-<pre><code>(just an extract)
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># just an extract</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.5.4&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-cucumber&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.2.2&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-rspec&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.3.0&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rb-fsevent&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.9.2&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rspec&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.12.0&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rspec-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.12.0&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;capybara-webkit&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.7.1&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.0&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;terminal-notifier-guard&#39;</span> <span class="c1"># Mac OS X 10.8 only</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;zeus&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.12.0&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-group :development do
-  gem 'guard', '~&gt; 1.5.4'
-  gem 'guard-cucumber', '~&gt; 1.2.2'
-  gem 'guard-rspec', '~&gt; 2.3.0'
-  gem 'rb-fsevent', '~&gt; 0.9.2'
-end
-
-group :development, :test do
-  gem 'rspec', '~&gt; 2.12.0'
-  gem 'rspec-rails', '~&gt; 2.12.0'
-end
-
-group :test do
-  gem 'capybara-webkit', '~&gt; 0.7.1'
-  gem 'cucumber-rails', '1.1.0', :require =&gt; false
-  gem 'terminal-notifier-guard' # Mac OS X 10.8 only
-  gem 'zeus', '~&gt; 0.12.0'
-end
-</code></pre>
 
 <p>I&#8217;ve specified versions to show which combination worked for me. As some of these gems need to interact closely with each other, you need to be careful when upgrading in order to keep them &#8216;in sync&#8217;.</p>
 
@@ -155,17 +176,25 @@ end
 
 <p>My Guardfile is fairly standard. <a href="https://github.com/guard/guard-rspec">guard-rspec</a> already has support for Zeus, so all I had to do was enable <code>zeus</code> and disable <code>bundler</code>:</p>
 
-<pre><code>guard 'rspec', zeus: true, bundler: false do
-  ...
-end
-</code></pre>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">guard</span> <span class="s1">&#39;rspec&#39;</span><span class="p">,</span> <span class="n">zeus</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="n">bundler</span><span class="p">:</span> <span class="kp">false</span> <span class="k">do</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><a href="https://github.com/guard/guard-cucumber">guard-cucumber</a> doesn&#8217;t have built-in support for Zeus, but the <code>command_prefix</code> setting can be used instead:</p>
 
-<pre><code>guard 'cucumber', command_prefix: 'zeus', bundler: false do
-  ...
-end
-</code></pre>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">guard</span> <span class="s1">&#39;cucumber&#39;</span><span class="p">,</span> <span class="n">command_prefix</span><span class="p">:</span> <span class="s1">&#39;zeus&#39;</span><span class="p">,</span> <span class="n">bundler</span><span class="p">:</span> <span class="kp">false</span> <span class="k">do</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Booting Up</h2>
 
