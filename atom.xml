@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-05T15:24:14+00:00</updated>
+  <updated>2012-12-05T15:28:14+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -31,7 +31,7 @@
 
 <h2>Gemfile</h2>
 
-<p>Zeus seems be quirky about which groups it loads gems from, depending on what command you&#8217;re running. The configuration below works for me, but may not be optimal:</p>
+<p>Zeus seems to be picky about which groups it loads gems from, depending on what command you&#8217;re running. The configuration below works for me, but may not be optimal:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -69,7 +69,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
 </span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;capybara-webkit&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.7.1&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.0&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.1.0&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
 </span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;terminal-notifier-guard&#39;</span> <span class="c1"># Mac OS X 10.8 only</span>
 </span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;zeus&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.12.0&#39;</span>
 </span><span class='line'><span class="k">end</span>
