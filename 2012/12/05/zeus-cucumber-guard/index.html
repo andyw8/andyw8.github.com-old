@@ -115,7 +115,7 @@ Using Zeus With Cucumber and Guard
     
   </header>
 
-<div class="entry-content"><p><a href="https://github.com/burke/zeus">Zeus</a> is rapidly overtaking <a href="https://github.com/sporkrb/spork">Spork</a> as the tool of choice for running Cucumber integration tests against Rails apps.</p>
+<div class="entry-content"><p><a href="https://github.com/burke/zeus">Zeus</a> is rapidly overtaking <a href="https://github.com/sporkrb/spork">Spork</a> as the tool of choice to speed up running Cucumber integration tests against Rails apps.</p>
 
 <p>I wanted to use Zeus alongside <a href="https://github.com/guard/guard">Guard</a> to provide a rapid feedback cycle when doing BDD. This ended up being quite fiddly to get working, and it seems not many people are doing this yet, so here I will describe my configuration.</p>
 
@@ -125,24 +125,27 @@ Using Zeus With Cucumber and Guard
 
 <p>Zeus seems be quirky about which groups it loads gems from, depending on what command you&#8217;re running. The configuration above works for me, but may not be optimal:</p>
 
-<p>group :development do
-  gem &#8216;guard&#8217;, &#8216;~> 1.5.4&#8217;
-  gem &#8216;guard-cucumber&#8217;, &#8216;~> 1.2.2&#8217;
-  gem &#8216;guard-rspec&#8217;, &#8216;~> 2.3.0&#8217;
-  gem &#8216;rb-fsevent&#8217;, &#8216;~> 0.9.2&#8217;
-end</p>
+<pre><code>(just an extract)
 
-<p>group :development, :test do
-  gem &#8216;rspec&#8217;, &#8216;~> 2.12.0&#8217;
-  gem &#8216;rspec-rails&#8217;, &#8216;~> 2.12.0&#8217;
-end</p>
+group :development do
+  gem 'guard', '~&gt; 1.5.4'
+  gem 'guard-cucumber', '~&gt; 1.2.2'
+  gem 'guard-rspec', '~&gt; 2.3.0'
+  gem 'rb-fsevent', '~&gt; 0.9.2'
+end
 
-<p>group :test do
-  gem &#8216;capybara-webkit&#8217;, &#8216;~> 0.7.1&#8217;
-  gem &#8216;cucumber-rails&#8217;, &#8216;1.1.0&#8217;, :require => false
-  gem &#8216;terminal-notifier-guard&#8217; # Mac OS X 10.8 only
-  gem &#8216;zeus&#8217;, &#8216;~> 0.12.0&#8217;
-end</p>
+group :development, :test do
+  gem 'rspec', '~&gt; 2.12.0'
+  gem 'rspec-rails', '~&gt; 2.12.0'
+end
+
+group :test do
+  gem 'capybara-webkit', '~&gt; 0.7.1'
+  gem 'cucumber-rails', '1.1.0', :require =&gt; false
+  gem 'terminal-notifier-guard' # Mac OS X 10.8 only
+  gem 'zeus', '~&gt; 0.12.0'
+end
+</code></pre>
 
 <p>I&#8217;ve specified versions to show which combination worked for me. As some of these gems need to interact closely with each other, you need to be careful when upgrading in order to keep them &#8216;in sync&#8217;.</p>
 
@@ -166,7 +169,7 @@ end
 
 <h2>Booting Up</h2>
 
-<p>Start zeus without using Bunder:</p>
+<p>Start Zeus without using Bunder:</p>
 
 <pre><code>$ zeus start
 </code></pre>
@@ -175,6 +178,8 @@ end
 
 <pre><code>$ bundle exec guard
 </code></pre>
+
+<p>Now you can start building!</p>
 </div>
 
 
@@ -199,6 +204,12 @@ end
 
 <time datetime="2012-12-05T14:13:00+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bdd-/'>bdd,</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>, <a class='category' href='/blog/categories/ruby-/'>ruby,</a>
+  
+</span>
 
 
 
