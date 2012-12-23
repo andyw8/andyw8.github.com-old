@@ -116,13 +116,13 @@
     
   </header>
 
-<div class="entry-content"><p>A <a href="http://railscasts.com/episodes/398-service-objects">recent episode</a> of Railscasts Pro covered two approaches to splitting up a large Rails models – Concerns and Service Objects.</p>
+<div class="entry-content"><p>A <a href="http://railscasts.com/episodes/398-service-objects">recent episode</a> of Railscasts Pro covered two approaches to splitting up a large Rails model – *8Concerns<strong> and </strong>Service Objects**.</p>
 
-<p>Concerns are supported by Rails 3 but will become more &#8216;official&#8217; in Rails 4. There&#8217;s some controversy about whether Concerns or Service Objects are the best approach. DHH is pushing Concerns but OO enthusiasts tend to prefer Service Objects. I believe that both have their place and can be used together.</p>
+<p>Concerns are supported by Rails 3 but will become more &#8216;official&#8217; in Rails 4. There&#8217;s some controversy about whether Concerns or Service Objects are the best approach. DHH is pushing Concerns but OO proponents tend to prefer Service Objects. I believe that both have their place and can be used together.</p>
 
 <h1>Usage</h1>
 
-<p>I began by looking at on of my large models to see what it made sense to extract. I began by creating seperate concerns for validations, assocations, and accessors, e.g.:</p>
+<p>I began by looking at one of my ActiveRecord model classes to see what it made sense to extract. Initially I created seperate concerns for validations, assocations, and accessors, e.g.:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -131,13 +131,11 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/trader.rb</span>
 </span><span class='line'><span class="k">class</span> <span class="nc">Trader</span>
 </span><span class='line'>  <span class="kp">include</span> <span class="no">Accessors</span>
 </span><span class='line'>  <span class="kp">include</span> <span class="no">Validations</span>
 </span><span class='line'>  <span class="kp">include</span> <span class="no">Associations</span>
-</span><span class='line'>
 </span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -169,10 +167,12 @@
 </span><span class='line'>  <span class="kp">include</span> <span class="no">Location</span>
 </span><span class='line'>  <span class="kp">include</span> <span class="no">OpeningHours</span>
 </span><span class='line'>  <span class="kp">include</span> <span class="no">Schedule</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="no">StateManagement</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Permissions</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>In general, a concern should be named as a domain object (which I think is true for all of the above, except perhaps FriendlyURL )</p>
 
 <p>Let&#8217;s look at the Schedule concern as an example:</p>
 
@@ -225,17 +225,17 @@
 
 <p>This is a much better way of grouping related functionality.</p>
 
-<h1>Sharing Concerns</h1>
+<h2>Sharing Concerns</h2>
 
-<p>One thing that wasn&#8217;t clear from the documentation and other articles I&#8217;ve seen is how a concern is shared between multiple models.</p>
-
-<p>Let&#8217;s say you have two concerns:</p>
+<p>One thing that wasn&#8217;t clear from the documentation and other articles I&#8217;ve seen is how a concern can be shared amongst multiple models. Let&#8217;s say you have two concerns:</p>
 
 <ul>
 <li>app/models/concerns/schedule.rb</li>
 <li>app/models/concerns/trader/schedule.rb</li>
 </ul>
 
+
+<p>and the following model:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -250,7 +250,7 @@
 
 <p>In this case, the concern in <code>app/models/concerns/trader/schedule.rb</code> would be used, and the other ignored.</p>
 
-<p>However, if that concern was removed, the modle would pick up the other concern without any changes. So a model will search in it&#8217;s own concerns directory first, and if the concern isn&#8217;t found there, it will look in the top-level concerns directory.</p>
+<p>However, if that concern was removed, the model would pick up the other concern. So a model will search in it&#8217;s own concerns directory first, and if the concern isn&#8217;t found there, it will look in the top-level concerns directory.</p>
 
 <p>If you prefer a more explicity way of indicating a shared concern, you can namespace it:</p>
 
