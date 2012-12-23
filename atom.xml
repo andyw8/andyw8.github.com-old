@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-23T20:21:29+00:00</updated>
+  <updated>2012-12-23T20:25:51+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -23,7 +23,7 @@
 <updated>2012-12-23T17:54:00+00:00</updated>
 <id>http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4</id>
 
-      <content type="html"><![CDATA[<p>A <a href="http://railscasts.com/episodes/398-service-objects">recent episode</a> of Railscasts Pro covered two approaches to splitting up a large Rails model – *8Concerns<strong> and </strong>Service Objects**.</p>
+      <content type="html"><![CDATA[<p>A <a href="http://railscasts.com/episodes/398-service-objects">recent episode</a> of Railscasts Pro covered two approaches to splitting up a large Rails model – <strong>Concerns</strong> and <strong>Service Objects</strong>.</p>
 
 <p>Concerns are supported by Rails 3 but will become more &#8216;official&#8217; in Rails 4. There&#8217;s some controversy about whether Concerns or Service Objects are the best approach. DHH is pushing Concerns but OO proponents tend to prefer Service Objects. I believe that both have their place and can be used together.</p>
 
@@ -79,7 +79,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>In general, a concern should be named as a domain object (which I think is true for all of the above, except perhaps FriendlyURL )</p>
+<p>In general, I believe a concern should be named as a domain concept (which I think is true for all of the above, except perhaps FriendlyURL).</p>
 
 <p>Let&#8217;s look at the Schedule concern as an example:</p>
 
@@ -128,9 +128,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>As shown, it can include a mix of validations, accessibilty, associations, as well as the actual methods dealing with that topic.</p>
-
-<p>This is a much better way of grouping related functionality.</p>
+<p>As shown, it can include a mix of validations, accessibilty, associations, as well as the actual methods dealing with that topic. This is a much better way of grouping related functionality.</p>
 
 <h2>Sharing Concerns</h2>
 
