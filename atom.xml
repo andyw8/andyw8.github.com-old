@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-23T20:25:51+00:00</updated>
+  <updated>2012-12-23T20:27:54+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -27,7 +27,7 @@
 
 <p>Concerns are supported by Rails 3 but will become more &#8216;official&#8217; in Rails 4. There&#8217;s some controversy about whether Concerns or Service Objects are the best approach. DHH is pushing Concerns but OO proponents tend to prefer Service Objects. I believe that both have their place and can be used together.</p>
 
-<h1>Usage</h1>
+<h2>An Example</h2>
 
 <p>I began by looking at one of my ActiveRecord model classes to see what it made sense to extract. Initially I created seperate concerns for validations, assocations, and accessors, e.g.:</p>
 
