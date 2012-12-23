@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-23T20:27:54+00:00</updated>
+  <updated>2012-12-23T20:32:37+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -128,11 +128,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>As shown, it can include a mix of validations, accessibilty, associations, as well as the actual methods dealing with that topic. This is a much better way of grouping related functionality.</p>
+<p>As shown, it can include a mix of validations, accessibilty, associations, as well as the plain methods. This is a much better way of grouping related functionality.</p>
 
 <h2>Sharing Concerns</h2>
 
-<p>One thing that wasn&#8217;t clear from the documentation and other articles I&#8217;ve seen is how a concern can be shared amongst multiple models. Let&#8217;s say you have two concerns:</p>
+<p>One thing that wasn&#8217;t clear from the documentation and other articles I&#8217;ve seen is how a concern can be shared amongst multiple models. Let&#8217;s say you have two concerns with the same name:</p>
 
 <ul>
 <li>app/models/concerns/schedule.rb</li>
