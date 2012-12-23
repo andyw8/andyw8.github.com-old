@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-05T16:02:40+00:00</updated>
+  <updated>2012-12-23T20:13:31+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -11,6 +11,180 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[Exploring Concerns for Rails 4]]></title>
+<link href="http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4/"/>
+<updated>2012-12-23T17:54:00+00:00</updated>
+<id>http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4</id>
+
+      <content type="html"><![CDATA[<p>A <a href="http://railscasts.com/episodes/398-service-objects">recent episode</a> of Railscasts Pro covered two approaches to splitting up a large Rails models – Concerns and Service Objects.</p>
+
+<p>Concerns are supported by Rails 3 but will become more &#8216;official&#8217; in Rails 4. There&#8217;s some controversy about whether Concerns or Service Objects are the best approach. DHH is pushing Concerns but OO enthusiasts tend to prefer Service Objects. I believe that both have their place and can be used together.</p>
+
+<h1>Usage</h1>
+
+<p>I began by looking at on of my large models to see what it made sense to extract. I began by creating seperate concerns for validations, assocations, and accessors, e.g.:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/trader.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Trader</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Accessors</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Validations</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Associations</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But I then realised this was probably a bad idea:</p>
+
+<ul>
+<li>It would likely lead a violation of the Single Responsibility Principle. If I add new behaviour to Trader then I&#8217;d probably need to change more than one of these concerns.</li>
+<li>It&#8217;s unlikely I&#8217;d be able to re-use any of those concerns for another model.</li>
+</ul>
+
+
+<p>So instead, I tried to group code into &#8216;topics&#8217; and came up with the following:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/trader.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Trader</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">BasicInfo</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">FriendlyURL</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Location</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">OpeningHours</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Schedule</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">StateManagement</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&#8217;s look at the Schedule concern as an example:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/concerns/trader/schedule.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Trader</span>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">Schedule</span>
+</span><span class='line'>    <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">included</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">attr_accessible</span> <span class="ss">:market_days_ids</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">has_many</span> <span class="ss">:appearances</span>
+</span><span class='line'>      <span class="n">has_many</span> <span class="ss">:market_days</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:appearances</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">open?</span>
+</span><span class='line'>      <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">closed?</span>
+</span><span class='line'>      <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As shown, it can include a mix of validations, accessibilty, associations, as well as the actual methods dealing with that topic.</p>
+
+<p>This is a much better way of grouping related functionality.</p>
+
+<h1>Sharing Concerns</h1>
+
+<p>One thing that wasn&#8217;t clear from the documentation and other articles I&#8217;ve seen is how a concern is shared between multiple models.</p>
+
+<p>Let&#8217;s say you have two concerns:</p>
+
+<ul>
+<li>app/models/concerns/schedule.rb</li>
+<li>app/models/concerns/trader/schedule.rb</li>
+</ul>
+
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/trader.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Trader</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Schedule</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case, the concern in <code>app/models/concerns/trader/schedule.rb</code> would be used, and the other ignored.</p>
+
+<p>However, if that concern was removed, the modle would pick up the other concern without any changes. So a model will search in it&#8217;s own concerns directory first, and if the concern isn&#8217;t found there, it will look in the top-level concerns directory.</p>
+
+<p>If you prefer a more explicity way of indicating a shared concern, you can namespace it:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/trader.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Trader</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Shared</span><span class="o">::</span><span class="no">Schedule</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># app/models/concerns/shared/schedule.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Shared::Schedule</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><a rel="bookmark" href="http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
     <entry>
       
