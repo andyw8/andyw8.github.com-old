@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-23T20:32:37+00:00</updated>
+  <updated>2012-12-23T21:09:19+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -51,12 +51,12 @@
 <p>But I then realised this was probably a bad idea:</p>
 
 <ul>
-<li>It would likely lead a violation of the Single Responsibility Principle. If I add new behaviour to Trader then I&#8217;d probably need to change more than one of these concerns.</li>
+<li>It would likely lead to a violation of the Single Responsibility Principle. If I add new behaviour to Trader then I&#8217;d probably need to change more than one of these concerns.</li>
 <li>It&#8217;s unlikely I&#8217;d be able to re-use any of those concerns for another model.</li>
 </ul>
 
 
-<p>So instead, I tried to group code into &#8216;topics&#8217; and came up with the following:</p>
+<p>So instead, I tried to group the code into &#8216;topics&#8217; and came up with the following:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -79,7 +79,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>In general, I believe a concern should be named as a domain concept (which I think is true for all of the above, except perhaps FriendlyURL).</p>
+<p>In general, I believe a concern should be named after a domain concept (which I think is true for all of the above, except perhaps FriendlyURL).</p>
 
 <p>Let&#8217;s look at the Schedule concern as an example:</p>
 
@@ -155,9 +155,9 @@
 
 <p>In this case, the concern in <code>app/models/concerns/trader/schedule.rb</code> would be used, and the other ignored.</p>
 
-<p>However, if that concern was removed, the model would pick up the other concern. So a model will search in it&#8217;s own concerns directory first, and if the concern isn&#8217;t found there, it will look in the top-level concerns directory.</p>
+<p>However, if that concern was removed, the model would pick up the other concern. So a model will search in it&#8217;s own <code>concerns</code> directory first, and if the concern isn&#8217;t found there, it will look in the top-level concerns directory.</p>
 
-<p>If you prefer a more explicity way of indicating a shared concern, you can namespace it:</p>
+<p>If you prefer a more explicit way of indicating a shared concern, you can namespace it:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -181,6 +181,8 @@
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>I hope you find this useful.</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
