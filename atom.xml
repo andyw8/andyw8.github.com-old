@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2012-12-23T21:09:19+00:00</updated>
+  <updated>2012-12-24T10:38:21+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -51,7 +51,7 @@
 <p>But I then realised this was probably a bad idea:</p>
 
 <ul>
-<li>It would likely lead to a violation of the Single Responsibility Principle. If I add new behaviour to Trader then I&#8217;d probably need to change more than one of these concerns.</li>
+<li>If I add new behaviour to Trader then I&#8217;d probably need to change more than one of these concerns.</li>
 <li>It&#8217;s unlikely I&#8217;d be able to re-use any of those concerns for another model.</li>
 </ul>
 
