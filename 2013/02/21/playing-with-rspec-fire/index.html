@@ -115,42 +115,63 @@ Playing With (RSpec)-Fire
     
   </header>
 
-<div class="entry-content"><p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the app being broken.</p>
+<div class="entry-content"><p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the actual app being broken.</p>
 
 <blockquote><p>rspec-fire only checks that the methods exist if the doubled class has already been loaded. No checking will happen when running the spec in isolation, but when run in the context of the full app (either as a full spec run or by explicitly preloading collaborators on the command line) a failure will be triggered if an invalid method is being stubbed.</p></blockquote>
 
-<p>It took me a little time to understand how rspec-fire, so I&#8217;ve written up my findings here.</p>
+<p>It took me a little time to understand how rspec-fire works, so I&#8217;ve written up my findings here.</p>
 
 <p>I followed the instructions in the README and found <a href="http://stackoverflow.com/questions/15009603/rspec-fire-specs-passing-when-they-shouldnt/15010004#15010004">a small problem</a>, but within minutes <a href="https://twitter.com/myronmarston">@myronmarston</a> had fixed it.</p>
 
-<p>Let&#8217;s start with the class that we want to test. The example in the rspec-fire inherits from Struct to keep things concise, but for clarity let&#8217;s make it a normal class:</p>
+<p>Let&#8217;s start with the class that we want to test. The example in the rspec-fire inherits from <code>Struct</code> to keep things concise, but for clarity let&#8217;s make it a normal class:</p>
 
-<pre><code>class User
-  def initialize(notifier)
-    @notifier = notifier
-  end
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@notifier</span> <span class="o">=</span> <span class="n">notifier</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">suspend!</span>
+</span><span class='line'>    <span class="vi">@notifier</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="s2">&quot;suspended as&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-  def suspend!
-    @notifier.notify("suspended as")
-  end
-end
-</code></pre>
 
 <p>You can check out my code at <a href="https://github.com/andyw8/try-rspec-fire">https://github.com/andyw8/try-rspec-fire</a>.</p>
 
 <p>Here&#8217;s what the spec for this class would look like, just using RSpec&#8217;s built-in support for test doubles:</p>
 
-<pre><code>describe User, '#suspend!' do
-  it 'sends a notification' do
-    notifier = double
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span><span class="p">,</span> <span class="s1">&#39;#suspend!&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;sends a notification&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">notifier</span> <span class="o">=</span> <span class="n">double</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">notifier</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:notify</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s2">&quot;suspended as&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">suspend!</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    notifier.should_receive(:notify).with("suspended as")
-
-    user = User.new(notifier)
-    user.suspend!
-  end
-end
-</code></pre>
 
 <p>(Keep in mind that in RSpec, <code>mock</code> and <code>stub</code> are simply aliases for <code>double</code>)</p>
 
@@ -158,23 +179,35 @@ end
 
 <p>Now let&#8217;s say the requirements change. We want to add an option to send the user an email notification when they are suspended. The <code>notify</code> method signature then becomes:</p>
 
-<pre><code>class EmailNotifier
-  def notify(message, send_email)
-    # ...
-  end
-end
-</code></pre>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EmailNotifier</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">send_email</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1"># ...</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>If we re-run the spec it will still pass. The double knows nothing about the real class. This is obviously a problem because the real app will be broken.</p>
 
 <p>Now let&#8217;s introduce rspec-fire. We need to add a few lines to <code>spec_helper.rb</code>:</p>
 
-<pre><code>require 'rspec/fire'
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec/fire&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="no">RSpec</span><span class="o">::</span><span class="no">Fire</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-RSpec.configure do |config|
-  config.include(RSpec::Fire)
-end
-</code></pre>
 
 <p>And we need one small change to the spec, changing <code>double("EmailNotifier")</code> to <code>fire_double("EmailNotifier")</code>.</p>
 
@@ -236,7 +269,7 @@ User#suspend!
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/bdd-/'>bdd,</a>, <a class='category' href='/blog/categories/rspec-/'>rspec,</a>, <a class='category' href='/blog/categories/testing/'>testing</a>
+    <a class='category' href='/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/testing/'>testing</a>
   
 </span>
 
