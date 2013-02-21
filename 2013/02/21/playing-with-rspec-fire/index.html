@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Playing with (RSpec)-Fire - Andy Waite</title>
+  <meta name="author" content="Andy Waite">
+  <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12241830-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+   
+  <link href="/octopress-favicon.png" rel="icon">
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Andy Waite</a></h1>
+  
+    <h2>Ruby and iOS Developer in London</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andyw8.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+
+
+
+
+
+
+
+
+
+
+
+<article class="hentry " role="article">
+  
+  <header>
+    <h1 class="entry-title">
+
+Playing With (RSpec)-Fire
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-21T22:07:00+00:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
+         &bull; <a rel="bookmark" href="/2013/02/21/playing-with-rspec-fire/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the app being broken.</p>
+
+<blockquote><p>rspec-fire only checks that the methods exist if the doubled class has already been loaded. No checking will happen when running the spec in isolation, but when run in the context of the full app (either as a full spec run or by explicitly preloading collaborators on the command line) a failure will be triggered if an invalid method is being stubbed.</p></blockquote>
+
+<p>It took me a little time to understand how rspec-fire, so I&#8217;ve written up my findings here.</p>
+
+<p>I followed the instructions in the README and found <a href="http://stackoverflow.com/questions/15009603/rspec-fire-specs-passing-when-they-shouldnt/15010004#15010004">a small problem</a>, but within minutes <a href="https://twitter.com/myronmarston">@myronmarston</a> had fixed it.</p>
+
+<p>Let&#8217;s start with the class that we want to test. The example in the rspec-fire inherits from Struct to keep things concise, but for clarity let&#8217;s make it a normal class:</p>
+
+<pre><code>class User
+  def initialize(notifier)
+    @notifier = notifier
+  end
+
+  def suspend!
+    @notifier.notify("suspended as")
+  end
+end
+</code></pre>
+
+<p>You can check out my code at <a href="https://github.com/andyw8/try-rspec-fire">https://github.com/andyw8/try-rspec-fire</a>.</p>
+
+<p>Here&#8217;s what the spec for this class would look like, just using RSpec&#8217;s built-in support for test doubles:</p>
+
+<pre><code>describe User, '#suspend!' do
+  it 'sends a notification' do
+    notifier = double
+
+    notifier.should_receive(:notify).with("suspended as")
+
+    user = User.new(notifier)
+    user.suspend!
+  end
+end
+</code></pre>
+
+<p>(Keep in mind that in RSpec, <code>mock</code> and <code>stub</code> are simply aliases for <code>double</code>)</p>
+
+<p>Run <code>rspec spec/user_spec.rb</code> and this should pass.</p>
+
+<p>Now let&#8217;s say the requirements change. We want to add an option to send the user an email notification when they are suspended. The <code>notify</code> method signature then becomes:</p>
+
+<pre><code>class EmailNotifier
+  def notify(message, send_email)
+    # ...
+  end
+end
+</code></pre>
+
+<p>If we re-run the spec it will still pass. The double knows nothing about the real class. This is obviously a problem because the real app will be broken.</p>
+
+<p>Now let&#8217;s introduce rspec-fire. We need to add a few lines to <code>spec_helper.rb</code>:</p>
+
+<pre><code>require 'rspec/fire'
+
+RSpec.configure do |config|
+  config.include(RSpec::Fire)
+end
+</code></pre>
+
+<p>And we need one small change to the spec, changing <code>double("EmailNotifier")</code> to <code>fire_double("EmailNotifier")</code>.</p>
+
+<p>We then run the spec, but this time we preload the collaborator:</p>
+
+<pre><code>$ rspec -I lib -r email_notifier.rb spec/user_spec.rb
+</code></pre>
+
+<p>That command looks slightly cryptic. Let&#8217;s check what the RSpec docs say:</p>
+
+<pre><code>Usage: rspec [options] [files or directories]
+
+    -I PATH                          Specify PATH to add to $LOAD_PATH (may be used more than once).
+    -r, --require PATH               Require a file.
+
+User#suspend!
+  sends a notification (FAILED - 1)
+</code></pre>
+
+<p>We&#8217;re telling RSpec to require the real EmailNotifier class. When we call <code>fire_double</code>, it compares the test double to the real class and triggers a failure:</p>
+
+<pre><code>Failures:
+
+  1) User#suspend! sends a notification
+     Failure/Error: notifier.should_receive(:notify).with("suspended as")
+       Wrong number of arguments for notify. Expected 2, got 1.
+     # ./spec/user_spec.rb:9:in `block (2 levels) in &lt;top (required)&gt;'
+</code></pre>
+
+<p>So why does this all matter?</p>
+
+<p>The default reaction when the unit tests are passing, but the app is still broken, is to add more integration and system tests. But these kind of tests tend to be brittle and slow to run.</p>
+
+<p>In his talk <a href="http://pyvideo.org/video/631/fast-test-slow-test">Fast Test, Slow Test</a>, Gary Bernhardt suggests aiming for a ratio of 90/10 between unit and system tests, approaching 95/5 or even 99/1 as time goes on.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andy Waite</span></span>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-21T22:07:00+00:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
+
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bdd-/'>bdd,</a>, <a class='category' href='/blog/categories/rspec-/'>rspec,</a>, <a class='category' href='/blog/categories/testing/'>testing</a>
+  
+</span>
+
+
+
+      
+
+    </p>
+    
+      <div class="sharing">
+  
+    
+      <a href="http://twitter.com/share" title="Tweet this" class="twitter-share" target="_blank">Tweet</a>
+    
+  
+  
+  
+  
+
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/12/23/exploring-concerns-for-rails-4/" title="Previous Post: Exploring Concerns for Rails 4">&laquo; Exploring Concerns for Rails 4</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+<section>
+  <h1>Comments</h1>
+  
+
+  
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  
+</section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/02/21/playing-with-rspec-fire/">Playing with (RSpec)-Fire</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/23/exploring-concerns-for-rails-4/">Exploring Concerns for Rails 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/05/zeus-cucumber-guard/">Using Zeus with Cucumber and Guard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/08/22/tdd-triangulation-practice/">TDD Triangulation Practice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/08/20/cucumber-bdd-london-2012/">Cucumber, BDD and London 2012</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets" data-user="andyw8" data-count="4" data-replies="false">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+    <a href="//twitter.com/andyw8" class="twitter-follow-button" data-show-count="false">Follow @andyw8</a>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Andy Waite -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andywaite';
+			var disqus_developer = '0';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/';
+        var disqus_url = 'http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+</body>
+</html>
