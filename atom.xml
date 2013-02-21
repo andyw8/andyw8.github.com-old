@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-02-21T22:15:01+00:00</updated>
+  <updated>2013-02-21T23:01:10+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -25,13 +25,15 @@
 
       <content type="html"><![CDATA[<p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the actual app being broken.</p>
 
+<p>Paraphrasing from the rspec-fire README:</p>
+
 <blockquote><p>rspec-fire only checks that the methods exist if the doubled class has already been loaded. No checking will happen when running the spec in isolation, but when run in the context of the full app (either as a full spec run or by explicitly preloading collaborators on the command line) a failure will be triggered if an invalid method is being stubbed.</p></blockquote>
 
 <p>It took me a little time to understand how rspec-fire works, so I&#8217;ve written up my findings here.</p>
 
 <p>I followed the instructions in the README and found <a href="http://stackoverflow.com/questions/15009603/rspec-fire-specs-passing-when-they-shouldnt/15010004#15010004">a small problem</a>, but within minutes <a href="https://twitter.com/myronmarston">@myronmarston</a> had fixed it.</p>
 
-<p>Let&#8217;s start with the class that we want to test. The example in the rspec-fire inherits from <code>Struct</code> to keep things concise, but for clarity let&#8217;s make it a normal class:</p>
+<p>Let&#8217;s start with the class that we want to test. The example in the rspec-fire README inherits from <code>Struct</code> to keep things concise, but for clarity let&#8217;s make it a normal class:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -70,7 +72,7 @@
 <span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span><span class="p">,</span> <span class="s1">&#39;#suspend!&#39;</span> <span class="k">do</span>
 </span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;sends a notification&#39;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">notifier</span> <span class="o">=</span> <span class="n">double</span>
+</span><span class='line'>    <span class="n">notifier</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="s2">&quot;EmailNotifier&quot;</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="n">notifier</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:notify</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s2">&quot;suspended as&quot;</span><span class="p">)</span>
 </span><span class='line'>
