@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-02-21T23:01:10+00:00</updated>
+  <updated>2013-02-22T09:53:23+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -137,7 +137,7 @@ User#suspend!
   sends a notification (FAILED - 1)
 </code></pre>
 
-<p>We&#8217;re telling RSpec to require the real EmailNotifier class. When we call <code>fire_double</code>, it compares the test double to the real class and triggers a failure:</p>
+<p>We&#8217;re telling RSpec to require the real EmailNotifier class. When we call <code>fire_double</code>, it uses the real class rather than the test double, and so triggers a failure:</p>
 
 <pre><code>Failures:
 
@@ -149,9 +149,13 @@ User#suspend!
 
 <p>So why does this all matter?</p>
 
-<p>The default reaction when the unit tests are passing, but the app is still broken, is to add more integration and system tests. But these kind of tests tend to be brittle and slow to run.</p>
+<p>When all the unit tests are passing, but the app is still broken, a common reaction is to add more integration and system tests. But these kind of tests tend to be brittle and slow to run.</p>
+
+<p>We need both kinds of tests, but the vast majority of our test suite should be isolated unit tests.</p>
 
 <p>In his talk <a href="http://pyvideo.org/video/631/fast-test-slow-test">Fast Test, Slow Test</a>, Gary Bernhardt suggests aiming for a ratio of 90/10 between unit and system tests, approaching 95/5 or even 99/1 as time goes on.</p>
+
+<p>rspec-fire gives you greater confidence that your isolated test&#8217;s boundaries line up with the real system.</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
