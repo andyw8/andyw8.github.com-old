@@ -263,7 +263,7 @@
 
 <p>The spec now passes. However, if we tried to use this in a real app it would be broken, because we haven&#8217;t updated our <code>EmailNotifier</code> class.</p>
 
-<p>This is the problem rspec-fire solves.</p>
+<p>This is the problem that spec-fire solves.</p>
 
 <p>We first need to add a few lines to <code>spec_helper.rb</code>:</p>
 
@@ -298,7 +298,7 @@ User#suspend!
   sends a notification (FAILED - 1)
 </code></pre>
 
-<p>We&#8217;re telling RSpec to require the real EmailNotifier class. When we call <code>fire_double</code>, it sees that the real class is loaded, uses than instead of the test double, and so triggers a failure:</p>
+<p>We&#8217;re telling RSpec to require the real <code>EmailNotifier</code> class. When we call <code>fire_double</code>, it sees that the real class is loaded, uses than instead of the test double, and so triggers a failure:</p>
 
 <pre><code>1) User#suspend! sends a notification in html
    Failure/Error: notifier.should_receive(:notify).with("suspended as", :html)
@@ -308,17 +308,20 @@ User#suspend!
 
 <p>Let&#8217;s fix <code>EmailNotifier</code>:</p>
 
-<p>&#8220;`ruby
-class EmailNotifier
-  def notify(message, format)</p>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EmailNotifier</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1"># ...</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code># ...
-</code></pre>
 
-<p>  end
-end</p>
-
-<p>And the specs will now pass when testing against the real EmailNotifier.</p>
+<p>And the specs will now pass when testing against the real <code>EmailNotifier</code>.</p>
 
 <p>So why does this all matter?</p>
 
