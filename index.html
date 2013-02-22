@@ -178,26 +178,92 @@
 
 <p>(Keep in mind that in RSpec, <code>mock</code> and <code>stub</code> are simply aliases for <code>double</code>)</p>
 
+<p>and our EmailNotifier would look like this:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EmailNotifier</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>Run <code>rspec spec/user_spec.rb</code> and this should pass.</p>
 
-<p>Now let&#8217;s say the requirements change. We want to add an option to send the user an email notification when they are suspended. The <code>notify</code> method signature then becomes:</p>
+<p>Now let&#8217;s say the requirements change. We want to add an option to specify whether the notification should be in plain text or html. The spec  becomes:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EmailNotifier</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">send_email</span><span class="p">)</span>
-</span><span class='line'>    <span class="c1"># ...</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span><span class="p">,</span> <span class="s1">&#39;#suspend!&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;sends a plain text notification&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">notifier</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="s2">&quot;EmailNotifier&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">notifier</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:notify</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s2">&quot;suspended as&quot;</span><span class="p">,</span> <span class="ss">:text</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">suspend!</span><span class="p">(</span><span class="ss">:text</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;sends an HTML notification&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">notifier</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="s2">&quot;EmailNotifier&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">notifier</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:notify</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s2">&quot;suspended as&quot;</span><span class="p">,</span> <span class="ss">:html</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">suspend!</span><span class="p">(</span><span class="ss">:html</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>If we re-run the spec it will still pass. The double knows nothing about the real class. This is obviously a problem because the real app will be broken.</p>
+<p>To make these pass we change the user class so that <code>#suspend!</code> takes a <code>format</code> parameter:</p>
 
-<p>Now let&#8217;s introduce rspec-fire. We need to add a few lines to <code>spec_helper.rb</code>:</p>
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@notifier</span> <span class="o">=</span> <span class="n">notifier</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">suspend!</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@notifier</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="s2">&quot;suspended as&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The spec now passes. However, if we tried to use the in a real app it would be broken, because we haven&#8217;t updated our <code>EmailNotifier</code> class.</p>
+
+<p>This is the problem rspec-fire solves.</p>
+
+<p>We first need to add a few lines to <code>spec_helper.rb</code>:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -214,7 +280,7 @@
 
 <p>And we need one small change to the spec, changing <code>double("EmailNotifier")</code> to <code>fire_double("EmailNotifier")</code>.</p>
 
-<p>We then run the spec, but this time we preload the collaborator:</p>
+<p>We then re-run the spec, but this time we preload the collaborator:</p>
 
 <pre><code>$ rspec -I lib -r email_notifier.rb spec/user_spec.rb
 </code></pre>
@@ -230,14 +296,12 @@ User#suspend!
   sends a notification (FAILED - 1)
 </code></pre>
 
-<p>We&#8217;re telling RSpec to require the real EmailNotifier class. When we call <code>fire_double</code>, it uses the real class rather than the test double, and so triggers a failure:</p>
+<p>We&#8217;re telling RSpec to require the real EmailNotifier class. When we call <code>fire_double</code>, it sees that the real class is loaded, uses than instead of the test double, and so triggers a failure:</p>
 
-<pre><code>Failures:
-
-  1) User#suspend! sends a notification
-     Failure/Error: notifier.should_receive(:notify).with("suspended as")
-       Wrong number of arguments for notify. Expected 2, got 1.
-     # ./spec/user_spec.rb:9:in `block (2 levels) in &lt;top (required)&gt;'
+<pre><code>1) User#suspend! sends a notification in html
+   Failure/Error: notifier.should_receive(:notify).with("suspended as", :html)
+     Wrong number of arguments for notify. Expected 1, got 2.
+   # ./spec/user_spec.rb:9:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
 <p>So why does this all matter?</p>
