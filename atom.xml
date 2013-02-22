@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-02-22T10:09:19+00:00</updated>
+  <updated>2013-02-22T10:11:55+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -23,7 +23,7 @@
 <updated>2013-02-21T22:07:00+00:00</updated>
 <id>http://andyw8.github.com/2013/02/21/playing-with-rspec-fire</id>
 
-      <content type="html"><![CDATA[<p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the actual app being broken.</p>
+      <content type="html"><![CDATA[<p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the actual app being broken. This is a concern when doing <a href="http://www.growing-object-oriented-software.com/">GOOS</a>-style testing where all the collaborators are replaced by test doubles.</p>
 
 <p>Paraphrasing from the rspec-fire README:</p>
 
