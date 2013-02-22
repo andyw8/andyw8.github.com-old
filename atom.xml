@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-02-22T10:11:55+00:00</updated>
+  <updated>2013-02-22T10:16:24+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -85,14 +85,16 @@
 
 <p>(Keep in mind that in RSpec, <code>mock</code> and <code>stub</code> are simply aliases for <code>double</code>)</p>
 
-<p>and our EmailNotifier would look like this:</p>
+<p>Our <code>EmailNotifier</code> would look like this:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EmailNotifier</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1"># ...</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -100,7 +102,7 @@
 
 <p>Run <code>rspec spec/user_spec.rb</code> and this should pass.</p>
 
-<p>Now let&#8217;s say the requirements change. We want to add an option to specify whether the notification should be in plain text or html. The spec  becomes:</p>
+<p>Now let&#8217;s say the requirements change. We want to add an option to specify whether the notification should be in plain text or html. The spec becomes:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -143,7 +145,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>To make these pass we change the user class so that <code>#suspend!</code> takes a <code>format</code> parameter:</p>
+<p>To make these specs pass, we change the user class so that <code>#suspend!</code> takes a <code>format</code> parameter:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -166,7 +168,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The spec now passes. However, if we tried to use the in a real app it would be broken, because we haven&#8217;t updated our <code>EmailNotifier</code> class.</p>
+<p>The spec now passes. However, if we tried to use this in a real app it would be broken, because we haven&#8217;t updated our <code>EmailNotifier</code> class.</p>
 
 <p>This is the problem rspec-fire solves.</p>
 
@@ -211,15 +213,29 @@ User#suspend!
    # ./spec/user_spec.rb:9:in `block (2 levels) in &lt;top (required)&gt;'
 </code></pre>
 
+<p>Let&#8217;s fix <code>EmailNotifier</code>:</p>
+
+<p>&#8220;`ruby
+class EmailNotifier
+  def notify(message, format)</p>
+
+<pre><code># ...
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>And the specs will now pass when testing against the real EmailNotifier.</p>
+
 <p>So why does this all matter?</p>
 
-<p>When all the unit tests are passing, but the app is still broken, a common reaction is to add more integration and system tests. But these kind of tests tend to be brittle and slow to run.</p>
+<p>When all the unit tests are passing, but the actual app is still broken, a common reaction is to add more integration and system tests as a &#8216;safety-net&#8217;. But these kind of tests tend to be brittle and slow to run.</p>
 
 <p>We need both kinds of tests, but the vast majority of our test suite should be isolated unit tests.</p>
 
 <p>In his talk <a href="http://pyvideo.org/video/631/fast-test-slow-test">Fast Test, Slow Test</a>, Gary Bernhardt suggests aiming for a ratio of 90/10 between unit and system tests, approaching 95/5 or even 99/1 as time goes on.</p>
 
-<p>rspec-fire gives you greater confidence that your isolated test&#8217;s boundaries line up with the real system.</p>
+<p>rspec-fire gives you greater confidence that the isolated tests&#8217; boundaries line up with the real system.</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
