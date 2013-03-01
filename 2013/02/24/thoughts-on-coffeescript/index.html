@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to easily delete a large Amazon S3 Bucket - Andy Waite</title>
+  <title>Thoughts on CoffeeScript - Andy Waite</title>
   <meta name="author" content="Andy Waite">
   <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
 
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">
+  <link rel="canonical" href="http://andyw8.github.com/2013/02/24/thoughts-on-coffeescript/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
@@ -91,7 +91,7 @@
   <header>
     <h1 class="entry-title">
 
-How to Easily Delete a Large Amazon S3 Bucket
+Thoughts on CoffeeScript
 
 </h1>
 
@@ -109,27 +109,94 @@ How to Easily Delete a Large Amazon S3 Bucket
   
 
 
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
-         &bull; <a rel="bookmark" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">Permalink</a>
+<time datetime="2013-02-24T12:18:00+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
+         &bull; <a rel="bookmark" href="/2013/02/24/thoughts-on-coffeescript/">Permalink</a>
       </p>
     
   </header>
 
-<div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
+<div class="entry-content"><p>I&#8217;ve been working through Noel Rappin&#8217;s <em>Mastering Space And Time With JavaScript</em> to level-up my JavaScript abilitites, converting the examples to CoffeeScript as I go along.</p>
 
-<p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution using S3&#8217;s lifecycle feature:</p>
+<p>I&#8217;ve been aware of CoffeeScript for a while but this is the first I&#8217;ve used it for anything substantial, and it&#8217;s been interesting experience.</p>
+
+<p>I&#8217;m using the <code>jasminerice</code> gem which integrates well into the Rails assett pipeline, so you never need to think about compiling.</p>
+
+<p>CoffeeScript is the first language I&#8217;ve used with significant whitespace, and I&#8217;m quite liking it. No need to waste a line of vertical space for simple <code>end</code> statement.</p>
+
+<p>I&#8217;m often surprised by how few brackets and commas I need, and the ease of spreading things out over multiple lines:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Foo</span>
+</span><span class='line'>  <span class="nv">details:</span>
+</span><span class='line'>    <span class="nv">product: </span><span class="s">&quot;alpha&quot;</span>
+</span><span class='line'>    <span class="nv">company: </span><span class="s">&quot;beta&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">build: </span><span class="o">-&gt;</span>
+</span><span class='line'>    <span class="nv">builder = </span><span class="k">new</span> <span class="nx">TimeTravel</span><span class="p">.</span><span class="nx">Views</span><span class="p">.</span><span class="nx">TripDetailView</span>
+</span><span class='line'>      <span class="nv">color: </span><span class="s">&quot;red&quot;</span>
+</span><span class='line'>      <span class="nv">quantity: </span><span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In Ruby this would look something like:</p>
+
+<p>&#8220;` ruby</p>
+
+<p>class Foo
+  DETAILS = {</p>
+
+<pre><code>product: "alpha",
+company: "beta"
+</code></pre>
+
+<p>  }</p>
+
+<p>  def build</p>
+
+<pre><code>builder = TimeTravel::Views::TripDetailView.new(
+  color: "red"
+  quantity: 3
+)
+</code></pre>
+
+<p>  end
+end</p>
 
 <ul>
-<li>Log into the <a href="https://console.aws.amazon.com/s3/home">S3 Management Console</a></li>
-<li>Select the bucket you want to clear</li>
-<li>Select Properties from the toolbar</li>
-<li>Click the Lifecycle tab in the Properties panel</li>
-<li>Add a rule with no prefix and expiration of 1 day</li>
-<li>Save the rule</li>
+<li>The code I&#8217;ve converted from JS to CS ends up about 30 - 40% shorter.</li>
 </ul>
 
 
-<p>Check back 24 hours later you&#8217;ll find all your objects have been deleted.</p>
+<p>I find the noise from the brackets, braces and semi-colons in JS really distracting. Especially when you have callbacks involved.</p>
+
+<p>Things that I get wrong:</p>
+
+<ul>
+<li>As with JS, when you call a method you need the parenthesis after the method name.</li>
+</ul>
+
+
+<p>Things I&#8217;m still getting used to:</p>
+
+<p>  Jasmine uses spies rather than mocks. Although spies are a kind of mock, I still need to think hard about them.</p>
+
+<p>  CoffeeScript doesn&#8217;t mean you can forget all JS&#8217;s scoping rules.</p>
+
+<p>Other:</p>
+
+<p>It&#8217;s very obvious that CoffeeScript is trying to look like Ruby.</p>
+
+<p>Debugging:</p>
+
+<p>http://ryanflorence.com/2012/coffeescript-source-maps/</p>
 </div>
 
 
@@ -152,14 +219,8 @@ How to Easily Delete a Large Amazon S3 Bucket
   
 
 
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+<time datetime="2013-02-24T12:18:00+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
 
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/aws/'>aws</a>, <a class='category' href='/blog/categories/s3/'>s3</a>
-  
-</span>
 
 
 
@@ -182,10 +243,10 @@ How to Easily Delete a Large Amazon S3 Bucket
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2012/05/28/rubymotion-app-template/" title="Previous Post: RubyMotion App Template">&laquo; RubyMotion App Template</a>
+        <a class="basic-alignment left" href="/2013/02/21/playing-with-rspec-fire/" title="Previous Post: Playing with (RSpec)-Fire">&laquo; Playing with (RSpec)-Fire</a>
       
       
-        <a class="basic-alignment right" href="/2012/08/20/cucumber-bdd-london-2012/" title="Next Post: Cucumber, BDD and London 2012">Cucumber, BDD and London 2012 &raquo;</a>
+        <a class="basic-alignment right" href="/2013/02/27/tracking-learning-goals-with-trello/" title="Next Post: Using Trello Tracking Learning Goals">Using Trello Tracking Learning Goals &raquo;</a>
       
     </p>
   </footer>
@@ -272,8 +333,8 @@ How to Easily Delete a Large Amazon S3 Bucket
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/';
-        var disqus_url = 'http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/';
+        var disqus_identifier = 'http://andyw8.github.com/2013/02/24/thoughts-on-coffeescript/';
+        var disqus_url = 'http://andyw8.github.com/2013/02/24/thoughts-on-coffeescript/';
         var disqus_script = 'embed.js';
       
     (function () {

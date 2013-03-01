@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: rspec - Andy Waite</title>
+  <title>Minimal Rakefile for RSpec, Cucumber and Jasmine - Andy Waite</title>
   <meta name="author" content="Andy Waite">
   <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
 
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andyw8.github.comblog/categories/rspec/">
+  <link rel="canonical" href="http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
@@ -44,7 +44,7 @@
   <link href="/octopress-favicon.png" rel="icon">
 </head>
 
-<body  id="archive"   >
+<body   >
   <header role="banner"><hgroup>
   <h1><a href="/">Andy Waite</a></h1>
   
@@ -75,88 +75,140 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+
+
+
+
+
+
+
+
+
+
+
+<article class="hentry " role="article">
   
   <header>
-    <h1 class="entry-title">Category: Rspec</h1>
+    <h1 class="entry-title">
+
+Minimal Rakefile for RSpec, Cucumber and Jasmine
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-28T12:30:00+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2013</time>
+         &bull; <a rel="bookmark" href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Permalink</a>
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
+
+<div class="entry-content"><p>I found I was repeatedly Googling for the Rakefile configuration to run various kinds of tests, so for my own reference, and hopefully someone else&#8217;s, here&#8217;s an example:</p>
+
+<p>Note that you&#8217;ll need the <a href="" title="https://github.com/netzpirat/guard-jasmine">guard-jasmine</a> gem for the Jasmine task.</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec/core/rake_task&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;cucumber/rake/task&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;guard/jasmine/task&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RSpec</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">RakeTask</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="no">Cucumber</span><span class="o">::</span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="no">Guard</span><span class="o">::</span><span class="no">JasmineTask</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">task</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:spec</span><span class="p">,</span> <span class="ss">:cucumber</span><span class="p">,</span> <span class="s1">&#39;guard:jasmine&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-
-  
-  <h2>2013</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<article >
-  
-<h1 class="entry-title">
-
-<a href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Minimal Rakefile for RSpec, Cucumber and Jasmine</a>
-
-</h1>
-
-<time datetime="2013-02-28T12:30:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>28</span> <span class='year'>2013</span></time>
-<footer>
-  
-  
-  
-  <span class="categories">posted in <a class='category' href='/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>, <a class='category' href='/blog/categories/jasmine/'>jasmine</a>, <a class='category' href='/blog/categories/rake/'>rake</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a></span>
-  
-</footer>
-
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<article >
-  
-<h1 class="entry-title">
-
-<a href="/2013/02/21/playing-with-rspec-fire/">Playing With (RSpec)-Fire</a>
-
-</h1>
-
-<time datetime="2013-02-21T22:07:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>21</span> <span class='year'>2013</span></time>
-<footer>
-  
-  
-  
-  <span class="categories">posted in <a class='category' href='/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/testing/'>testing</a></span>
-  
-</footer>
-
-</article>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Andy Waite</span></span>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-28T12:30:00+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2013</time>
+
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>, <a class='category' href='/blog/categories/jasmine/'>jasmine</a>, <a class='category' href='/blog/categories/rake/'>rake</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>
+  
+</span>
+
+
+
+      
+
+    </p>
+    
+      <div class="sharing">
+  
+    
+      <a href="http://twitter.com/share" title="Tweet this" class="twitter-share" target="_blank">Tweet</a>
+    
+  
+  
+  
+  
+
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/02/27/tracking-learning-goals-with-trello/" title="Previous Post: Using Trello Tracking Learning Goals">&laquo; Using Trello Tracking Learning Goals</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
+<section>
+  <h1>Comments</h1>
+  
 
+  
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  
+</section>
 
 </div>
 
@@ -228,7 +280,10 @@
 			var disqus_developer = '0';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/';
+        var disqus_url = 'http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -115,7 +115,7 @@ Playing With (RSpec)-Fire
     
   </header>
 
-<div class="entry-content"><p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes, so as avoid the risk of the isolated tests passing but the actual app being broken. This is a concern when doing <a href="http://www.growing-object-oriented-software.com/">GOOS</a>-style testing where all the collaborators are replaced by test doubles.</p>
+<div class="entry-content"><p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes. This prevents the risk of all the isolated tests passing but the actual app being broken, which is a common concern when doing <a href="http://www.growing-object-oriented-software.com/">GOOS</a>-style testing where all the collaborators are replaced by test doubles.</p>
 
 <p>Paraphrasing from the rspec-fire README:</p>
 
@@ -281,7 +281,7 @@ User#suspend!
   sends a notification (FAILED - 1)
 </code></pre>
 
-<p>We&#8217;re telling RSpec to require the real <code>EmailNotifier</code> class. When we call <code>fire_double</code>, it sees that the real class is loaded, uses than instead of the test double, and so triggers a failure:</p>
+<p>We&#8217;re telling RSpec to require the real <code>EmailNotifier</code> class. When we call <code>fire_double</code>, it sees that the real class is loaded, uses that instead of the test double, and so triggers a failure:</p>
 
 <pre><code>1) User#suspend! sends a notification in html
    Failure/Error: notifier.should_receive(:notify).with("suspended as", :html)
@@ -370,6 +370,8 @@ User#suspend!
         <a class="basic-alignment left" href="/2012/12/23/exploring-concerns-for-rails-4/" title="Previous Post: Exploring Concerns for Rails 4">&laquo; Exploring Concerns for Rails 4</a>
       
       
+        <a class="basic-alignment right" href="/2013/02/24/thoughts-on-coffeescript/" title="Next Post: Thoughts on CoffeeScript">Thoughts on CoffeeScript &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -393,23 +395,23 @@ User#suspend!
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Minimal Rakefile for RSpec, Cucumber and Jasmine</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/27/tracking-learning-goals-with-trello/">Using Trello Tracking Learning Goals</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/24/thoughts-on-coffeescript/">Thoughts on CoffeeScript</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/02/21/playing-with-rspec-fire/">Playing with (RSpec)-Fire</a>
       </li>
     
       <li class="post">
         <a href="/2012/12/23/exploring-concerns-for-rails-4/">Exploring Concerns for Rails 4</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/05/zeus-cucumber-guard/">Using Zeus with Cucumber and Guard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/08/22/tdd-triangulation-practice/">TDD Triangulation Practice</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/08/20/cucumber-bdd-london-2012/">Cucumber, BDD and London 2012</a>
       </li>
     
   </ul>
