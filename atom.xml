@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-03-01T14:29:39+00:00</updated>
+  <updated>2013-03-01T14:30:15+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -50,54 +50,6 @@
 
 
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/">&#9875; Permalink</a></p>]]></content>
-    </entry>
-  
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[Using Trello Tracking Learning Goals]]></title>
-<link href="http://andyw8.github.com/2013/02/27/tracking-learning-goals-with-trello/"/>
-<updated>2013-02-27T09:22:00+00:00</updated>
-<id>http://andyw8.github.com/2013/02/27/tracking-learning-goals-with-trello</id>
-
-      <content type="html"><![CDATA[<p>You can view my Trello board, it&#8217;s public.</p>
-
-<p>https://trello.com/board/tech-learning/512dcc9bc929c4b24d001e17</p>
-
-<p>[screenshot]</p>
-
-<p>On The Rader</p>
-
-<p>  Technologies I&#8217;ve heard good things about but still need to decide when/if I want
-  to learn them.</p>
-
-<p>In The Queue</p>
-
-<p>  Technologies that I know are going to be essential to learn.</p>
-
-<p>Beginner</p>
-
-<p>  I&#8217;ve started a toy project, or worked through some tutorialbuilding things hands-on</p>
-
-<p>Intermediate</p>
-
-<p>  Discovered the pitfalls. Could use professionally.</p>
-
-<p>On Hold</p>
-
-<p>  Technologies that I consider to be on the way out, so it&#8217;s not worth spending much effort getting a deeper knowledge. (That may change if I was involed in a legacy project using one of these.)</p>
-
-<p>Expert</p>
-
-<p>  Expert doesn&#8217;t mean I&#8217;ve stopped learning.</p>
-
-<p>I&#8217;ve been partly inspired by the <a href="http://www.thoughtworks.com/insights">ThoughtWorks Technology Radar</a> which assigns Assess, Trial, Adopt and Hold.</p>
-
-<p>Another way I discover new proejcts is GitHub explore.</p>
-<p><a rel="bookmark" href="http://andyw8.github.com/2013/02/27/tracking-learning-goals-with-trello/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
     <entry>
