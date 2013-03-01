@@ -256,140 +256,6 @@
   <header>
     <h1 class="entry-title">
 
-<a href="/2013/02/24/thoughts-on-coffeescript/">Thoughts on CoffeeScript</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-24T12:18:00+00:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
-         &bull; <a rel="bookmark" href="/2013/02/24/thoughts-on-coffeescript/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p>I&#8217;ve been working through Noel Rappin&#8217;s <em>Mastering Space And Time With JavaScript</em> to level-up my JavaScript abilitites, converting the examples to CoffeeScript as I go along.</p>
-
-<p>I&#8217;ve been aware of CoffeeScript for a while but this is the first I&#8217;ve used it for anything substantial, and it&#8217;s been interesting experience.</p>
-
-<p>I&#8217;m using the <code>jasminerice</code> gem which integrates well into the Rails assett pipeline, so you never need to think about compiling.</p>
-
-<p>CoffeeScript is the first language I&#8217;ve used with significant whitespace, and I&#8217;m quite liking it. No need to waste a line of vertical space for simple <code>end</code> statement.</p>
-
-<p>I&#8217;m often surprised by how few brackets and commas I need, and the ease of spreading things out over multiple lines:</p>
-
-<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">Foo</span>
-</span><span class='line'>  <span class="nv">details:</span>
-</span><span class='line'>    <span class="nv">product: </span><span class="s">&quot;alpha&quot;</span>
-</span><span class='line'>    <span class="nv">company: </span><span class="s">&quot;beta&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">build: </span><span class="o">-&gt;</span>
-</span><span class='line'>    <span class="nv">builder = </span><span class="k">new</span> <span class="nx">TimeTravel</span><span class="p">.</span><span class="nx">Views</span><span class="p">.</span><span class="nx">TripDetailView</span>
-</span><span class='line'>      <span class="nv">color: </span><span class="s">&quot;red&quot;</span>
-</span><span class='line'>      <span class="nv">quantity: </span><span class="mi">3</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In Ruby this would look something like:</p>
-
-<p>&#8220;` ruby</p>
-
-<p>class Foo
-  DETAILS = {</p>
-
-<pre><code>product: "alpha",
-company: "beta"
-</code></pre>
-
-<p>  }</p>
-
-<p>  def build</p>
-
-<pre><code>builder = TimeTravel::Views::TripDetailView.new(
-  color: "red"
-  quantity: 3
-)
-</code></pre>
-
-<p>  end
-end</p>
-
-<ul>
-<li>The code I&#8217;ve converted from JS to CS ends up about 30 - 40% shorter.</li>
-</ul>
-
-
-<p>I find the noise from the brackets, braces and semi-colons in JS really distracting. Especially when you have callbacks involved.</p>
-
-<p>Things that I get wrong:</p>
-
-<ul>
-<li>As with JS, when you call a method you need the parenthesis after the method name.</li>
-</ul>
-
-
-<p>Things I&#8217;m still getting used to:</p>
-
-<p>  Jasmine uses spies rather than mocks. Although spies are a kind of mock, I still need to think hard about them.</p>
-
-<p>  CoffeeScript doesn&#8217;t mean you can forget all JS&#8217;s scoping rules.</p>
-
-<p>Other:</p>
-
-<p>It&#8217;s very obvious that CoffeeScript is trying to look like Ruby.</p>
-
-<p>Debugging:</p>
-
-<p>http://ryanflorence.com/2012/coffeescript-source-maps/</p>
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2013/02/24/thoughts-on-coffeescript/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
-      
-  <header>
-    <h1 class="entry-title">
-
 <a href="/2013/02/21/playing-with-rspec-fire/">Playing With (RSpec)-Fire</a>
 
 </h1>
@@ -1931,9 +1797,60 @@ User#suspend!
 
     </article>
   
-  <div class="pagination">
     
-      <a class="prev" href="/page/2/">&larr; Older</a>
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
+<a href="/2012/04/18/first-post-with-octopress/">First Post With Octopress</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-18T23:37:00+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/04/18/first-post-with-octopress/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>Hello world!</p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2012/04/18/first-post-with-octopress/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+  <div class="pagination">
     
     <a href="/archives">Blog Archives</a>
     
@@ -1955,15 +1872,15 @@ User#suspend!
       </li>
     
       <li class="post">
-        <a href="/2013/02/24/thoughts-on-coffeescript/">Thoughts on CoffeeScript</a>
-      </li>
-    
-      <li class="post">
         <a href="/2013/02/21/playing-with-rspec-fire/">Playing with (RSpec)-Fire</a>
       </li>
     
       <li class="post">
         <a href="/2012/12/23/exploring-concerns-for-rails-4/">Exploring Concerns for Rails 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/05/zeus-cucumber-guard/">Using Zeus with Cucumber and Guard</a>
       </li>
     
   </ul>
