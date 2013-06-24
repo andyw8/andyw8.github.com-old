@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-03-01T14:30:15+00:00</updated>
+  <updated>2013-06-24T19:50:32+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -24,8 +24,6 @@
 <id>http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine</id>
 
       <content type="html"><![CDATA[<p>I found I was repeatedly Googling for the Rakefile configuration to run various kinds of tests, so for my own reference, and hopefully someone else&#8217;s, here&#8217;s an example:</p>
-
-<p>Note that you&#8217;ll need the <a href="" title="https://github.com/netzpirat/guard-jasmine">guard-jasmine</a> gem for the Jasmine task.</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -48,7 +46,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>Note that you&#8217;ll need the <a href="" title="https://github.com/netzpirat/guard-jasmine">guard-jasmine</a> gem for the Jasmine task.</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
