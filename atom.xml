@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-09-14T16:16:53+01:00</updated>
+  <updated>2013-09-14T16:35:07+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -18,14 +18,14 @@
 
 
 
-<title type="html"><![CDATA[My Coding Internship World Tour]]></title>
+<title type="html"><![CDATA[My Coding World Tour]]></title>
 <link href="http://andyw8.github.com/2013/09/14/coding-world-tour/"/>
 <updated>2013-09-14T16:25:00+01:00</updated>
 <id>http://andyw8.github.com/2013/09/14/coding-world-tour</id>
 
-      <content type="html"><![CDATA[<p>In the culinary industry, a <em><a href="http://en.wikipedia.org/wiki/Stage_(cooking">stage</a>)</em> (pronounced <em>stazhje</em>, from the French <em>stagiaire</em>) is an unpaid internship when a cook or chef works briefly, for free, in another chef&#8217;s kitchen to learn and be exposed to new techniques and cuisines.</p>
+      <content type="html"><![CDATA[<p>In the culinary industry, a <em><a href="http://en.wikipedia.org/wiki/Stage_(cooking">stage</a></em> (pronounced <em>stazhje</em>, from the French <em>stagiaire</em>) is an unpaid internship when a cook or chef works briefly, for free, in another chef&#8217;s kitchen to learn and be exposed to new techniques and cuisines.</p>
 
-<p>To improve as a developer, I want to try this approach in the software industry. At the end of October I will be leaving London, my home for the past six years, and visiting North America, South East Asia, and Europe. During that time, I&#8217;ll be seeking out opportunities for a number of short coding internships at development companies.</p>
+<p>To improve as a developer, I want to try this approach in the software world. At the end of October I will be leaving London, my home for the past six years, and visiting North America, South East Asia, and Europe. During that time, I&#8217;ll be seeking out opportunities for a number of short coding internships at development companies.</p>
 
 <h2>Why I&#8217;m Doing This</h2>
 
@@ -39,7 +39,7 @@
 
 <p>There&#8217;s also, of course, the benefits of travel &#8211; discovering new cities, meeting new people, and building my network.</p>
 
-<p>I&#8217;ve been inspired by reading about <a href="http://programmingtour.blogspot.com">Corey Haines&#8217; Journeyman pair-programming tour</a>, althought my travels won&#8217;t be quite as extensive as I&#8217;ll be alternating with working on my own projects while travelling.</p>
+<p>I&#8217;ve been inspired by reading about <a href="http://programmingtour.blogspot.com">Corey Haines&#8217; Journeyman pair-programming tour</a>, although my travels won&#8217;t be quite as extensive as I&#8217;ll be alternating with working on my own projects while travelling.</p>
 
 <h2>About Me</h2>
 
@@ -83,14 +83,14 @@
 <p>I&#8217;ll be starting off in North America and I have the following cities on my plan for November and December. Dates and order TBC.</p>
 
 <ul>
-<li>Toronto</li>
-<li>Seattle / Portland</li>
-<li>San Francisco</li>
-<li>Chicago</li>
 <li>New York City</li>
 <li>Boston</li>
+<li>Chicago</li>
+<li>Seattle / Portland</li>
 <li>Atlanta</li>
 <li>Dallas / Austin</li>
+<li>San Francisco</li>
+<li>Toronto</li>
 </ul>
 
 
