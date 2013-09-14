@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-09-14T16:44:15+01:00</updated>
+  <updated>2013-09-14T17:03:26+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -41,6 +41,14 @@
 
 <p>I&#8217;ve been inspired by reading about <a href="http://programmingtour.blogspot.com">Corey Haines&#8217; Journeyman pair-programming tour</a>, although my travels won&#8217;t be quite as extensive as I&#8217;ll be alternating with working on my own projects while travelling.</p>
 
+<h2>What You Get Out Of It</h2>
+
+<p>Probably the biggest benefit is a fresh set of eyes on your code and your process. So it&#8217;s like <a href="http://www.pairprogramwith.me/">#pairwithme</a> but in real life!</p>
+
+<p>Hopefully I can also share some of my knowledge in return, making it a beneficial experience for all involved.</p>
+
+<p>I will be aiming to blog as I work at places (if given consent), so it&#8217;s also an opportunity to raise the profile of your workplace to an audience of developers.</p>
+
 <h2>About Me</h2>
 
 <p>I&#8217;ve been a contract Ruby developer for the past three years, with a bit of JavaScript and iOS development too. I would put my skill level at between mid-level and senior. I&#8217;m a proponent of test-driven development, simple design, clean code, refactoring and pair programming.</p>
@@ -63,18 +71,10 @@
 <ul>
 <li><a href="http://blog.andywaite.com">blog.andywaite.com</a></li>
 <li><a href="http://twitter.com/andyw8">twitter.com/andyw8</a></li>
-<li><a href="http://stackoverflow.com/users/119822/andy-waite">Stack Overflow profile</a></li>
+<li><a href="http://stackoverflow.com/users/119822/andy-waite">StackOverflow profile</a></li>
 <li><a href="http://github.com/andyw8">github.com/andyw8</a></li>
 </ul>
 
-
-<h2>What You Get Out Of It</h2>
-
-<p>Probably the biggest benefit is a fresh set of eyes on your code and your process. So it&#8217;s like <a href="http://www.pairprogramwith.me/">#pairwithme</a> but in real life!</p>
-
-<p>Hopefully I can also share some of my knowledge in return, making it a beneficial experience for all involved.</p>
-
-<p>I will be aiming to blog as I work at places (if given consent), so it&#8217;s also an opportunity to raise the profile of your workplace to an audience of developers.</p>
 
 <h2>The Details</h2>
 
