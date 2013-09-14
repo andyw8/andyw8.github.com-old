@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-06-24T19:50:32+01:00</updated>
+  <updated>2013-09-14T16:16:53+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -11,6 +11,96 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[My Coding Internship World Tour]]></title>
+<link href="http://andyw8.github.com/2013/09/14/coding-world-tour/"/>
+<updated>2013-09-14T16:25:00+01:00</updated>
+<id>http://andyw8.github.com/2013/09/14/coding-world-tour</id>
+
+      <content type="html"><![CDATA[<p>In the culinary industry, a <em><a href="http://en.wikipedia.org/wiki/Stage_(cooking">stage</a>)</em> (pronounced <em>stazhje</em>, from the French <em>stagiaire</em>) is an unpaid internship when a cook or chef works briefly, for free, in another chef&#8217;s kitchen to learn and be exposed to new techniques and cuisines.</p>
+
+<p>To improve as a developer, I want to try this approach in the software industry. At the end of October I will be leaving London, my home for the past six years, and visiting North America, South East Asia, and Europe. During that time, I&#8217;ll be seeking out opportunities for a number of short coding internships at development companies.</p>
+
+<h2>Why I&#8217;m Doing This</h2>
+
+<blockquote><p>&#8220;Every day, work to refine the skills you have and to add new tools to your repertoire. Over the years, you&#8217;ll be amazed at how your experience has blossomed and your skills have grown.&#8221; &#8211; The Pragmatic Programmer, Andrew Hunt and Dave Thomas</p>
+
+<p>&#8220;Be the worst guy in every band you’re in. The people around you affect your own performance. Choose your crowd wisely.&#8221; &#8211; The Passionate Programmer, Chad Fowler</p></blockquote>
+
+<p>I want this experience to give me new perspectives on being a developer, to discover new concepts and techniques, and improve my skills by <a href="http://codeulate.com/2013/08/how-to-improve-as-a-programmer">learning from others</a>.</p>
+
+<p>For the past few years I&#8217;ve worked a contractor for a variety of companies in London, and one of the most interesting aspects is the initial period of joining and discovering how each organisation approaches  development differently. This is always where I learn most and re-think my opinions on the way way to build software.</p>
+
+<p>There&#8217;s also, of course, the benefits of travel &#8211; discovering new cities, meeting new people, and building my network.</p>
+
+<p>I&#8217;ve been inspired by reading about <a href="http://programmingtour.blogspot.com">Corey Haines&#8217; Journeyman pair-programming tour</a>, althought my travels won&#8217;t be quite as extensive as I&#8217;ll be alternating with working on my own projects while travelling.</p>
+
+<h2>About Me</h2>
+
+<p>I&#8217;ve been a contract Ruby developer for the past three years, with a bit of JavaScript and iOS development too. I would put my skill-level at between mid-level and senior. I&#8217;m a proponent of TDD, simple design, clean code, refactoring and pair programming.</p>
+
+<p>My most popular open source project is <a href="https://github.com/andyw8/rubymotion_generators">RubyMotion Generators</a>, as featured in some episodes of <a href="http://motioncasts.tv/">motioncasts.tv</a>. I&#8217;m hoping to get <a href="https://github.com/rails/rails/pull/10471">my first Rails contribution</a> accepted soon!</p>
+
+<p>My side-projects include:</p>
+
+<ul>
+<li><a href="https://itunes.apple.com/gb/app/streetfood-london/id589405547?mt=8">StreetFood London</a></li>
+<li><a href="http://techradar.io">techradar.io</a> (under development)</li>
+<li>Confreaks iOS app (under development)</li>
+</ul>
+
+
+<p>I also coach a few aspiring developers via <a href="http://www.railsmentors.org">RailsMentors</a></p>
+
+<p>Around the web:</p>
+
+<ul>
+<li><a href="http://blog.andywaite.com">blog.andywaite.com</a></li>
+<li><a href="http://twitter.com/andyw8">twitter.com/andyw8</a></li>
+<li><a href="http://stackoverflow.com/users/119822/andy-waite">Stack Overflow profile</a></li>
+<li><a href="http://github.com/andyw8">github.com/andyw8</a></li>
+</ul>
+
+
+<h2>What You Get Out Of It</h2>
+
+<p>Probably the biggest benefit is a fresh set of eyes on your code and your process. So it&#8217;s like <a href="http://www.pairprogramwith.me/">#pairwithme</a> but in real life!</p>
+
+<p>Hopefully I can also share some of my knowledge in return, making it a beneficial experience for all involved.</p>
+
+<p>I will be aiming to blog as I work at places (if given consent), so it&#8217;s also an opportunity to raise the profile of your workplace to an audience of developers.</p>
+
+<h2>The Details</h2>
+
+<p>The duration of each position might be anywhere from one day to a week. I&#8217;m happy to work with people of different skill levels during each visit.</p>
+
+<p>I&#8217;ll be starting off in North America and I have the following cities on my plan for November and December. Dates and order TBC.</p>
+
+<ul>
+<li>Toronto</li>
+<li>Seattle / Portland</li>
+<li>San Francisco</li>
+<li>Chicago</li>
+<li>New York City</li>
+<li>Boston</li>
+<li>Atlanta</li>
+<li>Dallas / Austin</li>
+</ul>
+
+
+<p>I then plan to be in Asia in January-February and in Europe by March.</p>
+
+<h2>Want To Get Involved?</h2>
+
+<p>If you work at development company in one the above cities, and you are interesting in having me visit during November or December, then please fill in <a href="https://docs.google.com/forms/d/1H8ebmfZ2IP1ZvPr1xG9UgMnM5M3mjwqXvPj22TjAxt4/viewform"><strong>this form</strong></a> with some details and I&#8217;ll get back to you as soon as I can.</p>
+<p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
     <entry>
       
