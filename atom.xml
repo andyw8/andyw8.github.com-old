@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-09-18T10:58:22+01:00</updated>
+  <updated>2013-09-18T11:01:50+01:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -23,21 +23,21 @@
 <updated>2013-09-17T22:51:00+01:00</updated>
 <id>http://andyw8.github.com/2013/09/17/promoting-my-coding-world-tour</id>
 
-      <content type="html"><![CDATA[<p>I announced plans for my Coding World Tour in a <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">previous blog post</a>. The next challenge is let people know about it.</p>
+      <content type="html"><![CDATA[<p>I announced plans for my Coding World Tour in a <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">previous blog post</a>. The next challenge is to make sure people know about it.</p>
 
-<p>Other than a couple of posts on Twitter and a share on LinkedIn, I haven&#8217;t yet done anything to promote it. This post describes my next steps for spreading the word.</p>
+<p>Other than a couple of posts on Twitter and a share on LinkedIn, I haven&#8217;t yet done much promotion. This post describes my next steps for spreading the word.</p>
 
 <h2>Personal Network</h2>
 
-<p>I know a handful of people in some of the cities on my list, so I&#8217;ll be sending out a few requests for them to spread the word.</p>
+<p>I know a handful of people in some of the cities on my list, so I&#8217;ll be asking them to share my post with their local contacts.</p>
 
 <h2> Regional User Groups</h2>
 
-<p>Every city I plan to visit has a least one Ruby or Rails user group. I think these will probably be my best best for finding coding opportunities:</p>
+<p>Every city I plan to visit has a least one Ruby or Rails user group. I think these will probably be my best bet for finding coding opportunities:</p>
 
 <ul>
-<li>New York City <a href="http://www.meetup.com/NYC-rb/">NYC.rb</a></li>
-<li>Boston <a href="http://bostonrb.org/">Boston Ruby Group</a></li>
+<li>New York City: <a href="http://www.meetup.com/NYC-rb/">NYC.rb</a></li>
+<li>Boston: <a href="http://bostonrb.org/">Boston Ruby Group</a></li>
 <li>Chicago: <a href="http://www.chicagoruby.org/">ChicagoRuby</a></li>
 <li>Seattle: <a href="http://www.seattlerb.org/">Seattle.rb</a></li>
 <li>Portland: <a href="http://pdxruby.org/">Portland Ruby Brigade</a></li>
@@ -51,29 +51,25 @@
 
 <p>It might seem wrong to focus on Ruby, but it tends to have the best community. Also, many Ruby developers are polyglot programmers, so it may well lead to opportunities beyond Ruby.</p>
 
-<h1>Ruby Forums</h1>
-
-<p>I&#8217;ve posted in a couple of forums:</p>
+<h2>Ruby Forums</h2>
 
 <ul>
-<li><a href="http://parley.rubyrogues.com/">Ruby Rogues Parley</a> (not public) - <a href="http://parley.rubyrogues.com/t/my-coding-world-tour/1067">my post</a></li>
-<li>ThoughtBot Prime forum (not public)</li>
+<li><a href="http://parley.rubyrogues.com/">Ruby Rogues Parley</a></li>
+<li>ThoughtBot Prime forum</li>
 </ul>
 
 
-<h1>Individual Companies</h1>
+<h2>Individual Companies</h2>
 
-<p>There are a number of companies I admire who I&#8217;d like to spend a few days with, who I may approach directly, but I&#8217;m going to wait and see what offers I get first.</p>
+<p>There are a number of companies I admire who I&#8217;d like to spend a few days with, so I may approach them directly, but I&#8217;m going to wait and see what offers I get first.</p>
 
-<h1>Other Publications</h1>
+<h2>Other Publications</h2>
 
-<p>These would be harder to get a mention from, but could be very could publicity:</p>
+<p>These would be harder to get a mention from, but could be very good publicity:</p>
 
-<h1> <a href="http://ruby5.envylabs.com/">Ruby5 podcast</a></h1>
-
-<h1><a href="http://rubyrogues.com/">RubyRogues podcast</a></h1>
-
-<h1><a href="http://rubyweekly.com/">RubyWeekly</a></h1>
+<p>* <a href="http://ruby5.envylabs.com/">Ruby5 podcast</a>
+* <a href="http://rubyrogues.com/">RubyRogues podcast</a>
+* <a href="http://rubyweekly.com/">RubyWeekly</a></p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/17/promoting-my-coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
@@ -164,7 +160,7 @@
 
 <h2>Want To Get Involved?</h2>
 
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#x74;&#111;&#x75;&#114;&#x40;&#97;&#x6e;&#x64;&#121;&#119;&#x61;&#105;&#116;&#x65;&#46;&#99;&#111;&#x6d;">&#116;&#111;&#117;&#x72;&#64;&#x61;&#110;&#100;&#x79;&#x77;&#x61;&#105;&#116;&#101;&#46;&#x63;&#111;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
+<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#x74;&#x6f;&#117;&#x72;&#x40;&#x61;&#x6e;&#x64;&#121;&#119;&#97;&#x69;&#116;&#101;&#46;&#99;&#111;&#109;">&#x74;&#111;&#x75;&#x72;&#x40;&#97;&#110;&#x64;&#121;&#119;&#97;&#105;&#x74;&#x65;&#46;&#x63;&#111;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
