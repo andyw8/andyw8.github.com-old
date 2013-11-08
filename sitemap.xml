@@ -2,64 +2,76 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://andyw8.github.com/2012/04/18/first-post-with-octopress/</loc>
-        <lastmod>2012-08-10T16:25:03+01:00</lastmod>
+        <lastmod>2012-08-10T11:25:03-04:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2012/05/28/rubymotion-app-template/</loc>
-        <lastmod>2012-08-10T16:25:03+01:00</lastmod>
+        <lastmod>2012-08-10T11:25:03-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/
         </loc>
-        <lastmod>2012-12-05T15:59:46+00:00</lastmod>
+        <lastmod>2012-12-05T10:59:46-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2012/08/20/cucumber-bdd-london-2012/</loc>
-        <lastmod>2012-08-23T12:01:27+01:00</lastmod>
+        <lastmod>2012-08-23T07:01:27-04:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2012/08/22/tdd-triangulation-practice/</loc>
-        <lastmod>2012-08-29T17:37:58+01:00</lastmod>
+        <lastmod>2012-08-29T12:37:58-04:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2012/12/05/zeus-cucumber-guard/</loc>
-        <lastmod>2012-12-05T16:02:25+00:00</lastmod>
+        <lastmod>2012-12-05T11:02:25-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4/</loc>
-        <lastmod>2012-12-24T10:38:11+00:00</lastmod>
+        <lastmod>2012-12-24T05:38:11-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/</loc>
-        <lastmod>2013-02-23T10:51:54+00:00</lastmod>
+        <lastmod>2013-02-23T05:51:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/</loc>
-        <lastmod>2013-03-01T14:37:07+00:00</lastmod>
+        <lastmod>2013-03-01T09:37:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2013/09/14/coding-world-tour/</loc>
-        <lastmod>2013-09-20T19:59:11+01:00</lastmod>
+        <lastmod>2013-09-20T14:59:11-04:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/2013/09/17/promoting-my-coding-world-tour/</loc>
-        <lastmod>2013-09-24T15:05:49+01:00</lastmod>
+        <lastmod>2013-09-24T10:05:49-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://andyw8.github.com/2013/10/31/the-coding-tour-begins/</loc>
+        <lastmod>2013-11-04T12:20:55-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://andyw8.github.com/2013/11/02/thoughtbot-boston/</loc>
+        <lastmod>2013-11-04T16:14:34-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/archives/</loc>
-        <lastmod>2013-09-24T15:05:49+01:00</lastmod>
+        <lastmod>2013-11-04T16:14:34-05:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/hire-me/</loc>
-        <lastmod>2013-09-24T15:03:41+01:00</lastmod>
+        <lastmod>2013-09-24T10:03:41-04:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/</loc>
-        <lastmod>2013-09-24T15:05:49+01:00</lastmod>
+        <lastmod>2013-11-04T16:14:34-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://andyw8.github.com/qr/</loc>
+        <lastmod>2013-10-13T10:34:05-04:00</lastmod>
     </url>
     <url>
         <loc>http://andyw8.github.com/schedule/</loc>
-        <lastmod>2013-09-24T15:02:36+01:00</lastmod>
+        <lastmod>2013-11-04T16:34:45-05:00</lastmod>
     </url>
 </urlset>
