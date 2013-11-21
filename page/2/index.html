@@ -92,6 +92,245 @@
   <header>
     <h1 class="entry-title">
 
+<a href="/2012/08/20/cucumber-bdd-london-2012/">Cucumber, BDD and London 2012</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-20T19:54:00-05:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/08/20/cucumber-bdd-london-2012/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sport Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
+
+<p>My role was as a Developer-in-Test, in which I used my coding background to help build quality into the end product using techniques such as Specification by Example, Continuous Integration and Behaviour-Driven Development.</p>
+
+<p>This post describes how we made use of Ruby, Cucumber and some other tools in our approach. (I have simplified some aspects for the sake of readability and conciseness).</p>
+
+<h2>Architecture Overview</h2>
+
+<p>The BBC Forge platform uses PHP and Zend at the front-end and connects to a number of back-end services over HTTP. For the Olympics coverage, some data would provided by a third-party as a REST API serving XML responses.</p>
+
+<p>A major challenge was that the third-party APIs had not yet been built. We were given examples of what to expect in the responses but our development would have to be done in parallel with the third-party&#8217;s own development.</p>
+
+<h2>Requirements Analysis</h2>
+
+<p>We wrote specifications using the Gherkin format, keeping in mind <a href="http://www.amazon.co.uk/gp/product/0321205685">Mike Cohn&#8217;s INVEST guidelines</a> which say stories should be:</p>
+
+<ul>
+<li>Independent</li>
+<li>Negotiable</li>
+<li>Valuable</li>
+<li>Estimable</li>
+<li>Small</li>
+<li>Testable</li>
+</ul>
+
+
+<p>As an example, consider the story for the <a href="http://www.bbc.co.uk/sport/olympics/2012/medals/countries">medals table</a>. There are <a href="http://en.wikipedia.org/wiki/Olympic_medal_table">very particular rules</a> for the correct order to list the countries in the medals table. Working with developers and business analysts, we came up with the following acceptance criteria:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='Gherkin'><span class='line'><span class="k">Feature:</span><span class="nf"> Medals Table</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  Countries are ranked by the number of golds, silvers,</span>
+</span><span class='line'><span class="nf">  then bronzes, followed by their official IOC code.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> No medals</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">no medals have been awarded</span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">a placeholder message should be present</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Different number of gold</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">      |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 3</span><span class="k">    |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 1</span><span class="k">    |     </span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Same number of gold but different number of silver</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">      |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Same number of gold and silver but different number of bronze</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the medals:</span>
+</span><span class='line'><span class="k">      |</span><span class="s"> country</span><span class="k">       |</span><span class="s"> gold</span><span class="k"> |</span><span class="s"> silver</span><span class="k"> |</span><span class="s"> bronze</span><span class="k"> |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> United States</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 3</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> China</span><span class="k">         |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 1</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="k">      |</span><span class="s"> Great Britain</span><span class="k"> |</span><span class="s"> 2</span><span class="k">    |</span><span class="s"> 2</span><span class="k">      |</span><span class="s"> 2</span><span class="k">      |</span><span class="nf"></span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be United States, Great Britain, China</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Same number of gold, silver and bronze</span>
+</span><span class='line'><span class="k">    Given </span><span class="nf">the United States, China and Great Britain have equal gold, silver and bronze </span>
+</span><span class='line'><span class="nf">    </span><span class="k">When </span><span class="nf">I view the medals table</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Then </span><span class="nf">the ranking should be China, Great Britain, United States</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(The <a href="http://en.wikipedia.org/wiki/List_of_IOC_country_codes">IOC code</a> is a three-letter acronym such as USA or GBR)</p>
+
+<p>Our data provider supplied examples of the XML format which looked something like this:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;countries&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;country</span> <span class="na">name=</span><span class="s">&quot;United States&quot;</span> <span class="na">code=</span><span class="s">&quot;USA&quot;</span> <span class="na">gold=</span><span class="s">&quot;1&quot;</span> <span class="na">silver=</span><span class="s">&quot;2&quot;</span> <span class="na">bronze=</span><span class="s">&quot;3&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;country</span> <span class="na">name=</span><span class="s">&quot;Great Britain&quot;</span> <span class="na">code=</span><span class="s">&quot;GBR&quot;</span> <span class="na">gold=</span><span class="s">&quot;1&quot;</span> <span class="na">silver=</span><span class="s">&quot;2&quot;</span> <span class="na">bronze=</span><span class="s">&quot;3&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/countries&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So in order to test all five scenarios above, a different XML fixture would be needed for each one. Creating these by hand would be time-consuming, and most of the feeds were more complex than this example. Additionally, the XML structure was subject to change, which would also add to the maintenance burden.</p>
+
+<p>So to automate this, I built a template with placeholders which could be populated with the appropriate data for each scenario.</p>
+
+<p>I chose to use the <a href="http://liquidmarkup.org/">Liquid</a> templating library as the curly braces stand out from the surrounding XML, but there are numerous other viable choices. Converted into a Liquid template, the XML example above would look something like:</p>
+
+<div><script src='https://gist.github.com/3433069.js?file=template.liquid.xml'></script>
+<noscript><pre><code>&lt;countries&gt;
+  {% for country in countries %}
+  &lt;country name=&quot;{{ country.name }}&quot; code=&quot;{{ country.code }}&quot; gold=&quot;{{ country.gold }}&quot; silver=&quot;{{ country.silver }}&quot; bronze=&quot;{{ country.bronze }}&quot; /&gt;
+  {% endfor %}
+&lt;/countries&gt;</code></pre></noscript></div>
+
+
+<p>So then, the required fixtures could be generated using code such as:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span> <span class="s1">&#39;countries&#39;</span> <span class="o">=&gt;</span> <span class="o">[</span>
+</span><span class='line'>  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">code</span><span class="p">:</span> <span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">gold</span><span class="p">:</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="n">silver</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">bronze</span><span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
+</span><span class='line'>  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Great Britain&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">code</span><span class="p">:</span> <span class="s1">&#39;GBR&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">gold</span><span class="p">:</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="n">silver</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">bronze</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span> <span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The next challenge was how to run tests against these fixtures. As the site isn&#8217;t built in Ruby, stubbing the HTTP classes wasn&#8217;t an option. Instead, I used <a href="http://artemave.github.com/2012/05/27/stub-like-a-surgeon-spy-like-james-bond-with-rest-assured/">REST-Assured</a>, a highly-useful testing tool built by another BBC contractor <a href="http://artemave.github.com/">Artem Avetisyan</a>.</p>
+
+<p>REST-Assured has a simple API which defines that a particular query string should give a specified response:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Given</span> <span class="sr">/^there no medals have been awarded &quot;([^&quot;])*&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">query</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">xml</span> <span class="o">=</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span> <span class="s1">&#39;countries&#39;</span> <span class="o">=&gt;</span> <span class="o">[]</span>
+</span><span class='line'>  <span class="no">RestAssured</span><span class="o">::</span><span class="no">Double</span><span class="o">.</span><span class="n">create</span> <span class="n">fullpath</span><span class="p">:</span> <span class="s2">&quot;/medals&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="n">xml</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We ran REST-Assured on Heroku for convenience. For the testing environment, we added a hook so that a the API endpoint configuration could be overridden using a query string parameter, e.g. http://test.bbc.co.uk/olympics/medals?host=bbc382981.herokuapp.com</p>
+
+<p>These Cucumber scenarios formed part of our continous integration builds running on Hudson, helping to make the BBC&#8217;s London 2012 coverage <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/08/digital_olympics_reach_stream_stats.html">a great success</a>.</p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2012/08/20/cucumber-bdd-london-2012/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
 <a href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">How to Easily Delete a Large Amazon S3 Bucket</a>
 
 </h1>
@@ -110,7 +349,7 @@
   
 
 
-<time datetime="2012-08-08T14:32:00-04:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+<time datetime="2012-08-08T14:32:00-05:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">Permalink</a>
       </p>
     
@@ -177,7 +416,7 @@
   
 
 
-<time datetime="2012-05-28T22:17:00-04:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time>
+<time datetime="2012-05-28T22:17:00-05:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/05/28/rubymotion-app-template/">Permalink</a>
       </p>
     
@@ -242,7 +481,7 @@
   
 
 
-<time datetime="2012-04-18T23:37:00-04:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
+<time datetime="2012-04-18T23:37:00-05:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/04/18/first-post-with-octopress/">Permalink</a>
       </p>
     
@@ -277,6 +516,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/11/20/tablexi/">TableXI Chicago</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/02/thoughtbot-boston/">thoughtbot, Boston</a>
       </li>
     
@@ -290,10 +533,6 @@
     
       <li class="post">
         <a href="/2013/09/14/coding-world-tour/">My Coding World Tour</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Minimal Rakefile for RSpec, Cucumber and Jasmine</a>
       </li>
     
   </ul>
