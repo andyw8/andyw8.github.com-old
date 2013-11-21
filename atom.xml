@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-11-20T22:12:44-06:00</updated>
+  <updated>2013-11-20T22:16:32-06:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -18,7 +18,7 @@
 
 
 
-<title type="html"><![CDATA[TableXI Chicago]]></title>
+<title type="html"><![CDATA[TableXI, Chicago]]></title>
 <link href="http://andyw8.github.com/2013/11/20/tablexi/"/>
 <updated>2013-11-20T20:04:00-06:00</updated>
 <id>http://andyw8.github.com/2013/11/20/tablexi</id>
@@ -37,7 +37,7 @@
 
 <p><img src="https://dl-web.dropbox.com/get/BlogImages/TableXI/board.jpg?w=AADunPczjA55cqd2aamETK-k81ucbikUS3KDbQoEVNV9Pg" alt="Chalkboard" /></p>
 
-<p>The often have guests working in the office, so today I was grateful to pair with <a href="http://twitter.com/theotherzach">Zack Briggs</a> of TestDouble. He was working on a Chrome plugin using Angular.js for measuring JavaScript performance.</p>
+<p>The often have guests working in the office, so today I was grateful to pair with <a href="http://twitter.com/theotherzach">Zack Briggs</a> of <a href="http://www.testdouble.com/">Test Double</a>. He was working on a Chrome plugin using Angular.js for measuring JavaScript performance.</p>
 
 <p>Below is a bunch of miscelleanous notes, observations and links from today:</p>
 
@@ -47,21 +47,20 @@
 <li>Backbone tends to be significantly slower than Angular or Ember - you can see this on the <a href="http://todomvc.com/">TodoMVC</a> site after adding about 30 items.</li>
 <li>Angular&#8217;s use of additional attributes may feel awkward at first, but it means there&#8217;s almost never a need to add IDs or classes solely for behaviour</li>
 <li>Angular&#8217;s <code>ng-repeat</code> makes dealing with collections much cleaner than using subviews</li>
-<li>The pipe character (|) is slightly odd at first - <a href="http://stackoverflow.com/questions/15223447/syntax-for-ng-repeat-angular-directive-and-pipe-character">StackOverflow post</a></li>
+<li>The use of the pipe character (|) in Angular seems slightly odd at first - <a href="http://stackoverflow.com/questions/15223447/syntax-for-ng-repeat-angular-directive-and-pipe-character">StackOverflow post</a></li>
 <li><a href="http://backbonejs.org/docs/backbone.html">Backbone.js has nicely annoted source</a></li>
 <li>NPM solves the problem of competing dependencies by having multiple copies of a dependant library. Rather different from RubyGems.</li>
 <li>Sometimes code can be &#8220;so DRY that it&#8217;s chafing&#8221;</li>
-<li><a href="http://devbootcamp.com/">Dev Bootcamp</a></li>
+<li><a href="http://devbootcamp.com/">Dev Bootcamp</a>, another Chicago company.</li>
 <li><a href="http://stackoverflow.com/questions/16823746/backbone-js-listento-vs-on">Backbone.js: .listenTo vs .on</a> to avoid phantom views</li>
 <li><a href="https://www.google.com/intl/en/chrome/browser/canary.html">Chrome Canary</a> can be a useful sandbox if you&#8217;re building an extension and don&#8217;t want to mess up your main browser</li>
 <li><a href="http://www.alfredapp.com/">Alfred</a>, an alternative to QuickSilver, LaunchBar, etc.</li>
-<li><a href="http://livereload.com/">LiveReload</a></li>
 <li><a href="http://www.youtube.com/watch?v=yuh9COzp5vo">An Intervention for ActiveRecord</a></li>
 <li>Some recommended Destroy All Software episodes covering VIM and shell: <a href="https://www.destroyallsoftware.com/screencasts/catalog/processes-and-jobs">Processes and Jobs</a>, <a href="https://www.destroyallsoftware.com/screencasts/catalog/file-navigation-in-vim">File Navigation in Vim</a>, <a href="https://www.destroyallsoftware.com/screencasts/catalog/the-vimrc">The .vimrc</a></li>
 <li>All the Vim you need to get started and be productive can easily fit on an index card</li>
 <li>I knew some of the common Bash keyboard shortcuts, but I never realised they were inspired by emacs. You can also set bash to use vi mode.</li>
 <li><a href="http://www.confreaks.com/videos/364-gogaruco2010-workflow">Golden Gate Ruby Conference 2010 - Workflow - Ryan Davis</a></li>
-<li><a href="http://www.confreaks.com/videos/2427-railsconf2013-nobody-will-train-you-but-you">Nobody will train you but you</a> - Zack&#8217;s talk from RailsConf 2013</li>
+<li><a href="http://www.confreaks.com/videos/2427-railsconf2013-nobody-will-train-you-but-you">Nobody will train you but you</a> - Zach&#8217;s talk from RailsConf 2013</li>
 <li><a href="https://github.com/robbyrussell/oh-my-zsh">Oh My ZSH</a></li>
 <li>Consider setting your shell prompt to indicate a dirty index or untracked files (see <a href="http://stackoverflow.com/questions/2657935/checking-for-a-dirty-index-or-untracked-files-with-git">this StackOverflow post</a>)</li>
 <li>When you set a breakpoint in JavaScript, you can hover over variables to see their current state</li>
@@ -279,7 +278,7 @@
 
 <h2>Want To Get Involved?</h2>
 
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x74;&#x6f;&#x75;&#114;&#64;&#x61;&#110;&#100;&#x79;&#x77;&#x61;&#x69;&#x74;&#101;&#x2e;&#99;&#x6f;&#109;">&#116;&#x6f;&#117;&#x72;&#x40;&#x61;&#x6e;&#x64;&#x79;&#x77;&#x61;&#x69;&#116;&#101;&#46;&#x63;&#x6f;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
+<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#116;&#111;&#x75;&#114;&#x40;&#97;&#x6e;&#100;&#121;&#119;&#97;&#105;&#116;&#101;&#46;&#99;&#x6f;&#x6d;">&#x74;&#111;&#x75;&#x72;&#x40;&#x61;&#110;&#100;&#x79;&#119;&#97;&#x69;&#x74;&#101;&#x2e;&#99;&#111;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
