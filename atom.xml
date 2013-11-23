@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2013-11-21T20:24:41-06:00</updated>
+  <updated>2013-11-23T11:01:46-05:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -20,7 +20,7 @@
 
 <title type="html"><![CDATA[TableXI, Chicago]]></title>
 <link href="http://andyw8.github.com/2013/11/20/tablexi-chicago/"/>
-<updated>2013-11-20T20:04:00-06:00</updated>
+<updated>2013-11-20T20:04:00-05:00</updated>
 <id>http://andyw8.github.com/2013/11/20/tablexi-chicago</id>
 
       <content type="html"><![CDATA[<p><a href="http://www.tablexi.com/">TableXI</a> are based in a spacious loft-style office in the West Loop area of Chicago. The place has lots of nice touches highlighting the history and culture of the company, such as the recreation of their logo using just pins and string:</p>
@@ -43,7 +43,7 @@
 
 <ul>
 <li><a href="http://www.amazon.com/dp/B0083I7Y8W">Logitech Conference Cam</a></li>
-<li><a href="http://lodash.com/">Lo-Dash</a> is a Backbone.js replacement, with benefits including faster performance</li>
+<li><a href="http://lodash.com/">Lo-Dash</a> is a Underscore.js replacement, with benefits including faster performance</li>
 <li>Backbone tends to be significantly slower than Angular or Ember - you can see this on the <a href="http://todomvc.com/">TodoMVC</a> site after adding about 30 items.</li>
 <li>Angular&#8217;s use of additional attributes may feel awkward at first, but it means there&#8217;s almost never a need to add IDs or classes solely for behaviour</li>
 <li>Angular&#8217;s <code>ng-repeat</code> makes dealing with collections much cleaner than using subviews</li>
@@ -78,7 +78,7 @@
 
 <title type="html"><![CDATA[8th Light, Chicago]]></title>
 <link href="http://andyw8.github.com/2013/11/19/8th-light-chicago/"/>
-<updated>2013-11-19T16:17:00-06:00</updated>
+<updated>2013-11-19T16:17:00-05:00</updated>
 <id>http://andyw8.github.com/2013/11/19/8th-light-chicago</id>
 
       <content type="html"><![CDATA[<p>Placeholder, write-up coming soon.</p>
@@ -93,7 +93,7 @@
 
 <title type="html"><![CDATA[Hashrocket, Chicago]]></title>
 <link href="http://andyw8.github.com/2013/11/18/hashrocket-chicago/"/>
-<updated>2013-11-18T16:17:00-06:00</updated>
+<updated>2013-11-18T16:17:00-05:00</updated>
 <id>http://andyw8.github.com/2013/11/18/hashrocket-chicago</id>
 
       <content type="html"><![CDATA[<p>Placeholder, write-up coming soon.</p>
@@ -108,7 +108,7 @@
 
 <title type="html"><![CDATA[RubyConf 2013, Miami Beach]]></title>
 <link href="http://andyw8.github.com/2013/11/13/rubyconf-2013-miami-beach/"/>
-<updated>2013-11-13T14:45:00-06:00</updated>
+<updated>2013-11-13T14:45:00-05:00</updated>
 <id>http://andyw8.github.com/2013/11/13/rubyconf-2013-miami-beach</id>
 
       <content type="html"><![CDATA[<p>Placeholder, write-up coming soon.</p>
@@ -123,7 +123,7 @@
 
 <title type="html"><![CDATA[Pivotal Labs, New York City]]></title>
 <link href="http://andyw8.github.com/2013/11/06/pivotal-labs-new-york-city/"/>
-<updated>2013-11-06T13:58:00-06:00</updated>
+<updated>2013-11-06T13:58:00-05:00</updated>
 <id>http://andyw8.github.com/2013/11/06/pivotal-labs-new-york-city</id>
 
       <content type="html"><![CDATA[<p>Placeholder, write-up coming soon.</p>
@@ -138,7 +138,7 @@
 
 <title type="html"><![CDATA[Thoughtbot, Boston]]></title>
 <link href="http://andyw8.github.com/2013/11/02/thoughtbot-boston/"/>
-<updated>2013-11-02T07:39:00-05:00</updated>
+<updated>2013-11-02T07:39:00-04:00</updated>
 <id>http://andyw8.github.com/2013/11/02/thoughtbot-boston</id>
 
       <content type="html"><![CDATA[<p>Thoughtbot&#8217;s office is next to the scenic <a href="http://en.wikipedia.org/wiki/Boston_Common">Boston Common</a>, and was just a short walk from my hotel.</p>
@@ -173,7 +173,7 @@
 
 <title type="html"><![CDATA[The Coding Tour Begins]]></title>
 <link href="http://andyw8.github.com/2013/10/31/the-coding-tour-begins/"/>
-<updated>2013-10-31T23:45:00-05:00</updated>
+<updated>2013-10-31T23:45:00-04:00</updated>
 <id>http://andyw8.github.com/2013/10/31/the-coding-tour-begins</id>
 
       <content type="html"><![CDATA[<p>So after the past several months of planning, and a few hectic weeks of moving out out of my apartment, I&#8217;ve at last set off on my World Coding Tour. I&#8217;m writing this from a hotel room in Boston, where I&#8217;ll be visiting <a href="http://thoughtbot.com/">ThoughtBot</a> tomorrow.</p>
@@ -190,7 +190,7 @@
 
 <title type="html"><![CDATA[Promoting my Coding Tour]]></title>
 <link href="http://andyw8.github.com/2013/09/17/promoting-my-coding-world-tour/"/>
-<updated>2013-09-17T22:51:00-05:00</updated>
+<updated>2013-09-17T22:51:00-04:00</updated>
 <id>http://andyw8.github.com/2013/09/17/promoting-my-coding-world-tour</id>
 
       <content type="html"><![CDATA[<h2>Previous Post: <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">My Coding World Tour</a></h2>
@@ -258,7 +258,7 @@
 
 <title type="html"><![CDATA[My Coding World Tour]]></title>
 <link href="http://andyw8.github.com/2013/09/14/coding-world-tour/"/>
-<updated>2013-09-14T16:25:00-05:00</updated>
+<updated>2013-09-14T16:25:00-04:00</updated>
 <id>http://andyw8.github.com/2013/09/14/coding-world-tour</id>
 
       <content type="html"><![CDATA[<p>In the culinary world, a <a href="http://en.wikipedia.org/wiki/Stage_%28cooking%29"><em>stage</em></a> (pronounced <em>stazhje</em>, from the French <em>stagiaire</em>) is an unpaid internship when a cook or chef works briefly, for free, in another chef&#8217;s kitchen to learn and be exposed to new techniques and cuisines.</p>
@@ -338,7 +338,7 @@
 
 <h2>Want To Get Involved?</h2>
 
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#116;&#111;&#x75;&#x72;&#x40;&#97;&#x6e;&#100;&#x79;&#119;&#x61;&#105;&#116;&#101;&#46;&#x63;&#x6f;&#109;">&#x74;&#x6f;&#117;&#114;&#64;&#97;&#x6e;&#x64;&#121;&#119;&#x61;&#105;&#116;&#x65;&#46;&#99;&#111;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
+<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x74;&#x6f;&#x75;&#114;&#64;&#97;&#110;&#x64;&#x79;&#x77;&#x61;&#105;&#x74;&#101;&#x2e;&#99;&#111;&#x6d;">&#116;&#x6f;&#117;&#x72;&#x40;&#97;&#x6e;&#x64;&#121;&#119;&#97;&#105;&#116;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
@@ -350,7 +350,7 @@
 
 <title type="html"><![CDATA[Minimal Rakefile for RSpec, Cucumber and Jasmine]]></title>
 <link href="http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine/"/>
-<updated>2013-02-28T12:30:00-06:00</updated>
+<updated>2013-02-28T12:30:00-05:00</updated>
 <id>http://andyw8.github.com/2013/02/28/rakefile-cucumber-rspec-jasmine</id>
 
       <content type="html"><![CDATA[<p>I found I was repeatedly Googling for the Rakefile configuration to run various kinds of tests, so for my own reference, and hopefully someone else&#8217;s, here&#8217;s an example:</p>
@@ -388,7 +388,7 @@
 
 <title type="html"><![CDATA[Playing with (RSpec)-Fire]]></title>
 <link href="http://andyw8.github.com/2013/02/21/playing-with-rspec-fire/"/>
-<updated>2013-02-21T22:07:00-06:00</updated>
+<updated>2013-02-21T22:07:00-05:00</updated>
 <id>http://andyw8.github.com/2013/02/21/playing-with-rspec-fire</id>
 
       <content type="html"><![CDATA[<p>I&#8217;ve heard <a href="https://github.com/xaviershay/rspec-fire">rspec-fire</a> mentioned in a few talks by <a href="https://twitter.com/garybernhardt">Gary Bernhardt</a> as a way to keep test doubles in sync with their real classes. This prevents the risk of all the isolated tests passing but the actual app being broken, which is a common concern when doing <a href="http://www.growing-object-oriented-software.com/">GOOS</a>-style testing where all the collaborators are replaced by test doubles.</p>
@@ -602,7 +602,7 @@ User#suspend!
 
 <title type="html"><![CDATA[Exploring Concerns for Rails 4]]></title>
 <link href="http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4/"/>
-<updated>2012-12-23T17:54:00-06:00</updated>
+<updated>2012-12-23T17:54:00-05:00</updated>
 <id>http://andyw8.github.com/2012/12/23/exploring-concerns-for-rails-4</id>
 
       <content type="html"><![CDATA[<p>A <a href="http://railscasts.com/episodes/398-service-objects">recent episode</a> of Railscasts Pro covered two approaches to splitting up a large Rails model – <strong>Concerns</strong> and <strong>Service Objects</strong>.</p>
@@ -776,7 +776,7 @@ User#suspend!
 
 <title type="html"><![CDATA[Using Zeus with Cucumber and Guard]]></title>
 <link href="http://andyw8.github.com/2012/12/05/zeus-cucumber-guard/"/>
-<updated>2012-12-05T14:13:00-06:00</updated>
+<updated>2012-12-05T14:13:00-05:00</updated>
 <id>http://andyw8.github.com/2012/12/05/zeus-cucumber-guard</id>
 
       <content type="html"><![CDATA[<p><a href="https://github.com/burke/zeus">Zeus</a> is rapidly overtaking <a href="https://github.com/sporkrb/spork">Spork</a> as the tool of choice to speed up running Cucumber integration tests against Rails apps.</p>
@@ -884,7 +884,7 @@ User#suspend!
 
 <title type="html"><![CDATA[TDD Triangulation Practice]]></title>
 <link href="http://andyw8.github.com/2012/08/22/tdd-triangulation-practice/"/>
-<updated>2012-08-22T13:50:00-05:00</updated>
+<updated>2012-08-22T13:50:00-04:00</updated>
 <id>http://andyw8.github.com/2012/08/22/tdd-triangulation-practice</id>
 
       <content type="html"><![CDATA[<p>After attending <a href="http://www.codemanship.co.uk/tddworkshop.html">Jason Goreman&#8217;s Intensive TDD workshop</a>, I decided to have some practice at the triangulation aspect of Test-Driven Development. I strictly kept to the TDD mantra of:</p>
@@ -1422,7 +1422,7 @@ User#suspend!
 
 <title type="html"><![CDATA[Cucumber, BDD and London 2012]]></title>
 <link href="http://andyw8.github.com/2012/08/20/cucumber-bdd-london-2012/"/>
-<updated>2012-08-20T19:54:00-05:00</updated>
+<updated>2012-08-20T19:54:00-04:00</updated>
 <id>http://andyw8.github.com/2012/08/20/cucumber-bdd-london-2012</id>
 
       <content type="html"><![CDATA[<p>I recently finished a contract with BBC Future Media working on the <a href="http://www.bbc.co.uk/sport/0/olympics/2012/">London 2012 Olympics coverage</a>. I was part of the <a href="http://www.bbc.co.uk/blogs/bbcinternet/2012/03/sport_olympic_service_update.html">Sport Olympic Service team</a> which published pages for each athlete, country, discipline, event and venue as well as the medal tables.</p>
@@ -1623,7 +1623,7 @@ User#suspend!
 
 <title type="html"><![CDATA[How to easily delete a large Amazon S3 Bucket]]></title>
 <link href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/"/>
-<updated>2012-08-08T14:32:00-05:00</updated>
+<updated>2012-08-08T14:32:00-04:00</updated>
 <id>http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket</id>
 
       <content type="html"><![CDATA[<p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
@@ -1652,7 +1652,7 @@ User#suspend!
 
 <title type="html"><![CDATA[RubyMotion App Template]]></title>
 <link href="http://andyw8.github.com/2012/05/28/rubymotion-app-template/"/>
-<updated>2012-05-28T22:17:00-05:00</updated>
+<updated>2012-05-28T22:17:00-04:00</updated>
 <id>http://andyw8.github.com/2012/05/28/rubymotion-app-template</id>
 
       <content type="html"><![CDATA[<p>I&#8217;ve been trying out <a href="http://www.rubymotion.com/">RubyMotion</a> lately, and I&#8217;ve created a simple template project with some sensible defaults to make it quick and easy to start a new app:</p>
@@ -1679,7 +1679,7 @@ User#suspend!
 
 <title type="html"><![CDATA[First Post With Octopress]]></title>
 <link href="http://andyw8.github.com/2012/04/18/first-post-with-octopress/"/>
-<updated>2012-04-18T23:37:00-05:00</updated>
+<updated>2012-04-18T23:37:00-04:00</updated>
 <id>http://andyw8.github.com/2012/04/18/first-post-with-octopress</id>
 
       <content type="html"><![CDATA[<p>Hello world!</p>
