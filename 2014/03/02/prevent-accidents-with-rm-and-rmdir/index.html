@@ -135,6 +135,8 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
 
 <p>Over time this should get you into the habit of typing <code>rmtrash</code>.</p>
 
+<p>This change might cause problems with shell scripts which use <code>rm</code>. I&#8217;m not really sure how to deal with that. It may be sensible for the alias to return false to indicate the command failed.</p>
+
 <p>Reference: <a href="http://apple.stackexchange.com/a/17637">Apple StackExchange post</a></p>
 </div>
 
