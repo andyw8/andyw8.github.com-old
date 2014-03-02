@@ -92,6 +92,82 @@
   <header>
     <h1 class="entry-title">
 
+<a href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Minimal Rakefile for RSpec, Cucumber and Jasmine</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-28T12:30:00+09:00" pubdate data-updated="true">Feb 28<span>th</span>, 2013</time>
+         &bull; <a rel="bookmark" href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>I found I was repeatedly Googling for the Rakefile configuration to run various kinds of tests, so for my own reference, and hopefully someone else&#8217;s, here&#8217;s an example:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec/core/rake_task&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;cucumber/rake/task&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;guard/jasmine/task&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RSpec</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">RakeTask</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="no">Cucumber</span><span class="o">::</span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="no">Guard</span><span class="o">::</span><span class="no">JasmineTask</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">task</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:spec</span><span class="p">,</span> <span class="ss">:cucumber</span><span class="p">,</span> <span class="s1">&#39;guard:jasmine&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that you&#8217;ll need the <a href="" title="https://github.com/netzpirat/guard-jasmine">guard-jasmine</a> gem for the Jasmine task.</p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2013/02/28/rakefile-cucumber-rspec-jasmine/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
 <a href="/2013/02/21/playing-with-rspec-fire/">Playing With (RSpec)-Fire</a>
 
 </h1>
@@ -110,7 +186,7 @@
   
 
 
-<time datetime="2013-02-21T22:07:00-05:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
+<time datetime="2013-02-21T22:07:00+09:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/02/21/playing-with-rspec-fire/">Permalink</a>
       </p>
     
@@ -362,7 +438,7 @@ User#suspend!
   
 
 
-<time datetime="2012-12-23T17:54:00-05:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time>
+<time datetime="2012-12-23T17:54:00+09:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/12/23/exploring-concerns-for-rails-4/">Permalink</a>
       </p>
     
@@ -574,7 +650,7 @@ User#suspend!
   
 
 
-<time datetime="2012-12-05T14:13:00-05:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
+<time datetime="2012-12-05T14:13:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/12/05/zeus-cucumber-guard/">Permalink</a>
       </p>
     
@@ -720,7 +796,7 @@ User#suspend!
   
 
 
-<time datetime="2012-08-22T13:50:00-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time>
+<time datetime="2012-08-22T13:50:00+09:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/08/22/tdd-triangulation-practice/">Permalink</a>
       </p>
     
@@ -1296,7 +1372,7 @@ User#suspend!
   
 
 
-<time datetime="2012-08-20T19:54:00-04:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
+<time datetime="2012-08-20T19:54:00+09:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/08/20/cucumber-bdd-london-2012/">Permalink</a>
       </p>
     
@@ -1535,7 +1611,7 @@ User#suspend!
   
 
 
-<time datetime="2012-08-08T14:32:00-04:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+<time datetime="2012-08-08T14:32:00+09:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">Permalink</a>
       </p>
     
@@ -1602,7 +1678,7 @@ User#suspend!
   
 
 
-<time datetime="2012-05-28T22:17:00-04:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time>
+<time datetime="2012-05-28T22:17:00+09:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/05/28/rubymotion-app-template/">Permalink</a>
       </p>
     
@@ -1667,7 +1743,7 @@ User#suspend!
   
 
 
-<time datetime="2012-04-18T23:37:00-04:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
+<time datetime="2012-04-18T23:37:00+09:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
          &bull; <a rel="bookmark" href="/2012/04/18/first-post-with-octopress/">Permalink</a>
       </p>
     
@@ -1700,6 +1776,10 @@ User#suspend!
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/03/02/prevent-accidents-with-rm-and-rmdir/">Prevent accidents with rm and rmdir</a>
+      </li>
     
       <li class="post">
         <a href="/2013/11/20/tablexi-chicago/">TableXI, Chicago</a>
@@ -1735,10 +1815,6 @@ User#suspend!
     
       <li class="post">
         <a href="/2013/09/14/coding-world-tour/">My Coding World Tour</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/02/28/rakefile-cucumber-rspec-jasmine/">Minimal Rakefile for RSpec, Cucumber and Jasmine</a>
       </li>
     
   </ul>
@@ -1781,7 +1857,7 @@ User#suspend!
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Andy Waite -
+  Copyright &copy; 2014 - Andy Waite -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
