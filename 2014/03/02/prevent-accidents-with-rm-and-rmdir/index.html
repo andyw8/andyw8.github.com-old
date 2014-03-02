@@ -123,16 +123,17 @@ Prevent Accidents With Rm and Rmdir
 
 <p>There are a few articles about how to alter the behaviour of <code>rm</code> so that it moves to the trash instead of permanently deleting. But this is dangerous if you happen to be using a different machine which doesn&#8217;t have this behaviour enabled.</p>
 
-<p>A better option is to install <a href="http://www.nightproductions.net/cli.htm">rmtrash</a> (also available via Homebrew). The <code>rmtrash</code> command can be use to delete both files and directories.</p>
+<p>A better option is to install <a href="http://www.nightproductions.net/cli.htm">rmtrash</a> (also available via Homebrew). The <code>rmtrash</code> command can be use to delete both files and directories, and as the name suggests it moves the files to the Trash instead of parmanently deleting them.</p>
+
+<p>If you really need to call <code>rm</code> or <code>rmdir</code> then just provide the full path, e.g. <code>/bin/rm</code> or <code>/bin/rmdir</code>.</p>
 
 <p>You can then alias the actual <code>rm</code> commands to give you a reminder warning, for example add this to your <code>.bashrc</code>:</p>
 
-<p>  alias rm=&#8221;echo &#8216;Use rmtrash, or full path name for rm&#8217;&#8221;
-  alias rmdir=&#8221;echo &#8216;Use rmtrash, or full path name for rmdir&#8217;&#8221;</p>
+<pre><code>alias rm="echo 'Use rmtrash, or full path name for rm'"
+alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
+</code></pre>
 
-<p>Over time this should encourage you to use rmtrash.</p>
-
-<p>If you really need to call <code>rm</code> or <code>rmdir</code> then just provide the full path, e.g. <code>/bin/rm</code> or <code>/bin/rmdir</code>.</p>
+<p>Over time this should get you into the habit of typing <code>rmtrash</code>.</p>
 
 <p>Reference: <a href="http://apple.stackexchange.com/a/17637">Apple StackExchange post</a></p>
 </div>

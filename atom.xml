@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2014-03-02T15:36:01+09:00</updated>
+  <updated>2014-03-02T18:11:19+09:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -31,16 +31,17 @@
 
 <p>There are a few articles about how to alter the behaviour of <code>rm</code> so that it moves to the trash instead of permanently deleting. But this is dangerous if you happen to be using a different machine which doesn&#8217;t have this behaviour enabled.</p>
 
-<p>A better option is to install <a href="http://www.nightproductions.net/cli.htm">rmtrash</a> (also available via Homebrew). The <code>rmtrash</code> command can be use to delete both files and directories.</p>
+<p>A better option is to install <a href="http://www.nightproductions.net/cli.htm">rmtrash</a> (also available via Homebrew). The <code>rmtrash</code> command can be use to delete both files and directories, and as the name suggests it moves the files to the Trash instead of parmanently deleting them.</p>
+
+<p>If you really need to call <code>rm</code> or <code>rmdir</code> then just provide the full path, e.g. <code>/bin/rm</code> or <code>/bin/rmdir</code>.</p>
 
 <p>You can then alias the actual <code>rm</code> commands to give you a reminder warning, for example add this to your <code>.bashrc</code>:</p>
 
-<p>  alias rm=&#8221;echo &#8216;Use rmtrash, or full path name for rm&#8217;&#8221;
-  alias rmdir=&#8221;echo &#8216;Use rmtrash, or full path name for rmdir&#8217;&#8221;</p>
+<pre><code>alias rm="echo 'Use rmtrash, or full path name for rm'"
+alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
+</code></pre>
 
-<p>Over time this should encourage you to use rmtrash.</p>
-
-<p>If you really need to call <code>rm</code> or <code>rmdir</code> then just provide the full path, e.g. <code>/bin/rm</code> or <code>/bin/rmdir</code>.</p>
+<p>Over time this should get you into the habit of typing <code>rmtrash</code>.</p>
 
 <p>Reference: <a href="http://apple.stackexchange.com/a/17637">Apple StackExchange post</a></p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2014/03/02/prevent-accidents-with-rm-and-rmdir/">&#9875; Permalink</a></p>]]></content>
@@ -372,7 +373,7 @@
 
 <h2>Want To Get Involved?</h2>
 
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#116;&#111;&#x75;&#114;&#x40;&#x61;&#110;&#x64;&#121;&#119;&#97;&#105;&#x74;&#101;&#46;&#x63;&#111;&#x6d;">&#116;&#x6f;&#x75;&#x72;&#x40;&#x61;&#110;&#x64;&#x79;&#x77;&#x61;&#x69;&#116;&#x65;&#46;&#99;&#x6f;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
+<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x74;&#111;&#117;&#x72;&#x40;&#97;&#110;&#x64;&#x79;&#119;&#97;&#105;&#116;&#x65;&#46;&#99;&#111;&#109;">&#116;&#111;&#x75;&#x72;&#x40;&#97;&#x6e;&#x64;&#x79;&#119;&#97;&#x69;&#x74;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
