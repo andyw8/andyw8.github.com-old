@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2014-03-12T14:57:06+00:00</updated>
+  <updated>2014-03-12T15:08:19+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -27,25 +27,25 @@
 
 <p>But there are times when you want to code, and you don&#8217;t have an Internet connection. You might be on a 14-hour plane trip. What a great way to do some coding without distractions. But then you discover there&#8217;s some critical piece of information you need, and you can&#8217;t make any progress without it.</p>
 
-<p>The next day, you might go to a local coffee shop, and make use of their WiFi. But you soon discover it&#8217;s slow and unreliable. You return to your hotel, and discover they want to add a surcharge for in-room WiFi, probably priced at business travellers with expense accounts.</p>
+<p>The next day, you might go to a local coffee shop, and make use of their WiFi. But you soon discover it&#8217;s slow and unreliable. You return to your hotel, and discover they want to add a huge surcharge for in-room WiFi, probably priced at business travellers with expense accounts.</p>
 
 <p>So you buy a local SIM card, add some credit, and tether your phone to your laptop. But you discover the 3G network doesn&#8217;t have good coverage in the part of town you&#8217;re in. Web pages keep timing out causing you frustration.</p>
 
-<p>But it doesn&#8217;t have to be this way. In this post, I&#8217;ll show some practical tools and techniques to turn coding offline into a viable practice.</p>
+<p>But it doesn&#8217;t have to be this way. In this post, I&#8217;ll show some practical tools and techniques to turn coding offline into a viable practice. Even if the above situations don&#8217;t apply to you, it&#8217;s can sometimes be good to disconnect on purpose to avoid all the interruptions and distractions that being online brings.</p>
 
-<h1>Dependency Managers</h1>
+<h1>Dependency Management Tools</h1>
 
-<p>A dependency manager such as Bundler or npm downloads all the libraries your projects needs, based on a manifest. If you add a dependency, it will need to download that from the Internet, unless it&#8217;s already on your system (and is at the correct version number).</p>
+<p>A dependency manager such as Bundler or npm will download all the libraries your projects needs, based on a manifest. If you add a dependency, it will need to fetch that from the Internet, unless it&#8217;s already on your system (and is at the correct version number).</p>
 
-<p>You&#8217;ll probably find that most dependencies are added or changed near the beginning of a project, and that changes become less frequent over time. So this is a case where preparing beforehand is key, while you still have a fast Internet connection. If your starting a new project, try to build a minimal feature that touches all layers of the system, so that you can discover any missing components.</p>
+<p>You&#8217;ll probably find that most dependencies are added or changed near the beginning of a project, and that changes become less frequent over time. So this is a case where preparing beforehand is key, while you still have a fast Internet connection. If you&#8217;re beginning a new project, start by building a minimal feature that touches all layers of the system, so that you can discover any missing dependencies.</p>
 
-<p>Once you have the component installed, you may need to refer to the documentation. People tend to jump straight to the project&#8217;s web site, but all the documentation is usually already contained with the packages you&#8217;ve downloaded. For example, if you&#8217;re using Ruby you can simply run <code>yard server -G Gemfile</code> within your project, then visit http://0.0.0.0:8808 to browse it.</p>
+<p>Once you have the dependencies installed, you may need to refer to their documentation. People tend to jump straight to the project&#8217;s web site, but all the documentation is usually already contained with the packages you&#8217;ve downloaded. For example, if you&#8217;re using Ruby you can simply run <code>yard server -G Gemfile</code> within your project, then visit http://0.0.0.0:8808 to browse it.</p>
 
-<h1>Git</h1>
+<h1>Distributed Version Control</h1>
 
 <p>We take it for granted, but Git is a huge help when working offline. Older systems such as Subversion would require server acccess to view a file&#8217;s history, or create a new branch. When you clone a Git repo, you can see the fully history of every change that&#8217;s been made.</p>
 
-<p>Feature branches are particularly useful. If you get stuck on a problem due to not being, you can commit what you&#8217;ve have so far, then check out a separate branch from master to work on something else.</p>
+<p>Feature branches are particularly useful. If you get stuck on a problem due to not being online, you can commit what you&#8217;ve have so far, then check out a separate branch from master to work on something else.</p>
 
 <h1>Books</h1>
 
@@ -54,6 +54,8 @@
 <p>I&#8217;m a big fan of companies which allow you to download their books in mulitple formats (usually PDF, epub and mobi), without DRM. This includes Pragmatic Programmers, Leanpub, Manning and OReilly.</p>
 
 <p>I store my eBooks in Dropbox, and use GoodReader to keep them in sync with my iPad. I prefer to read PDF versions on the iPad since it preserves the author&#8217;s intended layout. Code samples can be difficult to read on a Kindle.</p>
+
+<p>eBooks don&#8217;t take up much disk space, so you carry every book you own without having to worry.</p>
 
 <h1>Dash</h1>
 
@@ -81,7 +83,7 @@
 
 <p>Videos can take up a lot of space, so you may want not want to fill up your drive, especially if you&#8217;re using an SSD with limited storage.</p>
 
-<p>Instead, store the videos on a secondary device whch you can carry with you. A 128GB flash drive or card can be bought for around US$60. If you want more space, a portable 2TB USB is around US$100.</p>
+<p>Instead, store the videos on a secondary device whch you can carry with you. A 128GB flash drive or card can be bought for around US$60. If you want more space, a portable 2TB USB hard drive is only around $100.</p>
 
 <p><strong>Did you find this post useful? I&#8217;m writing a <a href="https://leanpub.com/travel-tech">book on Travel Technology</a>. Sign up to learn more.</strong></p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2014/03/12/coding-offline/">&#9875; Permalink</a></p>]]></content>
@@ -450,7 +452,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
 
 <h2>Want To Get Involved?</h2>
 
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x74;&#111;&#117;&#114;&#x40;&#97;&#x6e;&#100;&#x79;&#119;&#x61;&#105;&#116;&#x65;&#x2e;&#x63;&#111;&#109;">&#x74;&#x6f;&#x75;&#x72;&#64;&#x61;&#x6e;&#100;&#x79;&#x77;&#x61;&#105;&#116;&#101;&#46;&#99;&#111;&#109;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
+<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#116;&#x6f;&#x75;&#x72;&#x40;&#x61;&#x6e;&#x64;&#121;&#119;&#x61;&#x69;&#x74;&#x65;&#46;&#x63;&#111;&#x6d;">&#116;&#111;&#117;&#114;&#x40;&#97;&#110;&#100;&#x79;&#x77;&#x61;&#105;&#x74;&#x65;&#x2e;&#x63;&#111;&#109;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
