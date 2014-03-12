@@ -48,7 +48,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">Andy Waite</a></h1>
   
-    <h2>Contract Ruby, Rails and iOS Developer - On Tour</h2>
+    <h2>Contract Ruby, Rails, JavaScript and iOS Developer</h2>
   
 </hgroup>
 
@@ -92,6 +92,119 @@
   <header>
     <h1 class="entry-title">
 
+<a href="/2014/03/12/coding-offline/">Coding Offline</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-12T11:02:00+00:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+         &bull; <a rel="bookmark" href="/2014/03/12/coding-offline/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>Looking up information online while coding is now so common that we take it for granted. Need to check the parameters for that method call? Just Google it. How do you configure that library? Check the README on GitHub. What does that obscure error mean? Look it up on StackOverflow, someone else has probably already solved it.</p>
+
+<p>But there are times when you want to code, and you don&#8217;t have an Internet connection. You might be on a 14-hour plane trip. What a great way to do some coding without distractions. But then you discover there&#8217;s some critical piece of information you need, and you can&#8217;t make any progress without it.</p>
+
+<p>The next day, you might go to a local coffee shop, and make use of their WiFi. But you soon discover it&#8217;s slow and unreliable. You return to your hotel, and discover they want to add a surcharge for in-room WiFi, probably priced at business travellers with expense accounts.</p>
+
+<p>So you buy a local SIM card, add some credit, and tether your phone to your laptop. But you discover the 3G network doesn&#8217;t have good coverage in the part of town you&#8217;re in. Web pages keep timing out causing you frustration.</p>
+
+<p>But it doesn&#8217;t have to be this way. In this post, I&#8217;ll show some practical tools and techniques to turn coding offline into a viable practice.</p>
+
+<h1>Dependency Managers</h1>
+
+<p>A dependency manager such as Bundler or npm downloads all the libraries your projects needs, based on a manifest. If you add a dependency, it will need to download that from the Internet, unless it&#8217;s already on your system (and is at the correct version number).</p>
+
+<p>You&#8217;ll probably find that most dependencies are added or changed near the beginning of a project, and that changes become less frequent over time. So this is a case where preparing beforehand is key, while you still have a fast Internet connection. If your starting a new project, try to build a minimal feature that touches all layers of the system, so that you can discover any missing components.</p>
+
+<p>Once you have the component installed, you may need to refer to the documentation. People tend to jump straight to the project&#8217;s web site, but all the documentation is usually already contained with the packages you&#8217;ve downloaded. For example, if you&#8217;re using Ruby you can simply run <code>yard server -G Gemfile</code> within your project, then visit http://0.0.0.0:8808 to browse it.</p>
+
+<h1>Git</h1>
+
+<p>We take it for granted, but Git is a huge help when working offline. Older systems such as Subversion would require server acccess to view a file&#8217;s history, or create a new branch. When you clone a Git repo, you can see the fully history of every change that&#8217;s been made.</p>
+
+<p>Feature branches are particularly useful. If you get stuck on a problem due to not being, you can commit what you&#8217;ve have so far, then check out a separate branch from master to work on something else.</p>
+
+<h1>Books</h1>
+
+<p>I use to have a fairly large collection of paper books, but I&#8217;ve given that up now for the convenience of having everything just a click away.</p>
+
+<p>I&#8217;m a big fan of companies which allow you to download their books in mulitple formats (usually PDF, epub and mobi), without DRM. This includes Pragmatic Programmers, Leanpub, Manning and OReilly.</p>
+
+<p>I store my eBooks in Dropbox, and use GoodReader to keep them in sync with my iPad. I prefer to read PDF versions on the iPad since it preserves the author&#8217;s intended layout. Code samples can be difficult to read on a Kindle.</p>
+
+<h1>Dash</h1>
+
+<p><a href="http://kapeli.com/dash">Dash</a> is a paid app published by Kapeli which lets you download documentation for offline use. It&#8217;s US$19.99 but can occasionally be found at a discount. It&#8217;s covers virtually every language and framework you might want refer to, and the content is updated automatically.</p>
+
+<h1>Email</h1>
+
+<p>If you&#8217;re working on a project with other people, you might need to refer to information contained in emails. Almost everyone uses web-based mail such as GMail, which isn&#8217;t available offline. So consider using a native email client which can download and store all your mail offline, such as Apple&#8217;s Mail app for Mac.</p>
+
+<p>Even if you have many years of email, it shouldn&#8217;t take up too much space if you prune any large attachments. I have around five years of mail in GMail which consumes only around 3GB.</p>
+
+<h1>StackOverflow</h1>
+
+<p>StackOverflow has become indispensible to most developers.</p>
+
+<p>The entire StackOverflow database is available under a Creative Commons license on <a href="https://archive.org/details/stackexchange">The Internet Archive</a>.</p>
+
+<p>The raw data probably isn&#8217;t much use, so check out <a href="http://stackstash.com/">StackStash</a> (US$1.99), an iOS app which allows browsing of the entire StackOverflow site offline.</p>
+
+<h1>Evernote</h1>
+
+<p>I love Evernote for keeping notes organised, but one the most useful features is the Web Clipper. Whenever I look-up something which I think I might need to refer to later, I clip the page into Evernote. This allows me to view it offline, with all formatting intact. It&#8217;s indexed by Evernote so I can easily find what I&#8217;m looking for, even within thousands of notes.</p>
+
+<h1>Audio and Video</h1>
+
+<p>Videos can take up a lot of space, so you may want not want to fill up your drive, especially if you&#8217;re using an SSD with limited storage.</p>
+
+<p>Instead, store the videos on a secondary device whch you can carry with you. A 128GB flash drive or card can be bought for around US$60. If you want more space, a portable 2TB USB is around US$100.</p>
+
+<p><strong>Did you find this post useful? I&#8217;m writing a <a href="https://leanpub.com/travel-tech">book on Travel Technology</a>. Sign up to learn more.</strong></p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2014/03/12/coding-offline/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
 <a href="/2014/03/02/prevent-accidents-with-rm-and-rmdir/">Prevent Accidents With Rm and Rmdir</a>
 
 </h1>
@@ -110,7 +223,7 @@
   
 
 
-<time datetime="2014-03-02T15:10:00+09:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2014</time>
+<time datetime="2014-03-02T15:10:00+00:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2014</time>
          &bull; <a rel="bookmark" href="/2014/03/02/prevent-accidents-with-rm-and-rmdir/">Permalink</a>
       </p>
     
@@ -185,7 +298,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-11-20T20:04:00+09:00" pubdate data-updated="true">Nov 20<span>th</span>, 2013</time>
+<time datetime="2013-11-20T20:04:00+00:00" pubdate data-updated="true">Nov 20<span>th</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/11/20/tablexi-chicago/">Permalink</a>
       </p>
     
@@ -281,7 +394,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-11-19T16:17:00+09:00" pubdate data-updated="true">Nov 19<span>th</span>, 2013</time>
+<time datetime="2013-11-19T16:17:00+00:00" pubdate data-updated="true">Nov 19<span>th</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/11/19/8th-light-chicago/">Permalink</a>
       </p>
     
@@ -334,7 +447,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-11-18T16:17:00+09:00" pubdate data-updated="true">Nov 18<span>th</span>, 2013</time>
+<time datetime="2013-11-18T16:17:00+00:00" pubdate data-updated="true">Nov 18<span>th</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/11/18/hashrocket-chicago/">Permalink</a>
       </p>
     
@@ -387,7 +500,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-11-13T14:45:00+09:00" pubdate data-updated="true">Nov 13<span>th</span>, 2013</time>
+<time datetime="2013-11-13T14:45:00+00:00" pubdate data-updated="true">Nov 13<span>th</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/11/13/rubyconf-2013-miami-beach/">Permalink</a>
       </p>
     
@@ -440,7 +553,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-11-06T13:58:00+09:00" pubdate data-updated="true">Nov 6<span>th</span>, 2013</time>
+<time datetime="2013-11-06T13:58:00+00:00" pubdate data-updated="true">Nov 6<span>th</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/11/06/pivotal-labs-new-york-city/">Permalink</a>
       </p>
     
@@ -493,7 +606,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-11-02T07:39:00+09:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2013</time>
+<time datetime="2013-11-02T07:39:00+00:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/11/02/thoughtbot-boston/">Permalink</a>
       </p>
     
@@ -566,7 +679,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-10-31T23:45:00+09:00" pubdate data-updated="true">Oct 31<span>st</span>, 2013</time>
+<time datetime="2013-10-31T23:45:00+00:00" pubdate data-updated="true">Oct 31<span>st</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/10/31/the-coding-tour-begins/">Permalink</a>
       </p>
     
@@ -621,7 +734,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
   
 
 
-<time datetime="2013-09-17T22:51:00+09:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+<time datetime="2013-09-17T22:51:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
          &bull; <a rel="bookmark" href="/2013/09/17/promoting-my-coding-world-tour/">Permalink</a>
       </p>
     
@@ -693,136 +806,6 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
 
     </article>
   
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
-      
-  <header>
-    <h1 class="entry-title">
-
-<a href="/2013/09/14/coding-world-tour/">My Coding World Tour</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-14T16:25:00+09:00" pubdate data-updated="true">Sep 14<span>th</span>, 2013</time>
-         &bull; <a rel="bookmark" href="/2013/09/14/coding-world-tour/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p>In the culinary world, a <a href="http://en.wikipedia.org/wiki/Stage_%28cooking%29"><em>stage</em></a> (pronounced <em>stazhje</em>, from the French <em>stagiaire</em>) is an unpaid internship when a cook or chef works briefly, for free, in another chef&#8217;s kitchen to learn and be exposed to new techniques and cuisines.</p>
-
-<p>To improve as a developer, I want to try this approach in the software world. At the end of October I will be leaving London, my home for the past six years, buying a Round-The-World plane ticket, and visiting North America, South East Asia, and Europe. During that time, I&#8217;ll be seeking out opportunities for a number of short coding internships at development companies.</p>
-
-<h2>Why I&#8217;m Doing This</h2>
-
-<blockquote><p>&#8220;Every day, work to refine the skills you have and to add new tools to your repertoire. Over the years, you&#8217;ll be amazed at how your experience has blossomed and your skills have grown.&#8221; &#8211; The Pragmatic Programmer, Andrew Hunt and Dave Thomas</p>
-
-<p>&#8220;Be the worst guy in every band you’re in. The people around you affect your own performance. Choose your crowd wisely.&#8221; &#8211; The Passionate Programmer, Chad Fowler</p></blockquote>
-
-<p>I want this experience to give me new perspectives on being a developer, to discover new concepts and techniques, and most importantly improve by <a href="http://codeulate.com/2013/08/how-to-improve-as-a-programmer">learning from others</a>.</p>
-
-<p>For the past few years I&#8217;ve worked as a contractor for a variety of companies in London, and I found that one of the most interesting aspects is the initial period of joining a team and discovering how each organisation approaches development differently. This phase is always when I learn most and re-think my opinions on the best way to build software. There&#8217;s always a suprising amount of innovation under the covers.</p>
-
-<p>There&#8217;s also, of course, the benefits of travel &#8211; discovering new cities, meeting new people, and building my professional network.</p>
-
-<p>I&#8217;ve been inspired by reading about <a href="http://programmingtour.blogspot.com">Corey Haines&#8217; Journeyman pair-programming tour</a>, although my travels won&#8217;t be quite as extensive as I&#8217;ll be alternating with working on my own projects while travelling.</p>
-
-<h2>What You Get Out Of It</h2>
-
-<p>Probably the biggest benefit is a fresh set of eyes on your team&#8217;s code and your process. So it&#8217;s like <a href="http://www.pairprogramwith.me/">#pairwithme</a> but in real life!</p>
-
-<p>I&#8217;ve worked on many types of apps including mobile, APIs, e-commerce, social networks and gaming, each of which have taught me useful lessons that I can share.</p>
-
-<p>I will be aiming to blog about the companies I visit (if given consent), so it&#8217;s also an opportunity to raise the profile of your workplace to an audience of developers.</p>
-
-<h2>About Me</h2>
-
-<p>I&#8217;ve been a contract Ruby developer for the past three years, with a bit of JavaScript and iOS development too. I would put my skill level at between mid-level and senior. I&#8217;m a proponent of test-driven development, simple design, clean code, refactoring and pair programming.</p>
-
-<p>My most popular open source project is <a href="https://github.com/andyw8/rubymotion_generators">RubyMotion Generators</a>, as featured in some episodes of <a href="http://motioncasts.tv/">motioncasts.tv</a>. I&#8217;m hoping to get <a href="https://github.com/rails/rails/pull/10471">my first Rails contribution</a> accepted soon!</p>
-
-<p>My side-projects include:</p>
-
-<ul>
-<li><a href="https://itunes.apple.com/gb/app/streetfood-london/id589405547?mt=8">StreetFood London</a></li>
-<li><a href="http://techradar.io">techradar.io</a> (under development)</li>
-<li>Confreaks iOS app (under development)</li>
-</ul>
-
-
-<p>I also coach a few aspiring developers via <a href="http://www.railsmentors.org">RailsMentors</a></p>
-
-<p>Around the web:</p>
-
-<ul>
-<li><a href="http://blog.andywaite.com">blog.andywaite.com</a></li>
-<li><a href="http://twitter.com/andyw8">twitter.com/andyw8</a></li>
-<li><a href="http://stackoverflow.com/users/119822/andy-waite">StackOverflow profile</a></li>
-<li><a href="http://github.com/andyw8">github.com/andyw8</a></li>
-<li><a href="http://linkedin.andywaite.com">LinkedIn</a></li>
-</ul>
-
-
-<h2>The Details</h2>
-
-<p>The duration of each position might be anywhere from one day to a week. I&#8217;m happy to work with people of different skill levels during each visit.</p>
-
-<p>I&#8217;ll be starting off in North America and I have the following cities in my plan for November and December (dates and order to be confirmed).</p>
-
-<ul>
-<li>New York City</li>
-<li>Boston</li>
-<li>Miami (for <a href="http://rubyconf.org/">RubyConf</a>)</li>
-<li>Chicago</li>
-<li>Seattle / Portland</li>
-<li>Atlanta</li>
-<li>Dallas / Austin</li>
-<li>San Francisco</li>
-<li>Toronto</li>
-</ul>
-
-
-<p>I then plan to be in Asia in January-February and in Europe by March.</p>
-
-<h2>Want To Get Involved?</h2>
-
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#116;&#x6f;&#117;&#x72;&#64;&#x61;&#x6e;&#x64;&#x79;&#x77;&#x61;&#x69;&#x74;&#x65;&#46;&#x63;&#x6f;&#109;">&#x74;&#111;&#117;&#114;&#x40;&#x61;&#110;&#100;&#x79;&#x77;&#x61;&#x69;&#x74;&#x65;&#46;&#x63;&#111;&#x6d;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2013/09/14/coding-world-tour/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -837,6 +820,10 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/03/12/coding-offline/">Coding Offline</a>
+      </li>
     
       <li class="post">
         <a href="/2014/03/02/prevent-accidents-with-rm-and-rmdir/">Prevent accidents with rm and rmdir</a>
@@ -872,10 +859,6 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
     
       <li class="post">
         <a href="/2013/09/17/promoting-my-coding-world-tour/">Promoting my Coding Tour</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/09/14/coding-world-tour/">My Coding World Tour</a>
       </li>
     
   </ul>
