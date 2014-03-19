@@ -3,7 +3,7 @@
   <title><![CDATA[Andy Waite]]></title>
   <link href="http://andyw8.github.com/atom.xml" rel="self"/>
   <link href="http://andyw8.github.com/"/>
-  <updated>2014-03-19T13:39:03+00:00</updated>
+  <updated>2014-03-19T13:40:08+00:00</updated>
   <id>http://andyw8.github.com/</id>
   <author>
     <name><![CDATA[Andy Waite]]></name>
@@ -31,11 +31,11 @@
 
 <p>So in desperation you buy a local SIM card, add some credit, and tether your phone to your laptop. But you discover the 3G network doesn&#8217;t have good coverage in the part of town you&#8217;re in. Web pages keep timing out causing you frustration.</p>
 
-<p>But it doesn&#8217;t have to be this way. In this post, I&#8217;ll show some practical tools and techniques to turn coding offline into a viable practice. Even if the above situations don&#8217;t apply to you, it&#8217;s can sometimes be good to disconnect on purpose to avoid all the interruptions and distractions that being online brings.</p>
+<p>But it doesn&#8217;t have to be this way. In this post, I&#8217;ll show some practical tools and techniques to turn coding offline into a viable practice. Even if the above situations don&#8217;t apply to you, it can sometimes be good to disconnect on purpose to avoid all the interruptions and distractions that being online brings.</p>
 
 <h1>Dash</h1>
 
-<p><a href="http://kapeli.com/dash">Dash</a> is a paid app published by Kapeli which lets you download documentation for offline use. It&#8217;s US$19.99 but can occasionally be found at a discount. It&#8217;s covers virtually every language and framework you might want refer to, and the content is updated automatically.</p>
+<p><a href="http://kapeli.com/dash">Dash</a> is a paid app published by Kapeli which lets you download documentation for offline use. It&#8217;s US$19.99 but can occasionally be found at a discount. It covers virtually every language and framework you might want refer to, and the content is updated automatically.</p>
 
 <h1>Dependency Management Tools</h1>
 
@@ -456,7 +456,7 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
 
 <h2>Want To Get Involved?</h2>
 
-<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x74;&#x6f;&#x75;&#x72;&#64;&#97;&#110;&#100;&#121;&#x77;&#x61;&#x69;&#116;&#x65;&#x2e;&#x63;&#x6f;&#x6d;">&#x74;&#111;&#117;&#x72;&#x40;&#97;&#x6e;&#x64;&#x79;&#x77;&#x61;&#105;&#116;&#x65;&#x2e;&#99;&#111;&#109;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
+<p>If you work at development company in one the above cities, and you are interested in having me visit during November or December, then please drop me an email at <strong><a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x74;&#x6f;&#x75;&#x72;&#64;&#97;&#x6e;&#x64;&#121;&#119;&#x61;&#105;&#x74;&#x65;&#46;&#99;&#111;&#x6d;">&#116;&#111;&#117;&#114;&#x40;&#x61;&#110;&#x64;&#x79;&#119;&#x61;&#105;&#x74;&#101;&#46;&#99;&#111;&#109;</a></strong>. I can organise my own accomodation and I&#8217;m not looking for any payment, but I wouldn&#8217;t say no to some post-work food or beers!</p>
 <p><a rel="bookmark" href="http://andyw8.github.com/2013/09/14/coding-world-tour/">&#9875; Permalink</a></p>]]></content>
     </entry>
   
