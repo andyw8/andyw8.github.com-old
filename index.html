@@ -92,133 +92,6 @@
   <header>
     <h1 class="entry-title">
 
-<a href="/2014/06/21/continous-integration-with-rails-rubocop-and-travis-ci/">Continous Integration With Rails, RuboCop and Travis CI</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-21T19:08:00+01:00" pubdate data-updated="true">Jun 21<span>st</span>, 2014</time>
-         &bull; <a rel="bookmark" href="/2014/06/21/continous-integration-with-rails-rubocop-and-travis-ci/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p><a href="https://github.com/bbatsov/rubocop">RuboCop</a> is a great tool for checking the code quality in your Ruby project. It&#8217;s based on the community-authored Ruby Style Guide. :</p>
-
-<p>It comes with a good set of defaults but can be customized to your own preferences with a <code>.rubocop.yml</code> file in your project folder.</p>
-
-<h2>Installation</h2>
-
-<p>You can install RuboCop globally with:</p>
-
-<p><code>gem install rubocop</code></p>
-
-<p>And then run it on your project with:</p>
-
-<p><code>rubocop .</code></p>
-
-<p>On an existing project, you will probably be flooded with warnings about syntax problems, so it&#8217;s best improve things gradually. Start with: <code>rubocop --auto-gen-config</code>, which creates a <code>.rubocop_todo.yml</code>. Then add <code>inherit_from: .rubocop_todo.yml</code> on the first line of <code>.rubycop.yml</code>. With this approach, you can gradually remove checks from <code>.rubocop_todo.yml</code> as your fix the problems with your code.</p>
-
-<h2>Rails Mode</h2>
-
-<p>RuboCop can also check for problems with Rails code:</p>
-
-<p><code>rubocop . --rails</code></p>
-
-<h2>Integrating</h2>
-
-<p>Add <code>gem 'rubocop'</code> to your Gemfile. You can limit it to only the <code>:development</code> and <code>:test</code> groups since it&#8217;s not needed in production. Run <code>bundle</code> to update the <code>Gemfile.lock</code>.</p>
-
-<p><code>gem 'rubocop', require: false</code> ?</p>
-
-<p>Next, create a new Rake task in lib/tasks/rubocop.rake</p>
-
-<p>  &#8220;`ruby
-  if Rails.env.development? || Rails.env.test?</p>
-
-<pre><code>require "rubocop/rake_task"
-
-desc "Run RuboCop"
-Rubocop::RakeTask.new(:rubocop) do |task|
-  task.options = ["--rails"]
-end
-</code></pre>
-
-<p>  end
-  &#8220;`</p>
-
-<p>You should now be able to run <code>bundle exec rake rubocop</code>. The advantage of this approach over installing globally is for when you&#8217;re in a team, so that you know everyone is running the same version.</p>
-
-<p>By convention in Ruby projects, the <code>rake</code> command runs the tests for the projects. We can hook into this to run RuboCop too.</p>
-
-<p>Edit your projects Rake and add the following line:</p>
-
-<p><code>task spec: :rubocop</code></p>
-
-<p>This defines the <code>:spec</code> task as dependent on the <code>:rubcop</code> task. If the RuboCop task fails, then the <code>spec</code> task will not run.</p>
-
-<h2>TravisCI</h2>
-
-<p>We could just print out the RuboCop warnings on the Travis log, but these are easy to miss or ignore.</p>
-
-<p>Instead, we want to cause the build to fail.</p>
-
-<p>This might seem drastic. And you might have to convince your team members. If they push without running rake first then the build will fail.</p>
-
-<p>But by doing this you set habits in the team. They will start to write code which doesn&#8217;t trigger the.</p>
-
-<p>I&#8217;m using Travis CI as an example, but this could easily be adapted for any other CI system.</p>
-
-<p>o</p>
-
-<p><code>rake</code> is default task?</p>
-
-<p>Running RuboCop manually isn&#8217;t ideal. You, or someone else in your team, can easily forget to run it.</p>
-
-<p>It still makes sense to run RuboCop locally, since it&#8217;s quicker to fix any errors before Travis notifies you.</p>
-
-<p>if Rails.env.development? || Rails.env.test?</p>
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2014/06/21/continous-integration-with-rails-rubocop-and-travis-ci/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
-      
-  <header>
-    <h1 class="entry-title">
-
 <a href="/2014/03/12/coding-offline/">Coding Offline</a>
 
 </h1>
@@ -833,6 +706,112 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
 
     </article>
   
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
+<a href="/2013/09/17/promoting-my-coding-world-tour/">Promoting My Coding Tour</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-17T22:51:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+         &bull; <a rel="bookmark" href="/2013/09/17/promoting-my-coding-world-tour/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><h2>Previous Post: <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">My Coding World Tour</a></h2>
+
+<p>I announced plans for my Coding World Tour in a <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">previous blog post</a>. The next challenge is to make sure people know about it.</p>
+
+<p>Other than a couple of posts on Twitter and a share on LinkedIn, I haven&#8217;t yet done much promotion. This post describes my next steps for spreading the word.</p>
+
+<h2>Personal Network</h2>
+
+<p>I know a handful of people in some of the cities on my list, so I&#8217;ll be asking them to share my post with their local contacts.</p>
+
+<h2> Regional User Groups</h2>
+
+<p>Every city I plan to visit has a least one Ruby or Rails user group. I think these will probably be my best bet for finding coding opportunities:</p>
+
+<ul>
+<li>New York City: <a href="http://www.meetup.com/NYC-rb/">NYC.rb</a></li>
+<li>Boston: <a href="http://bostonrb.org/">Boston Ruby Group</a></li>
+<li>Chicago: <a href="http://www.chicagoruby.org/">ChicagoRuby</a></li>
+<li>Seattle: <a href="http://www.seattlerb.org/">Seattle.rb</a></li>
+<li>Portland: <a href="http://pdxruby.org/">Portland Ruby Brigade</a></li>
+<li>Atlanta: <a href="http://www.atlrug.com/">Atlanta Ruby Users Group</a></li>
+<li>Dallas: <a href="http://www.dallasrb.org/">Dallas Ruby Brigade</a></li>
+<li>Austin <a href="http://austinonrails.org/">Auston On Rails</a>, <a href="http://austinrb.org/">Austin.rb</a></li>
+<li>Toronto: <a href="http://www.meetup.com/torontoruby/">Toronto Ruby Brigade</a>, <a href="https://groups.google.com/forum/#!forum/ruby-toronto">ruby-toronto</a></li>
+<li>San Francisco: <a href="http://www.meetup.com/sfruby/">San Francisco Ruby Meetup Group</a>, <a href="http://www.meetup.com/SFRails/">SF Rails</a></li>
+</ul>
+
+
+<p>It might seem wrong to focus on Ruby, but it has an incredible community. Also, many Ruby developers are polyglot programmers, so it may lead to a chance of exploring other languages.</p>
+
+<h2>Ruby Forums</h2>
+
+<p>These forums are full of enthusiastic developers:</p>
+
+<ul>
+<li><a href="http://parley.rubyrogues.com/">Ruby Rogues Parley</a></li>
+<li>ThoughtBot Prime forum</li>
+</ul>
+
+
+<h2>Individual Companies</h2>
+
+<p>There are a number of companies I admire who I&#8217;d like to spend a few days with, so I may approach them directly, but I&#8217;m going to hold off and see what offers I get first.</p>
+
+<h2>Other Publications</h2>
+
+<p>These would be harder to get a mention on, but would be great publicity:</p>
+
+<ul>
+<li><a href="http://ruby5.envylabs.com/">Ruby5 podcast</a></li>
+<li><a href="http://rubyrogues.com/">RubyRogues podcast</a></li>
+<li><a href="http://rubyweekly.com/">RubyWeekly</a></li>
+</ul>
+
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2013/09/17/promoting-my-coding-world-tour/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -847,10 +826,6 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2014/06/21/continous-integration-with-rails-rubocop-and-travis-ci/">Continous Integration with Rails, RuboCop and Travis CI</a>
-      </li>
     
       <li class="post">
         <a href="/2014/03/12/coding-offline/">Coding Offline</a>
@@ -886,6 +861,10 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
     
       <li class="post">
         <a href="/2013/10/31/the-coding-tour-begins/">The Coding Tour Begins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/17/promoting-my-coding-world-tour/">Promoting my Coding Tour</a>
       </li>
     
   </ul>
