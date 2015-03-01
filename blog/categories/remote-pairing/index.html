@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to easily delete a large Amazon S3 Bucket - Andy Waite</title>
+  <title>Category: remote-pairing - Andy Waite</title>
   <meta name="author" content="Andy Waite">
   <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
 
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">
+  <link rel="canonical" href="http://andyw8.github.comblog/categories/remote-pairing/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Andy Waite" type="application/atom+xml">
@@ -44,7 +44,7 @@
   <link href="/octopress-favicon.png" rel="icon">
 </head>
 
-<body   >
+<body  id="archive"   >
   <header role="banner"><hgroup>
   <h1><a href="/">Andy Waite</a></h1>
   
@@ -75,131 +75,56 @@
   <div id="main">
     <div id="content">
       <div>
-
-
-
-
-
-
-
-
-
-
-
-<article class="hentry " role="article">
+<article role="article">
   
   <header>
-    <h1 class="entry-title">
+    <h1 class="entry-title">Category: Remote-pairing</h1>
+    
+  </header>
+  
+  <div id="blog-archives" class="category">
 
-How to Easily Delete a Large Amazon S3 Bucket
+
+
+  
+  <h2>2015</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+<article >
+  
+<h1 class="entry-title">
+
+<a href="/2015/03/01/opening-new-panes-in-tmate/">Opening New Panes in Tmate</a>
 
 </h1>
 
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
-         &bull; <a rel="bookmark" href="/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><p>I recently had to delete an S3 bucket containing over 200,000 objects. S3 prevents deletion of non-empty buckets, and deleting this many objects is virtually impossible using any GUI. I looked into an API-based approach but support for <a href="http://aws.amazon.com/about-aws/whats-new/2011/12/07/amazon-s3-announces-multi-object-delete/">multi-object delete</a> still seems limited.</p>
-
-<p>If you don&#8217;t mind waiting 24 hours for your bucket to be cleared, there&#8217;s a very simple solution using S3&#8217;s lifecycle feature:</p>
-
-<ul>
-<li>Log into the <a href="https://console.aws.amazon.com/s3/home">S3 Management Console</a></li>
-<li>Select the bucket you want to clear</li>
-<li>Select Properties from the toolbar</li>
-<li>Click the Lifecycle tab in the Properties panel</li>
-<li>Add a rule with no prefix and expiration of 1 day</li>
-<li>Save the rule</li>
-</ul>
-
-
-<p>Check back 24 hours later you&#8217;ll find all your objects have been deleted.</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Andy Waite</span></span>
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-08T14:32:00+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
-
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/aws/'>aws</a>, <a class='category' href='/blog/categories/s3/'>s3</a>
-  
-</span>
-
-
-
-      
-
-    </p>
-    
-      <div class="sharing">
-  
-    
-      <a href="http://twitter.com/share" title="Tweet this" class="twitter-share" target="_blank">Tweet</a>
-    
+<time datetime="2015-03-01T10:35:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>01</span> <span class='year'>2015</span></time>
+<footer>
   
   
   
+  <span class="categories">posted in <a class='category' href='/blog/categories/remote-pairing/'>remote-pairing</a></span>
   
+</footer>
 
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2012/05/28/rubymotion-app-template/" title="Previous Post: RubyMotion App Template">&laquo; RubyMotion App Template</a>
-      
-      
-        <a class="basic-alignment right" href="/2012/08/20/cucumber-bdd-london-2012/" title="Next Post: Cucumber, BDD and London 2012">Cucumber, BDD and London 2012 &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-<section>
-  <h1>Comments</h1>
-  
+</div>
 
   
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  
-</section>
+</article>
+
+
 
 </div>
 
@@ -291,10 +216,7 @@ How to Easily Delete a Large Amazon S3 Bucket
 			var disqus_developer = '0';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/';
-        var disqus_url = 'http://andyw8.github.com/2012/08/08/how-to-easily-delete-a-large-amazon-s3-bucket/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

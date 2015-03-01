@@ -92,6 +92,79 @@
   <header>
     <h1 class="entry-title">
 
+<a href="/2015/03/01/opening-new-panes-in-tmate/">Opening New Panes in Tmate</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-01T10:35:00+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2015</time>
+         &bull; <a rel="bookmark" href="/2015/03/01/opening-new-panes-in-tmate/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p><a href="http://tmate.io/">tmate</a> is a fork of tmux for remote pairing. When using tmux, I have the
+following configuration so that new panes and windows remember the previous path
+in use:</p>
+
+<figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='plain'><span class='line'>bind-key - split-window -v  -c '#{pane_current_path}'
+</span><span class='line'>bind-key \ split-window -h  -c '#{pane_current_path}'
+</span><span class='line'>bind c new-window -c '#{pane_current_path}'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I tried remote pairing in tmate for the first time recently and was confused as
+to why my new panes and windows were opening in the top level &#8216;/&#8217; instead of the previous pane&#8217;s path.</p>
+
+<p>It turns out that <code>pane_current_path</code> is a tmux 1.9 feature, but tmate is based on
+tmux 1.8. There&#8217;s some talk of a 1.9 version, but it seems to have been delayed.</p>
+
+<p>The workaround I&#8217;ve found is to use <code>-c "$PWD"</code> instead. Make sure to use
+double quotes so that it gets interpolated. You can add that to <code>~/.tmate.conf</code>
+to override the existing setting is in <code>~/.tmate.conf</code>.</p>
+</div>
+
+  <footer>
+    
+    <p><a class="comments-link" href="/2015/03/01/opening-new-panes-in-tmate/#disqus_thread">View comments &raquo;</a></p>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
 <a href="/2014/03/12/coding-offline/">Coding Offline</a>
 
 </h1>
@@ -706,112 +779,6 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
 
     </article>
   
-    
-
-
-
-
-
-
-
-
-
-
-    <article >
-      
-  <header>
-    <h1 class="entry-title">
-
-<a href="/2013/09/17/promoting-my-coding-world-tour/">Promoting My Coding Tour</a>
-
-</h1>
-
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-17T22:51:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
-         &bull; <a rel="bookmark" href="/2013/09/17/promoting-my-coding-world-tour/">Permalink</a>
-      </p>
-    
-  </header>
-
-<div class="entry-content"><h2>Previous Post: <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">My Coding World Tour</a></h2>
-
-<p>I announced plans for my Coding World Tour in a <a href="http://blog.andywaite.com/2013/09/14/coding-world-tour/">previous blog post</a>. The next challenge is to make sure people know about it.</p>
-
-<p>Other than a couple of posts on Twitter and a share on LinkedIn, I haven&#8217;t yet done much promotion. This post describes my next steps for spreading the word.</p>
-
-<h2>Personal Network</h2>
-
-<p>I know a handful of people in some of the cities on my list, so I&#8217;ll be asking them to share my post with their local contacts.</p>
-
-<h2> Regional User Groups</h2>
-
-<p>Every city I plan to visit has a least one Ruby or Rails user group. I think these will probably be my best bet for finding coding opportunities:</p>
-
-<ul>
-<li>New York City: <a href="http://www.meetup.com/NYC-rb/">NYC.rb</a></li>
-<li>Boston: <a href="http://bostonrb.org/">Boston Ruby Group</a></li>
-<li>Chicago: <a href="http://www.chicagoruby.org/">ChicagoRuby</a></li>
-<li>Seattle: <a href="http://www.seattlerb.org/">Seattle.rb</a></li>
-<li>Portland: <a href="http://pdxruby.org/">Portland Ruby Brigade</a></li>
-<li>Atlanta: <a href="http://www.atlrug.com/">Atlanta Ruby Users Group</a></li>
-<li>Dallas: <a href="http://www.dallasrb.org/">Dallas Ruby Brigade</a></li>
-<li>Austin <a href="http://austinonrails.org/">Auston On Rails</a>, <a href="http://austinrb.org/">Austin.rb</a></li>
-<li>Toronto: <a href="http://www.meetup.com/torontoruby/">Toronto Ruby Brigade</a>, <a href="https://groups.google.com/forum/#!forum/ruby-toronto">ruby-toronto</a></li>
-<li>San Francisco: <a href="http://www.meetup.com/sfruby/">San Francisco Ruby Meetup Group</a>, <a href="http://www.meetup.com/SFRails/">SF Rails</a></li>
-</ul>
-
-
-<p>It might seem wrong to focus on Ruby, but it has an incredible community. Also, many Ruby developers are polyglot programmers, so it may lead to a chance of exploring other languages.</p>
-
-<h2>Ruby Forums</h2>
-
-<p>These forums are full of enthusiastic developers:</p>
-
-<ul>
-<li><a href="http://parley.rubyrogues.com/">Ruby Rogues Parley</a></li>
-<li>ThoughtBot Prime forum</li>
-</ul>
-
-
-<h2>Individual Companies</h2>
-
-<p>There are a number of companies I admire who I&#8217;d like to spend a few days with, so I may approach them directly, but I&#8217;m going to hold off and see what offers I get first.</p>
-
-<h2>Other Publications</h2>
-
-<p>These would be harder to get a mention on, but would be great publicity:</p>
-
-<ul>
-<li><a href="http://ruby5.envylabs.com/">Ruby5 podcast</a></li>
-<li><a href="http://rubyrogues.com/">RubyRogues podcast</a></li>
-<li><a href="http://rubyweekly.com/">RubyWeekly</a></li>
-</ul>
-
-</div>
-
-  <footer>
-    
-    <p><a class="comments-link" href="/2013/09/17/promoting-my-coding-world-tour/#disqus_thread">View comments &raquo;</a></p>
-    
-    
-  </footer>
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -826,6 +793,10 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/03/01/opening-new-panes-in-tmate/">Opening new panes in tmate</a>
+      </li>
     
       <li class="post">
         <a href="/2014/03/12/coding-offline/">Coding Offline</a>
@@ -861,10 +832,6 @@ alias rmdir="echo 'Use rmtrash, or full path name for rmdir'"
     
       <li class="post">
         <a href="/2013/10/31/the-coding-tour-begins/">The Coding Tour Begins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/09/17/promoting-my-coding-world-tour/">Promoting my Coding Tour</a>
       </li>
     
   </ul>
