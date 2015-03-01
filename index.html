@@ -116,9 +116,9 @@
     
   </header>
 
-<div class="entry-content"><p><a href="http://tmate.io/">tmate</a> is a fork of tmux for remote pairing. When using tmux, I have the
-following configuration so that new panes and windows remember the previous path
-in use:</p>
+<div class="entry-content"><p><a href="http://tmate.io/">tmate</a> is a fork of tmux for easily setting up a remote pairing session. When using normal tmux, I have the
+following configuration so that new panes and windows remember the previous
+working path:</p>
 
 <figure class='code'><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -136,7 +136,7 @@ tmux 1.8. There&#8217;s some talk of a 1.9 version, but it seems to have been de
 
 <p>The workaround I&#8217;ve found is to use <code>-c "$PWD"</code> instead. Make sure to use
 double quotes so that it gets interpolated. You can add that to <code>~/.tmate.conf</code>
-to override the existing setting is in <code>~/.tmate.conf</code>.</p>
+to override the existing setting in <code>~/.tmate.conf</code>.</p>
 </div>
 
   <footer>
